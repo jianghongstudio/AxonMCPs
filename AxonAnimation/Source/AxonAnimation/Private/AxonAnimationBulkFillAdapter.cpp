@@ -29,10 +29,10 @@
 
 namespace AxonAnimationBulkFillInternal
 {
-	static FDryRunReport MakeResolveFailureReport(const FString& Reason)
+	static FAxonDryRunReport MakeResolveFailureReport(const FString& Reason)
 	{
-		FDryRunReport Report;
-		FBulkFillFieldWrite Write;
+		FAxonDryRunReport Report;
+		FAxonBulkFillFieldWrite Write;
 		Write.Path = TEXT("(adapter)");
 		Write.bOk = false;
 		Write.Reason = Reason;
@@ -47,7 +47,7 @@ namespace AxonAnimationBulkFillInternal
 	// named `AnimationAssets` on UPoseSearchDatabase). The walker handles the
 	// FArrayProperty<FInstancedStruct<FPoseSearchDatabaseAnimationAssetBase>>
 	// expansion via per-element ImportText.
-	static FDryRunReport HandlePoseSearchDatabase(const FBulkFillSpec& Spec)
+	static FAxonDryRunReport HandlePoseSearchDatabase(const FAxonBulkFillSpec& Spec)
 	{
 		UObject* Asset = FAxonAssetUtils::LoadAssetByPath(Spec.TargetAsset);
 		if (!Asset)
@@ -84,7 +84,7 @@ namespace AxonAnimationBulkFillInternal
 		TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 		Root->SetField(EntriesKey, EntriesVal);
 
-		FDryRunReport Report;
+		FAxonDryRunReport Report;
 		if (Spec.bDryRun)
 		{
 			Report = FAxonReflectionWalker::InspectTree(Root, Asset->GetClass(), Asset, Spec);
@@ -113,10 +113,10 @@ namespace AxonAnimationBulkFillInternal
 	}
 
 	// fill_kind=NotifyApplyTemplate — v1 audit-only.
-	static FDryRunReport HandleNotifyApplyTemplate(const FBulkFillSpec& Spec)
+	static FAxonDryRunReport HandleNotifyApplyTemplate(const FAxonBulkFillSpec& Spec)
 	{
-		FDryRunReport Report;
-		FBulkFillFieldWrite Info;
+		FAxonDryRunReport Report;
+		FAxonBulkFillFieldWrite Info;
 		Info.Path = TEXT("(adapter)");
 		Info.bOk = true;
 		Info.Reason = TEXT(
@@ -127,9 +127,9 @@ namespace AxonAnimationBulkFillInternal
 		return Report;
 	}
 
-	static FSchemaDescriptor BuildTopLevelDescribe()
+	static FAxonSchemaDescriptor BuildTopLevelDescribe()
 	{
-		FSchemaDescriptor Root;
+		FAxonSchemaDescriptor Root;
 		Root.FieldPath = TEXT("animation");
 		Root.TypeName = TEXT("Namespace");
 		Root.ImportTextForm = TEXT(
@@ -137,7 +137,7 @@ namespace AxonAnimationBulkFillInternal
 
 		auto AddKind = [&](const TCHAR* Kind, const TCHAR* Sample)
 		{
-			FSchemaDescriptor K;
+			FAxonSchemaDescriptor K;
 			K.FieldPath = Kind;
 			K.TypeName = TEXT("fill_kind");
 			K.ImportTextForm = Sample;
@@ -151,7 +151,7 @@ namespace AxonAnimationBulkFillInternal
 			TEXT("{\"fill_kind\":\"NotifyApplyTemplate\",\"folder\":\"/Game/Anim/Walks\",\"name_glob\":\"A_Walk_*\",\"template\":{...}}"));
 
 		// CHT_ chooser-table gap (WISHLIST per plan §29).
-		FSchemaDescriptor ChooserGap;
+		FAxonSchemaDescriptor ChooserGap;
 		ChooserGap.FieldPath = TEXT("(CHT chooser-table support)");
 		ChooserGap.TypeName = TEXT("wishlist");
 		ChooserGap.ImportTextForm = TEXT(
@@ -164,7 +164,7 @@ namespace AxonAnimationBulkFillInternal
 	}
 }
 
-FDryRunReport FAxonAnimationBulkFillAdapter::AnimationBulkFill(const FBulkFillSpec& Spec)
+FAxonDryRunReport FAxonAnimationBulkFillAdapter::AnimationBulkFill(const FAxonBulkFillSpec& Spec)
 {
 	using namespace AxonAnimationBulkFillInternal;
 
@@ -189,7 +189,7 @@ FDryRunReport FAxonAnimationBulkFillAdapter::AnimationBulkFill(const FBulkFillSp
 		TEXT("animation adapter: unknown fill_kind '%s'"), *FillKind));
 }
 
-FSchemaDescriptor FAxonAnimationBulkFillAdapter::AnimationDescribe(const FString& TargetAsset)
+FAxonSchemaDescriptor FAxonAnimationBulkFillAdapter::AnimationDescribe(const FString& TargetAsset)
 {
 	using namespace AxonAnimationBulkFillInternal;
 
@@ -201,7 +201,7 @@ FSchemaDescriptor FAxonAnimationBulkFillAdapter::AnimationDescribe(const FString
 	UObject* Asset = FAxonAssetUtils::LoadAssetByPath(TargetAsset);
 	if (!Asset)
 	{
-		FSchemaDescriptor Err;
+		FAxonSchemaDescriptor Err;
 		Err.FieldPath = TEXT("(adapter)");
 		Err.TypeName = TEXT("error");
 		Err.ImportTextForm = FString::Printf(
@@ -209,7 +209,7 @@ FSchemaDescriptor FAxonAnimationBulkFillAdapter::AnimationDescribe(const FString
 		return Err;
 	}
 
-	FSchemaDescriptor Out = FAxonReflectionWalker::DescribeStruct(Asset->GetClass());
+	FAxonSchemaDescriptor Out = FAxonReflectionWalker::DescribeStruct(Asset->GetClass());
 	Out.FieldPath = TargetAsset;
 	return Out;
 }

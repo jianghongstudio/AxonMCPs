@@ -31,10 +31,10 @@ public:
 	bool IsStrict() const { return bStrict; }
 
 	/** Build a success-shaped JSON-RPC response carrying the report payload. */
-	FAxonActionResult MakeDryRunResponse(const FDryRunReport& Report) const;
+	FAxonActionResult MakeDryRunResponse(const FAxonDryRunReport& Report) const;
 
 	/** Convert a report into a JSON object (extracted for unit-testability). */
-	static TSharedPtr<FJsonObject> ReportToJson(const FDryRunReport& Report);
+	static TSharedPtr<FJsonObject> ReportToJson(const FAxonDryRunReport& Report);
 
 private:
 	bool bDryRun = false;

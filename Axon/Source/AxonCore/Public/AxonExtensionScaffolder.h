@@ -31,8 +31,8 @@ struct FAxonScaffoldResult
 };
 
 /**
- * Writes a generic Axon sibling plugin from Templates/ExtensionPlugin.
- * No business-domain special cases.
+ * Writes a generic Axon sibling plugin from Templates/ExtensionPlugin
+ * into Project/Plugins/AxonMCPs/<PluginName>. No business-domain special cases.
  */
 class FAxonExtensionScaffolder
 {
@@ -47,6 +47,8 @@ public:
 
 private:
 	static FString GetAxonPluginBaseDir();
+	/** Project Plugins/AxonMCPs — home for Axon + all scaffolded sibling extensions. */
+	static FString GetAxonExtensionsRootDir();
 	static FString GetTemplatesDir();
 	static FString GetRecipesDir();
 	static bool IsValidIdentifier(const FString& Name, bool bAllowSnakeCase);

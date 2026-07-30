@@ -10,10 +10,10 @@
 
 /**
  * Per-key write outcome inside a bulk_fill transaction.
- * Emitted by FAxonReflectionWalker; consumed by FBulkFillResult / FDryRunReport.
+ * Emitted by FAxonReflectionWalker; consumed by FBulkFillResult / FAxonDryRunReport.
  */
 USTRUCT(BlueprintType)
-struct AXONCORE_API FBulkFillFieldWrite
+struct AXONCORE_API FAxonBulkFillFieldWrite
 {
 	GENERATED_BODY()
 
@@ -40,10 +40,10 @@ struct AXONCORE_API FBulkFillFieldWrite
 
 /**
  * Input to a bulk_fill or dry-run pass.
- * Adapter handlers consume an FBulkFillSpec; the framework walker fills it.
+ * Adapter handlers consume an FAxonBulkFillSpec; the framework walker fills it.
  */
 USTRUCT(BlueprintType)
-struct AXONCORE_API FBulkFillSpec
+struct AXONCORE_API FAxonBulkFillSpec
 {
 	GENERATED_BODY()
 
@@ -77,7 +77,7 @@ struct AXONCORE_API FBulkFillSpec
  * One structure for both code paths so the dispatcher's two return shapes stay aligned.
  */
 USTRUCT(BlueprintType)
-struct AXONCORE_API FDryRunReport
+struct AXONCORE_API FAxonDryRunReport
 {
 	GENERATED_BODY()
 
@@ -88,11 +88,11 @@ struct AXONCORE_API FDryRunReport
 	TArray<FString> WouldModify;
 
 	UPROPERTY(BlueprintReadOnly, Category="Axon|BulkFill")
-	TArray<FBulkFillFieldWrite> FieldWrites;
+	TArray<FAxonBulkFillFieldWrite> FieldWrites;
 
 	/** Fields the walker accepted but the underlying action silently no-ops (clamps, set-once, build_*_from_spec known-drops). */
 	UPROPERTY(BlueprintReadOnly, Category="Axon|BulkFill")
-	TArray<FBulkFillFieldWrite> SilentDrops;
+	TArray<FAxonBulkFillFieldWrite> SilentDrops;
 
 	/** True if the underlying action actually persisted. False on dry_run or on failure. */
 	UPROPERTY(BlueprintReadOnly, Category="Axon|BulkFill")
@@ -108,7 +108,7 @@ struct AXONCORE_API FDryRunReport
  * NOT JSON Schema standard — custom rich-type tree per Design Decision Q3.
  */
 USTRUCT(BlueprintType)
-struct AXONCORE_API FSchemaDescriptor
+struct AXONCORE_API FAxonSchemaDescriptor
 {
 	GENERATED_BODY()
 
@@ -152,7 +152,7 @@ struct AXONCORE_API FSchemaDescriptor
 	 * Blueprint readers lose access to the Children tree (acceptable: schema descriptors
 	 * are consumed in C++ / over JSON-RPC, never inside a BP graph).
 	 */
-	TArray<FSchemaDescriptor> Children;
+	TArray<FAxonSchemaDescriptor> Children;
 
 	/**
 	 * Numeric clamp lower bound (per Design Decision Q3, locked — M1).

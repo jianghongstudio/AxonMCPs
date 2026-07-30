@@ -59,8 +59,8 @@ namespace AxonBulkFillActionsInternal
 			.Build();
 	}
 
-	// Serialise an FSchemaDescriptor tree to JSON for the response payload.
-	static TSharedPtr<FJsonObject> DescriptorToJson(const FSchemaDescriptor& Desc)
+	// Serialise an FAxonSchemaDescriptor tree to JSON for the response payload.
+	static TSharedPtr<FJsonObject> DescriptorToJson(const FAxonSchemaDescriptor& Desc)
 	{
 		TSharedPtr<FJsonObject> O = MakeShared<FJsonObject>();
 		O->SetStringField(TEXT("field_path"), Desc.FieldPath);
@@ -84,7 +84,7 @@ namespace AxonBulkFillActionsInternal
 		if (Desc.Children.Num() > 0)
 		{
 			TArray<TSharedPtr<FJsonValue>> Kids;
-			for (const FSchemaDescriptor& C : Desc.Children)
+			for (const FAxonSchemaDescriptor& C : Desc.Children)
 			{
 				Kids.Add(MakeShared<FJsonValueObject>(DescriptorToJson(C)));
 			}
@@ -101,7 +101,7 @@ namespace AxonBulkFillActionsInternal
 			return FAxonActionResult::Error(TEXT("bulk_fill.apply requires params"));
 		}
 
-		FBulkFillSpec Spec;
+		FAxonBulkFillSpec Spec;
 		Params->TryGetStringField(TEXT("target_namespace"), Spec.TargetNamespace);
 		Params->TryGetStringField(TEXT("target"), Spec.TargetAsset);
 		Spec.Tree = Params->GetObjectField(TEXT("tree"));
@@ -123,7 +123,7 @@ namespace AxonBulkFillActionsInternal
 				FAxonJsonUtils::ErrOptionalDepUnavailable);
 		}
 
-		const FDryRunReport Report = FAxonBulkFillRegistry::Get().DispatchBulkFill(Spec);
+		const FAxonDryRunReport Report = FAxonBulkFillRegistry::Get().DispatchBulkFill(Spec);
 		return FAxonActionResult::Success(FAxonDryRunGuard::ReportToJson(Report));
 	}
 
@@ -173,7 +173,7 @@ namespace AxonBulkFillActionsInternal
 				FAxonJsonUtils::ErrOptionalDepUnavailable);
 		}
 
-		const FSchemaDescriptor Root = FAxonBulkFillRegistry::Get().DispatchDescribe(TargetNamespace, Target);
+		const FAxonSchemaDescriptor Root = FAxonBulkFillRegistry::Get().DispatchDescribe(TargetNamespace, Target);
 		return FAxonActionResult::Success(DescriptorToJson(Root));
 	}
 
@@ -318,7 +318,7 @@ void FAxonBulkFillActions::RegisterAll()
 	Reg.RegisterAction(
 		TEXT("describe"),
 		TEXT("schema"),
-		TEXT("Return a rich FSchemaDescriptor tree (type names, ImportText forms, enum-value lists, clamp ranges, nested children) for an asset/action via its namespace adapter."),
+		TEXT("Return a rich FAxonSchemaDescriptor tree (type names, ImportText forms, enum-value lists, clamp ranges, nested children) for an asset/action via its namespace adapter."),
 		FAxonActionHandler::CreateStatic(&HandleDescribeSchema),
 		BuildDescribeSchema());
 

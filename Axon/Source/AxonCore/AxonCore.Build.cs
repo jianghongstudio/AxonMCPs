@@ -24,8 +24,8 @@ public class AxonCore : ModuleRules
 			"UnrealEd",
 			"Sockets",
 			"Networking",
-			"StructUtils",
-			"StructUtilsEngine",
+			// StructUtils / StructUtilsEngine were plugins until UE 5.5; FInstancedStruct
+			// now lives in CoreUObject (already a Public dep above).
 			"ToolMenus",
 			"StatusBar",
 			"InputCore"

@@ -1,0 +1,22 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Axon Config",
+  "Description": "Axon MCP actions for Unreal config/ini and DeveloperSettings.",
+  "Category": "Editor",
+  "CreatedBy": "Axon",
+  "CanContainContent": false,
+  "IsBetaVersion": true,
+  "EnabledByDefault": true,
+  "Plugins": [
+    { "Name": "Axon", "Enabled": true }
+  ],
+  "Modules": [
+    {
+      "Name": "AxonConfig",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit"
+    }
+  ]
+}

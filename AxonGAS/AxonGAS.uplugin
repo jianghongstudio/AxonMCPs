@@ -1,0 +1,26 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Axon GAS",
+  "Description": "Axon MCP actions for Gameplay Ability System authoring, inspection, and UI binding.",
+  "Category": "Editor",
+  "CreatedBy": "Axon",
+  "CanContainContent": false,
+  "IsBetaVersion": true,
+  "EnabledByDefault": true,
+  "Plugins": [
+    { "Name": "Axon", "Enabled": true },
+    { "Name": "GameplayAbilities", "Enabled": true },
+    { "Name": "EnhancedInput", "Enabled": true },
+    { "Name": "EditorScriptingUtilities", "Enabled": true },
+    { "Name": "BlueprintAttributes", "Enabled": true, "Optional": true }
+  ],
+  "Modules": [
+    {
+      "Name": "AxonGAS",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit"
+    }
+  ]
+}

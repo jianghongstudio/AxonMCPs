@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "Axon Rewind Debugger",
+	"Description": "Axon MCP actions for Rewind Debugger session tracks and character animation (optional CameraBP) sampling.",
+	"Category": "Editor",
+	"CreatedBy": "Axon",
+	"CanContainContent": false,
+	"IsBetaVersion": true,
+	"EnabledByDefault": true,
+	"Plugins": [
+		{ "Name": "Axon", "Enabled": true },
+		{ "Name": "GameplayInsights", "Enabled": true },
+		{ "Name": "CameraBlueprint", "Enabled": true, "Optional": true }
+	],
+	"Modules": [
+		{
+			"Name": "AxonRewindDebugger",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		}
+	]
+}

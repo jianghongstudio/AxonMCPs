@@ -22,8 +22,8 @@ public:
 	static FAxonBulkFillRegistry& Get();
 
 	/** Function pointer types matching the dispatch shape. */
-	using FBulkFillAdapter = TFunction<FDryRunReport(const FBulkFillSpec&)>;
-	using FDescribeAdapter = TFunction<FSchemaDescriptor(const FString& /*target_asset_or_action*/)>;
+	using FBulkFillAdapter = TFunction<FAxonDryRunReport(const FAxonBulkFillSpec&)>;
+	using FDescribeAdapter = TFunction<FAxonSchemaDescriptor(const FString& /*target_asset_or_action*/)>;
 
 	/**
 	 * Per-namespace introspection adapter for `describe.list_targets`.
@@ -43,8 +43,8 @@ public:
 	void UnregisterAdapter(const FString& TargetNamespace);
 
 	/** Called by the central "bulk_fill" / "describe" action handlers. */
-	FDryRunReport DispatchBulkFill(const FBulkFillSpec& Spec) const;
-	FSchemaDescriptor DispatchDescribe(const FString& TargetNamespace, const FString& TargetAssetOrAction) const;
+	FAxonDryRunReport DispatchBulkFill(const FAxonBulkFillSpec& Spec) const;
+	FAxonSchemaDescriptor DispatchDescribe(const FString& TargetNamespace, const FString& TargetAssetOrAction) const;
 	TArray<FString> DispatchListTargets(const FString& TargetNamespace) const;
 
 	/** All currently-registered adapter namespaces. */

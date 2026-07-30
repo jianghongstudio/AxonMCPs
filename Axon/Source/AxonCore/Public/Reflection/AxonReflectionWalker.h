@@ -33,29 +33,29 @@ public:
 	 * Walk a tree against a class/struct and write matching fields onto Container.
 	 * Wrapped in an FScopedTransaction by the caller (the adapter — NOT this helper).
 	 */
-	static FDryRunReport WriteTree(
+	static FAxonDryRunReport WriteTree(
 		const TSharedPtr<FJsonObject>& Tree,
 		UStruct* TopStruct,
 		void* Container,
 		UObject* OwnerForCradle,
-		const FBulkFillSpec& Spec);
+		const FAxonBulkFillSpec& Spec);
 
 	/**
 	 * Same walk WITHOUT mutation — emits would-be writes only. Used by dry_run.
 	 * Routes every ImportText_Direct call through a per-field scratch buffer so the
 	 * report captures grammar-accept/reject WITHOUT touching Container.
 	 */
-	static FDryRunReport InspectTree(
+	static FAxonDryRunReport InspectTree(
 		const TSharedPtr<FJsonObject>& Tree,
 		UStruct* TopStruct,
 		const void* Container,
-		const FBulkFillSpec& Spec);
+		const FAxonBulkFillSpec& Spec);
 
 	/**
-	 * Build a recursive FSchemaDescriptor tree for a class/struct.
+	 * Build a recursive FAxonSchemaDescriptor tree for a class/struct.
 	 * Used by `describe`.
 	 */
-	static FSchemaDescriptor DescribeStruct(UStruct* TopStruct, int32 MaxDepth = 16);
+	static FAxonSchemaDescriptor DescribeStruct(UStruct* TopStruct, int32 MaxDepth = 16);
 
 	/**
 	 * Lookup helper: exact then case-insensitive fallback.
@@ -116,13 +116,13 @@ public:
 	 * Returns the per-field write outcome. Like the rest of the walker it does NOT
 	 * wrap the write in a transaction or fire the edit cradle — the caller owns that.
 	 */
-	static FBulkFillFieldWrite WriteLeaf(
+	static FAxonBulkFillFieldWrite WriteLeaf(
 		FProperty* LeafProp,
 		void* LeafPtr,
 		const TSharedPtr<FJsonValue>& JsonVal,
 		UObject* Owner,
-		const FBulkFillSpec& Spec,
-		FDryRunReport& OutReport,
+		const FAxonBulkFillSpec& Spec,
+		FAxonDryRunReport& OutReport,
 		const FString& PathLabel);
 
 	/**
@@ -157,22 +157,22 @@ private:
 		void* ValuePtr,
 		const TSharedPtr<FJsonValue>& JsonVal,
 		UObject* Owner,
-		const FBulkFillSpec& Spec,
-		FDryRunReport& OutReport,
+		const FAxonBulkFillSpec& Spec,
+		FAxonDryRunReport& OutReport,
 		const FString& PathPrefix,
-		FBulkFillFieldWrite& OutWrite);
+		FAxonBulkFillFieldWrite& OutWrite);
 
 	// Per-type ImportText grammar emitters. Each writes one value into one FProperty.
-	// Signature: returns bOk + Reason via the FBulkFillFieldWrite the caller passes in.
-	static void WriteScalar(FProperty* Prop, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, FBulkFillFieldWrite& OutWrite);
-	static void WriteStruct(FStructProperty* StructProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite);
-	static void WriteArray(FArrayProperty* ArrayProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite);
-	static void WriteMap(FMapProperty* MapProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite);
-	static void WriteSet(FSetProperty* SetProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite);
-	static void WriteObjectRef(FObjectProperty* ObjProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Container, FBulkFillFieldWrite& OutWrite);
-	static void WriteSoftObjectRef(FSoftObjectProperty* SoftProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FBulkFillFieldWrite& OutWrite);
-	static void WriteEnum(FEnumProperty* EnumProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FBulkFillFieldWrite& OutWrite);
+	// Signature: returns bOk + Reason via the FAxonBulkFillFieldWrite the caller passes in.
+	static void WriteScalar(FProperty* Prop, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteStruct(FStructProperty* StructProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteArray(FArrayProperty* ArrayProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteMap(FMapProperty* MapProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteSet(FSetProperty* SetProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteObjectRef(FObjectProperty* ObjProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Container, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteSoftObjectRef(FSoftObjectProperty* SoftProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FAxonBulkFillFieldWrite& OutWrite);
+	static void WriteEnum(FEnumProperty* EnumProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FAxonBulkFillFieldWrite& OutWrite);
 
 	// Describe-side helpers — populate clamp metadata + ImportText sample forms.
-	static void PopulateClampMeta(FProperty* Prop, FSchemaDescriptor& OutDesc);
+	static void PopulateClampMeta(FProperty* Prop, FAxonSchemaDescriptor& OutDesc);
 };

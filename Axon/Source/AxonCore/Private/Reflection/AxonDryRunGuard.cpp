@@ -16,7 +16,7 @@ FAxonDryRunGuard::FAxonDryRunGuard(const TSharedPtr<FJsonObject>& Params)
 	Params->TryGetBoolField(TEXT("strict"), bStrict);
 }
 
-TSharedPtr<FJsonObject> FAxonDryRunGuard::ReportToJson(const FDryRunReport& Report)
+TSharedPtr<FJsonObject> FAxonDryRunGuard::ReportToJson(const FAxonDryRunReport& Report)
 {
 	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 
@@ -24,7 +24,7 @@ TSharedPtr<FJsonObject> FAxonDryRunGuard::ReportToJson(const FDryRunReport& Repo
 	{
 		TArray<TSharedPtr<FJsonValue>> Writes;
 		Writes.Reserve(Report.FieldWrites.Num());
-		for (const FBulkFillFieldWrite& W : Report.FieldWrites)
+		for (const FAxonBulkFillFieldWrite& W : Report.FieldWrites)
 		{
 			TSharedPtr<FJsonObject> O = MakeShared<FJsonObject>();
 			O->SetStringField(TEXT("path"), W.Path);
@@ -44,7 +44,7 @@ TSharedPtr<FJsonObject> FAxonDryRunGuard::ReportToJson(const FDryRunReport& Repo
 	{
 		TArray<TSharedPtr<FJsonValue>> Drops;
 		Drops.Reserve(Report.SilentDrops.Num());
-		for (const FBulkFillFieldWrite& W : Report.SilentDrops)
+		for (const FAxonBulkFillFieldWrite& W : Report.SilentDrops)
 		{
 			TSharedPtr<FJsonObject> O = MakeShared<FJsonObject>();
 			O->SetStringField(TEXT("path"), W.Path);
@@ -73,7 +73,7 @@ TSharedPtr<FJsonObject> FAxonDryRunGuard::ReportToJson(const FDryRunReport& Repo
 	return Root;
 }
 
-FAxonActionResult FAxonDryRunGuard::MakeDryRunResponse(const FDryRunReport& Report) const
+FAxonActionResult FAxonDryRunGuard::MakeDryRunResponse(const FAxonDryRunReport& Report) const
 {
 	return FAxonActionResult::Success(ReportToJson(Report));
 }

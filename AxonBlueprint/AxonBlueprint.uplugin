@@ -1,0 +1,24 @@
+{
+    "FileVersion":  3,
+    "Version":  1,
+    "VersionName":  "0.1.0",
+    "FriendlyName":  "Axon Blueprint",
+    "Description":  "Axon MCP actions for Blueprint authoring, inspection, and Motion Matching scaffolding.",
+    "Category":  "Editor",
+    "CreatedBy":  "Axon",
+    "CanContainContent":  false,
+    "IsBetaVersion":  true,
+    "EnabledByDefault":  true,
+    "Plugins": [
+        { "Name": "Axon", "Enabled": true },
+        { "Name": "EnhancedInput", "Enabled": true },
+        { "Name": "EditorScriptingUtilities", "Enabled": true }
+    ],
+    "Modules":  [
+                    {
+                        "Name":  "AxonBlueprint",
+                        "Type":  "Editor",
+                        "LoadingPhase":  "PostEngineInit"
+                    }
+                ]
+}

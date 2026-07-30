@@ -14,9 +14,13 @@ Optional external recipes: `Templates/ExtensionRecipes/*.json` (Core ships none)
 
 ## Layout
 
+All Axon MCP plugins (core + siblings) live under `Plugins/AxonMCPs/`.
+`axon_create_extension` scaffolds new siblings there by default.
+
 ```
-<Project>/Plugins/
+<Project>/Plugins/AxonMCPs/
   Axon/                 ← core (do not fork for game bridges)
+  AxonAnimation/        ← domain sibling example
   MyBridge/             ← your sibling
     MyBridge.uplugin
     Source/MyBridge/
@@ -92,8 +96,8 @@ After rebuild + editor relaunch:
 ```cpp
 FAxonBulkFillRegistry::Get().RegisterAdapter(
     TEXT("myns"),
-    /*BulkFill*/ [](const FBulkFillSpec& Spec) { return FDryRunReport(); },
-    /*Describe*/ [](const FString& Target) { return FSchemaDescriptor(); });
+    /*BulkFill*/ [](const FAxonBulkFillSpec& Spec) { return FAxonDryRunReport(); },
+    /*Describe*/ [](const FString& Target) { return FAxonSchemaDescriptor(); });
 ```
 
 Unregister with `UnregisterAdapter` in `ShutdownModule`.

@@ -40,14 +40,14 @@ void FAxonBulkFillRegistry::UnregisterAdapter(const FString& TargetNamespace)
 	}
 }
 
-FDryRunReport FAxonBulkFillRegistry::DispatchBulkFill(const FBulkFillSpec& Spec) const
+FAxonDryRunReport FAxonBulkFillRegistry::DispatchBulkFill(const FAxonBulkFillSpec& Spec) const
 {
 	FScopeLock Lock(&AdapterLock);
 	const FAdapterPair* Pair = Adapters.Find(Spec.TargetNamespace);
 	if (!Pair || !Pair->BulkFill)
 	{
-		FDryRunReport Empty;
-		FBulkFillFieldWrite W;
+		FAxonDryRunReport Empty;
+		FAxonBulkFillFieldWrite W;
 		W.Path = TEXT("<dispatch>");
 		W.bOk = false;
 		W.Reason = FString::Printf(TEXT("no bulk_fill adapter registered for namespace '%s'"), *Spec.TargetNamespace);
@@ -59,13 +59,13 @@ FDryRunReport FAxonBulkFillRegistry::DispatchBulkFill(const FBulkFillSpec& Spec)
 	return Pair->BulkFill(Spec);
 }
 
-FSchemaDescriptor FAxonBulkFillRegistry::DispatchDescribe(const FString& TargetNamespace, const FString& TargetAssetOrAction) const
+FAxonSchemaDescriptor FAxonBulkFillRegistry::DispatchDescribe(const FString& TargetNamespace, const FString& TargetAssetOrAction) const
 {
 	FScopeLock Lock(&AdapterLock);
 	const FAdapterPair* Pair = Adapters.Find(TargetNamespace);
 	if (!Pair || !Pair->Describe)
 	{
-		FSchemaDescriptor Empty;
+		FAxonSchemaDescriptor Empty;
 		Empty.FieldPath = TEXT("<unregistered>");
 		Empty.TypeName = FString::Printf(TEXT("no describe adapter for '%s'"), *TargetNamespace);
 		return Empty;

@@ -1,35 +1,55 @@
 {
-	"FileVersion": 3,
-	"Version": 1,
-	"VersionName": "0.1.0",
-	"FriendlyName": "Axon",
-	"Description": "Extensible Unreal Editor MCP core — HTTP JSON-RPC bus, Action registry, discover/status/guide, describe/bulk_fill, plus in-tree AxonEditor PIE timeseries. Sibling plugins register domain Actions via FAxonToolRegistry.",
-	"Category": "Editor",
-	"CreatedBy": "Axon",
-	"DocsURL": "",
-	"MarketplaceURL": "",
-	"CanContainContent": false,
-	"IsBetaVersion": true,
-	"IsExperimentalVersion": false,
-	"Installed": false,
-	"EnabledByDefault": true,
-	"Plugins": [
-		{
-			"Name": "PythonScriptPlugin",
-			"Enabled": true,
-			"Optional": true
-		}
-	],
-	"Modules": [
-		{
-			"Name": "AxonCore",
-			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit"
-		},
-		{
-			"Name": "AxonEditor",
-			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit"
-		}
-	]
+    "FileVersion":  3,
+    "Version":  1,
+    "VersionName":  "0.1.0",
+    "FriendlyName":  "Axon",
+    "Description":  "Extensible Unreal Editor MCP core 鈥?HTTP JSON-RPC bus, Action registry, discover/status/guide, describe/bulk_fill, plus in-tree AxonEditor PIE timeseries. Sibling plugins register domain Actions via FAxonToolRegistry.",
+    "Category":  "Editor",
+    "CreatedBy":  "Axon",
+    "DocsURL":  "",
+    "MarketplaceURL":  "",
+    "CanContainContent":  false,
+    "IsBetaVersion":  true,
+    "IsExperimentalVersion":  false,
+    "Installed":  false,
+    "EnabledByDefault":  true,
+    "Plugins":  [
+                    {
+                        "Name":  "PythonScriptPlugin",
+                        "Enabled":  true,
+                        "Optional":  true
+                    },
+                    {
+                        "Name":  "EnhancedInput",
+                        "Enabled":  true,
+                        "Optional":  true
+                    },
+                    {
+                        "Name":  "EditorScriptingUtilities",
+                        "Enabled":  true,
+                        "Optional":  true
+                    },
+                    {
+                        "Name":  "Niagara",
+                        "Enabled":  true,
+                        "Optional":  true
+                    },
+                    {
+                        "Name":  "ProceduralMeshComponent",
+                        "Enabled":  true,
+                        "Optional":  true
+                    }
+                ],
+    "Modules":  [
+                    {
+                        "Name":  "AxonCore",
+                        "Type":  "Editor",
+                        "LoadingPhase":  "PostEngineInit"
+                    },
+                    {
+                        "Name":  "AxonEditor",
+                        "Type":  "Editor",
+                        "LoadingPhase":  "PostEngineInit"
+                    }
+                ]
 }

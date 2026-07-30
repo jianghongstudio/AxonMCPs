@@ -24,6 +24,13 @@ namespace AxonResearchInternal
 			return FPaths::ConvertRelativePathToFull(AsPath);
 		}
 
+		// Prefer Axon MCP extensions root (Plugins/AxonMCPs/<name>).
+		const FString AxonMcpsPlugin = FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("AxonMCPs"), TargetPlugin);
+		if (FPaths::DirectoryExists(AxonMcpsPlugin))
+		{
+			return FPaths::ConvertRelativePathToFull(AxonMcpsPlugin);
+		}
+
 		const FString ProjectPlugins = FPaths::Combine(FPaths::ProjectPluginsDir(), TargetPlugin);
 		if (FPaths::DirectoryExists(ProjectPlugins))
 		{
@@ -36,15 +43,28 @@ namespace AxonResearchInternal
 			return Plugin->GetBaseDir();
 		}
 
-		// Fuzzy: search ProjectPluginsDir children
-		TArray<FString> Dirs;
-		IFileManager::Get().FindFiles(Dirs, *(FPaths::ProjectPluginsDir() / TEXT("*")), false, true);
-		for (const FString& DirName : Dirs)
+		// Fuzzy: search AxonMCPs first, then ProjectPluginsDir children
+		auto FindNamedChild = [&](const FString& ParentDir) -> FString
 		{
-			if (DirName.Equals(TargetPlugin, ESearchCase::IgnoreCase))
+			TArray<FString> Dirs;
+			IFileManager::Get().FindFiles(Dirs, *(ParentDir / TEXT("*")), false, true);
+			for (const FString& DirName : Dirs)
 			{
-				return FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / DirName);
+				if (DirName.Equals(TargetPlugin, ESearchCase::IgnoreCase))
+				{
+					return FPaths::ConvertRelativePathToFull(ParentDir / DirName);
+				}
 			}
+			return FString();
+		};
+
+		if (FString Hit = FindNamedChild(FPaths::ProjectPluginsDir() / TEXT("AxonMCPs")); !Hit.IsEmpty())
+		{
+			return Hit;
+		}
+		if (FString Hit = FindNamedChild(FPaths::ProjectPluginsDir()); !Hit.IsEmpty())
+		{
+			return Hit;
 		}
 
 		OutError = FString::Printf(

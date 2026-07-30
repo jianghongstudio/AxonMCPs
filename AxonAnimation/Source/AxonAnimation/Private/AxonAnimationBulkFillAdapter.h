@@ -5,9 +5,9 @@
 
 #include "CoreMinimal.h"
 
-struct FBulkFillSpec;
-struct FDryRunReport;
-struct FSchemaDescriptor;
+struct FAxonBulkFillSpec;
+struct FAxonDryRunReport;
+struct FAxonSchemaDescriptor;
 
 /**
  * Phase 5 Step 6 — bulk_fill / describe adapter for target_namespace="animation".
@@ -41,6 +41,6 @@ class FAxonAnimationBulkFillAdapter
 public:
 	static void Register();
 	static void Unregister();
-	static FDryRunReport AnimationBulkFill(const FBulkFillSpec& Spec);
-	static FSchemaDescriptor AnimationDescribe(const FString& TargetAsset);
+	static FAxonDryRunReport AnimationBulkFill(const FAxonBulkFillSpec& Spec);
+	static FAxonSchemaDescriptor AnimationDescribe(const FString& TargetAsset);
 };

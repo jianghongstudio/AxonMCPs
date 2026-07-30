@@ -19,7 +19,7 @@ When the user wants a new domain bridge (any subsystem — do not assume a fixed
 1. **Ask first:** "Do you want me to recommend Actions for this extension?"
 2. **If yes:** call `axon_research_extension_target` on the target plugin/path, read findings, **propose** an Action list, and **wait for user confirmation**.
 3. **If no:** use the user's Action list, or `skeleton_only=true` for an empty shell.
-4. Call `axon_create_extension` with confirmed `plugin_name` / `namespace` / `actions` (or skeleton_only). Prefer `dry_run=true` first.
+4. Call `axon_create_extension` with confirmed `plugin_name` / `namespace` / `actions` (or skeleton_only). Prefer `dry_run=true` first. New plugins are written under `Plugins/AxonMCPs/<plugin_name>/`.
 5. Close editor → UBT → relaunch → `axon_discover({namespace})`.
 
 Never invent a business Action list without step 1–2 when the user asked for recommendations. Never skip research when recommendations were requested.
@@ -38,7 +38,7 @@ axon_create_extension({
 
 ### Extend Axon from a sibling plugin (manual)
 
-1. Create an Editor plugin that depends on `Axon` (uplugin) and `AxonCore` (Build.cs).
+1. Create an Editor plugin under `Plugins/AxonMCPs/` that depends on `Axon` (uplugin) and `AxonCore` (Build.cs).
 2. In `StartupModule`, register actions under a unique lowercase namespace.
 3. In `ShutdownModule`, call `UnregisterNamespace`.
 4. Rebuild, relaunch the editor, then `axon_discover()` to see the new namespace.

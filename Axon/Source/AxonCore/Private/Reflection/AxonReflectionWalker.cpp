@@ -374,16 +374,16 @@ FAxonReflectionWalker::FPathResolveResult FAxonReflectionWalker::ResolvePath(
 // handler reuses the exact bulk-walker value coercion (one source of truth for
 // scalars / enums / structs / arrays / maps / sets / hard + soft refs).
 // ---------------------------------------------------------------------------
-FBulkFillFieldWrite FAxonReflectionWalker::WriteLeaf(
+FAxonBulkFillFieldWrite FAxonReflectionWalker::WriteLeaf(
 	FProperty* LeafProp,
 	void* LeafPtr,
 	const TSharedPtr<FJsonValue>& JsonVal,
 	UObject* Owner,
-	const FBulkFillSpec& Spec,
-	FDryRunReport& OutReport,
+	const FAxonBulkFillSpec& Spec,
+	FAxonDryRunReport& OutReport,
 	const FString& PathLabel)
 {
-	FBulkFillFieldWrite Write;
+	FAxonBulkFillFieldWrite Write;
 	Write.Path = PathLabel;
 	if (!LeafProp || !LeafPtr)
 	{
@@ -535,10 +535,10 @@ void FAxonReflectionWalker::DispatchByPropertyType(
 	void* ValuePtr,
 	const TSharedPtr<FJsonValue>& JsonVal,
 	UObject* Owner,
-	const FBulkFillSpec& Spec,
-	FDryRunReport& OutReport,
+	const FAxonBulkFillSpec& Spec,
+	FAxonDryRunReport& OutReport,
 	const FString& PathPrefix,
-	FBulkFillFieldWrite& OutWrite)
+	FAxonBulkFillFieldWrite& OutWrite)
 {
 	if (!Prop || !JsonVal.IsValid())
 	{
@@ -590,7 +590,7 @@ void FAxonReflectionWalker::DispatchByPropertyType(
 // Scalar write — stringify JSON then ImportText_Direct (matches existing
 // AxonBlueprintCDOActions.cpp:451-475 path so behaviour matches set_cdo_property).
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteScalar(FProperty* Prop, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteScalar(FProperty* Prop, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, FAxonBulkFillFieldWrite& OutWrite)
 {
 	FString ValStr;
 	if (JsonVal->Type == EJson::Number)
@@ -653,7 +653,7 @@ void FAxonReflectionWalker::WriteScalar(FProperty* Prop, void* ValuePtr, const T
 // Enum write — per design quirk: enum keys serialise as value-name strings.
 // UEnum::GetValueByNameString returns INDEX_NONE on miss (verified Enum.cpp:1046).
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteEnum(FEnumProperty* EnumProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteEnum(FEnumProperty* EnumProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FAxonBulkFillFieldWrite& OutWrite)
 {
 	const FString NameStr = JsonVal->AsString();
 	OutWrite.ProposedValue = NameStr;
@@ -700,7 +700,7 @@ void FAxonReflectionWalker::WriteEnum(FEnumProperty* EnumProp, void* ValuePtr, c
 // The TSoftObjectPtr value is set via the path string going through the normal
 // ImportText_Direct path.
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteSoftObjectRef(FSoftObjectProperty* SoftProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteSoftObjectRef(FSoftObjectProperty* SoftProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, FAxonBulkFillFieldWrite& OutWrite)
 {
 	const FString PathStr = JsonVal->AsString();
 	OutWrite.ProposedValue = PathStr;
@@ -721,7 +721,7 @@ void FAxonReflectionWalker::WriteSoftObjectRef(FSoftObjectProperty* SoftProp, vo
 // SetObjectPropertyValue (verified PropertyBaseObject.cpp:671 via plan §4 H4)
 // because we hold ValuePtr directly, not a container offset.
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteObjectRef(FObjectProperty* ObjProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* /*Container*/, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteObjectRef(FObjectProperty* ObjProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* /*Container*/, FAxonBulkFillFieldWrite& OutWrite)
 {
 	const FString PathStr = JsonVal->AsString();
 	OutWrite.ProposedValue = PathStr;
@@ -754,7 +754,7 @@ void FAxonReflectionWalker::WriteObjectRef(FObjectProperty* ObjProp, void* Value
 // ctor at UnrealType.h:4455, AddUninitializedValues at 4340, AddValue at 4331.
 // Per-element dispatch through DispatchByPropertyType so nested types work.
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteArray(FArrayProperty* ArrayProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteArray(FArrayProperty* ArrayProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite)
 {
 	const TArray<TSharedPtr<FJsonValue>>* JsonArray = nullptr;
 	if (!JsonVal->TryGetArray(JsonArray) || !JsonArray)
@@ -778,7 +778,7 @@ void FAxonReflectionWalker::WriteArray(FArrayProperty* ArrayProp, void* ValuePtr
 		// Init each element so ImportText has a stable starting point.
 		ArrayProp->Inner->InitializeValue(ElemPtr);
 
-		FBulkFillFieldWrite W;
+		FAxonBulkFillFieldWrite W;
 		W.Path = FString::Printf(TEXT("%s[%d]"), *PathPrefix, i);
 		DispatchByPropertyType(ArrayProp->Inner, ElemPtr, (*JsonArray)[i], Owner, Spec, OutReport, W.Path, W);
 		if (!W.bOk) { ++LocalErrors; }
@@ -797,7 +797,7 @@ void FAxonReflectionWalker::WriteArray(FArrayProperty* ArrayProp, void* ValuePtr
 // Map write — FScriptMapHelper. AddPair clones key+value (verified UnrealType.h:5320).
 // JSON shape: object whose string keys are stringified property-keys (FName/FString/int).
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteMap(FMapProperty* MapProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteMap(FMapProperty* MapProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite)
 {
 	const TSharedPtr<FJsonObject>* JsonObj = nullptr;
 	if (!JsonVal->TryGetObject(JsonObj) || !JsonObj || !(*JsonObj).IsValid())
@@ -822,7 +822,7 @@ void FAxonReflectionWalker::WriteMap(FMapProperty* MapProp, void* ValuePtr, cons
 		MapProp->ValueProp->InitializeValue(ValTemp);
 
 		const FString PairKeyStr = AxonKeyToString(Pair.Key);
-		FBulkFillFieldWrite KeyWrite;
+		FAxonBulkFillFieldWrite KeyWrite;
 		KeyWrite.Path = FString::Printf(TEXT("%s{key#%d}"), *PathPrefix, Index);
 		{
 			FStringOutputDevice ErrText;
@@ -836,7 +836,7 @@ void FAxonReflectionWalker::WriteMap(FMapProperty* MapProp, void* ValuePtr, cons
 			}
 		}
 
-		FBulkFillFieldWrite ValWrite;
+		FAxonBulkFillFieldWrite ValWrite;
 		ValWrite.Path = FString::Printf(TEXT("%s{val#%d}"), *PathPrefix, Index);
 		DispatchByPropertyType(MapProp->ValueProp, ValTemp, Pair.Value, Owner, Spec, OutReport, ValWrite.Path, ValWrite);
 		if (!ValWrite.bOk) { ++LocalErrors; }
@@ -871,7 +871,7 @@ void FAxonReflectionWalker::WriteMap(FMapProperty* MapProp, void* ValuePtr, cons
 // Rehash() at PropertySet.cpp:1032 (mandatory post-population).
 // JSON shape: array of element values.
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteSet(FSetProperty* SetProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteSet(FSetProperty* SetProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite)
 {
 	const TArray<TSharedPtr<FJsonValue>>* JsonArray = nullptr;
 	if (!JsonVal->TryGetArray(JsonArray) || !JsonArray)
@@ -890,7 +890,7 @@ void FAxonReflectionWalker::WriteSet(FSetProperty* SetProp, void* ValuePtr, cons
 		void* ElemTemp = FMemory::Malloc(SetProp->ElementProp->GetSize(), SetProp->ElementProp->GetMinAlignment());
 		SetProp->ElementProp->InitializeValue(ElemTemp);
 
-		FBulkFillFieldWrite W;
+		FAxonBulkFillFieldWrite W;
 		W.Path = FString::Printf(TEXT("%s{#%d}"), *PathPrefix, i);
 		DispatchByPropertyType(SetProp->ElementProp, ElemTemp, (*JsonArray)[i], Owner, Spec, OutReport, W.Path, W);
 		if (!W.bOk) { ++LocalErrors; }
@@ -918,7 +918,7 @@ void FAxonReflectionWalker::WriteSet(FSetProperty* SetProp, void* ValuePtr, cons
 // Struct write — recurse via WriteTree on nested JSON object, or fall through
 // to ImportText for "(X=1,Y=2,Z=3)" literal forms.
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::WriteStruct(FStructProperty* StructProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FBulkFillSpec& Spec, FDryRunReport& OutReport, const FString& PathPrefix, FBulkFillFieldWrite& OutWrite)
+void FAxonReflectionWalker::WriteStruct(FStructProperty* StructProp, void* ValuePtr, const TSharedPtr<FJsonValue>& JsonVal, UObject* Owner, const FAxonBulkFillSpec& Spec, FAxonDryRunReport& OutReport, const FString& PathPrefix, FAxonBulkFillFieldWrite& OutWrite)
 {
 	// Object form -> recursive walk into the nested struct's properties.
 	if (JsonVal->Type == EJson::Object)
@@ -943,7 +943,7 @@ void FAxonReflectionWalker::WriteStruct(FStructProperty* StructProp, void* Value
 		for (const auto& Pair : (*NestedObj)->Values)
 		{
 			const FString PairKeyStr = AxonKeyToString(Pair.Key);
-			FBulkFillFieldWrite W;
+			FAxonBulkFillFieldWrite W;
 			W.Path = FString::Printf(TEXT("%s.%s"), *PathPrefix, *PairKeyStr);
 			FProperty* InnerProp = FindPropertyForwarding(StructProp->Struct, PairKeyStr);
 			if (!InnerProp)
@@ -976,16 +976,16 @@ void FAxonReflectionWalker::WriteStruct(FStructProperty* StructProp, void* Value
 // WriteTree — top-level entry. Iterates the JSON object's keys and dispatches
 // each into the matching FProperty on Container.
 // ---------------------------------------------------------------------------
-FDryRunReport FAxonReflectionWalker::WriteTree(
+FAxonDryRunReport FAxonReflectionWalker::WriteTree(
 	const TSharedPtr<FJsonObject>& Tree,
 	UStruct* TopStruct,
 	void* Container,
 	UObject* OwnerForCradle,
-	const FBulkFillSpec& Spec)
+	const FAxonBulkFillSpec& Spec)
 {
 	check(IsInGameThread());
 
-	FDryRunReport Report;
+	FAxonDryRunReport Report;
 	Report.bWouldApply = true; // optimistic; cleared at the end on strict + errors.
 
 	// Per UE57Gotchas.md §JSON: empty-not-null guard.
@@ -1003,7 +1003,7 @@ FDryRunReport FAxonReflectionWalker::WriteTree(
 	for (const auto& Pair : Tree->Values)
 	{
 		const FString PairKeyStr = AxonKeyToString(Pair.Key);
-		FBulkFillFieldWrite W;
+		FAxonBulkFillFieldWrite W;
 		W.Path = PairKeyStr;
 		FProperty* Prop = FindPropertyForwarding(TopStruct, PairKeyStr);
 		if (!Prop)
@@ -1019,7 +1019,7 @@ FDryRunReport FAxonReflectionWalker::WriteTree(
 	}
 
 	// Strict-mode handling per Decision Q6.
-	Report.Errors = Algo::CountIf(Report.FieldWrites, [](const FBulkFillFieldWrite& Fw){ return !Fw.bOk; });
+	Report.Errors = Algo::CountIf(Report.FieldWrites, [](const FAxonBulkFillFieldWrite& Fw){ return !Fw.bOk; });
 	if (Spec.bStrict && Report.Errors > 0)
 	{
 		Report.bWouldApply = false;
@@ -1033,15 +1033,15 @@ FDryRunReport FAxonReflectionWalker::WriteTree(
 // freed by DestroyValue. Container is never mutated.
 // Guarantees: test Leviathan.Axon.Reflection.DryRunNoSideEffects passes.
 // ---------------------------------------------------------------------------
-FDryRunReport FAxonReflectionWalker::InspectTree(
+FAxonDryRunReport FAxonReflectionWalker::InspectTree(
 	const TSharedPtr<FJsonObject>& Tree,
 	UStruct* TopStruct,
 	const void* /*Container*/,
-	const FBulkFillSpec& Spec)
+	const FAxonBulkFillSpec& Spec)
 {
 	check(IsInGameThread());
 
-	FDryRunReport Report;
+	FAxonDryRunReport Report;
 	Report.bWouldApply = false; // dry-run NEVER applies
 
 	if (!Tree.IsValid() || Tree->Values.Num() == 0 || !TopStruct)
@@ -1052,7 +1052,7 @@ FDryRunReport FAxonReflectionWalker::InspectTree(
 	for (const auto& Pair : Tree->Values)
 	{
 		const FString PairKeyStr = AxonKeyToString(Pair.Key);
-		FBulkFillFieldWrite W;
+		FAxonBulkFillFieldWrite W;
 		W.Path = PairKeyStr;
 		FProperty* Prop = FindPropertyForwarding(TopStruct, PairKeyStr);
 		if (!Prop)
@@ -1074,14 +1074,14 @@ FDryRunReport FAxonReflectionWalker::InspectTree(
 		Report.FieldWrites.Add(W);
 	}
 
-	Report.Errors = Algo::CountIf(Report.FieldWrites, [](const FBulkFillFieldWrite& Fw){ return !Fw.bOk; });
+	Report.Errors = Algo::CountIf(Report.FieldWrites, [](const FAxonBulkFillFieldWrite& Fw){ return !Fw.bOk; });
 	return Report;
 }
 
 // ---------------------------------------------------------------------------
 // Populate clamp meta from UIMin/UIMax/ClampMin/ClampMax property metadata.
 // ---------------------------------------------------------------------------
-void FAxonReflectionWalker::PopulateClampMeta(FProperty* Prop, FSchemaDescriptor& OutDesc)
+void FAxonReflectionWalker::PopulateClampMeta(FProperty* Prop, FAxonSchemaDescriptor& OutDesc)
 {
 #if WITH_EDITORONLY_DATA
 	if (!Prop) return;
@@ -1097,12 +1097,12 @@ void FAxonReflectionWalker::PopulateClampMeta(FProperty* Prop, FSchemaDescriptor
 }
 
 // ---------------------------------------------------------------------------
-// DescribeStruct — recursive FSchemaDescriptor builder.
+// DescribeStruct — recursive FAxonSchemaDescriptor builder.
 // Per design Decision Q3: rich custom tree, NOT JSON Schema standard.
 // ---------------------------------------------------------------------------
-FSchemaDescriptor FAxonReflectionWalker::DescribeStruct(UStruct* TopStruct, int32 MaxDepth)
+FAxonSchemaDescriptor FAxonReflectionWalker::DescribeStruct(UStruct* TopStruct, int32 MaxDepth)
 {
-	FSchemaDescriptor Root;
+	FAxonSchemaDescriptor Root;
 	if (!TopStruct || MaxDepth <= 0)
 	{
 		return Root;
@@ -1113,7 +1113,7 @@ FSchemaDescriptor FAxonReflectionWalker::DescribeStruct(UStruct* TopStruct, int3
 	for (TFieldIterator<FProperty> It(TopStruct); It; ++It)
 	{
 		FProperty* Prop = *It;
-		FSchemaDescriptor Child;
+		FAxonSchemaDescriptor Child;
 		Child.FieldPath = Prop->GetName();
 		Child.TypeName = Prop->GetCPPType();
 		PopulateClampMeta(Prop, Child);

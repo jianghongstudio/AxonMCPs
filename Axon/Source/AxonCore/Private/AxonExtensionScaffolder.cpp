@@ -20,7 +20,13 @@ FString FAxonExtensionScaffolder::GetAxonPluginBaseDir()
 	{
 		return Plugin->GetBaseDir();
 	}
-	return FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("Axon"));
+	return FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("AxonMCPs"), TEXT("Axon"));
+}
+
+FString FAxonExtensionScaffolder::GetAxonExtensionsRootDir()
+{
+	return FPaths::ConvertRelativePathToFull(
+		FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("AxonMCPs")));
 }
 
 FString FAxonExtensionScaffolder::GetTemplatesDir()
@@ -368,11 +374,23 @@ FAxonScaffoldResult FAxonExtensionScaffolder::Create(const FAxonScaffoldRequest&
 	}
 
 	const FString ModuleName = Effective.PluginName;
-	const FString PluginDir = FPaths::ConvertRelativePathToFull(FPaths::ProjectPluginsDir() / Effective.PluginName);
+	const FString ExtensionsRoot = GetAxonExtensionsRootDir();
+	IFileManager::Get().MakeDirectory(*ExtensionsRoot, true);
+	const FString PluginDir = FPaths::ConvertRelativePathToFull(ExtensionsRoot / Effective.PluginName);
+	const FString LegacyPluginDir = FPaths::ConvertRelativePathToFull(
+		FPaths::ProjectPluginsDir() / Effective.PluginName);
 	if (FPaths::DirectoryExists(PluginDir) || FPaths::FileExists(PluginDir / (Effective.PluginName + TEXT(".uplugin"))))
 	{
 		Result.ErrorMessage = FString::Printf(
 			TEXT("Plugin directory already exists: %s — refuse to overwrite"), *PluginDir);
+		return Result;
+	}
+	if (FPaths::DirectoryExists(LegacyPluginDir) ||
+		FPaths::FileExists(LegacyPluginDir / (Effective.PluginName + TEXT(".uplugin"))))
+	{
+		Result.ErrorMessage = FString::Printf(
+			TEXT("A plugin named '%s' already exists at legacy path %s — refuse to scaffold a duplicate under AxonMCPs"),
+			*Effective.PluginName, *LegacyPluginDir);
 		return Result;
 	}
 
@@ -431,6 +449,7 @@ FAxonScaffoldResult FAxonExtensionScaffolder::Create(const FAxonScaffoldRequest&
 	Payload->SetStringField(TEXT("plugin_name"), Effective.PluginName);
 	Payload->SetStringField(TEXT("namespace"), Effective.Namespace);
 	Payload->SetStringField(TEXT("plugin_path"), PluginDir);
+	Payload->SetStringField(TEXT("extensions_root"), ExtensionsRoot);
 	Payload->SetStringField(TEXT("mcp_tool"), Effective.Namespace + TEXT("_query"));
 	Payload->SetBoolField(TEXT("dry_run"), Effective.bDryRun);
 	Payload->SetBoolField(TEXT("skeleton_only"), Effective.bSkeletonOnly);

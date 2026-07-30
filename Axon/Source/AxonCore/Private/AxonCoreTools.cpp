@@ -162,7 +162,7 @@ void FAxonCoreTools::RegisterAll()
 			P->SetBoolField(TEXT("required"), bRequired);
 			Schema->SetObjectField(Name, P);
 		};
-		AddStr(TEXT("plugin_name"), TEXT("New sibling plugin name (e.g. AxonFoo)"), true);
+		AddStr(TEXT("plugin_name"), TEXT("New sibling plugin name (e.g. AxonFoo). Written to Plugins/AxonMCPs/<name>."), true);
 		AddStr(TEXT("namespace"), TEXT("MCP namespace snake_case (e.g. foo). Derived from plugin_name if omitted."), false);
 		AddStr(TEXT("intent"), TEXT("Optional blurb written into generated comments"), false);
 		AddStr(TEXT("recipe_id"), TEXT("Optional external Templates/ExtensionRecipes/<id>.json"), false);
@@ -197,7 +197,7 @@ void FAxonCoreTools::RegisterAll()
 
 		Registry.RegisterAction(
 			TEXT("axon"), TEXT("create_extension"),
-			TEXT("Scaffold a generic Axon sibling plugin. Workflow gate: ask user if they want Action recommendations; if yes research first and confirm the list; then call with actions. Empty actions requires skeleton_only=true."),
+			TEXT("Scaffold a generic Axon sibling plugin under Plugins/AxonMCPs/<plugin_name>. Workflow gate: ask user if they want Action recommendations; if yes research first and confirm the list; then call with actions. Empty actions requires skeleton_only=true."),
 			FAxonActionHandler::CreateStatic(&FAxonCoreTools::HandleCreateExtension),
 			Schema);
 	}

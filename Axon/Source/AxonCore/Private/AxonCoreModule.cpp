@@ -128,7 +128,7 @@ FString FAxonCoreModule::GetSentinelFilePath() const
 	{
 		return Plugin->GetBaseDir() / TEXT("Saved") / TEXT(".axon_running");
 	}
-	return FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("Axon"), TEXT("Saved"), TEXT(".axon_running"));
+	return FPaths::Combine(FPaths::ProjectPluginsDir(), TEXT("AxonMCPs"), TEXT("Axon"), TEXT("Saved"), TEXT(".axon_running"));
 }
 
 void FAxonCoreModule::WriteSentinelFile(int32 Port)
