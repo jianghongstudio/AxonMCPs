@@ -1,0 +1,21 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "{{FriendlyName}}",
+	"Description": "{{Description}}",
+	"Category": "Editor",
+	"CreatedBy": "Axon Extension Scaffold",
+	"EnabledByDefault": true,
+	"Installed": false,
+	"Plugins": [
+{{DependPluginsJson}}
+	],
+	"Modules": [
+		{
+			"Name": "{{ModuleName}}",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		}
+	]
+}

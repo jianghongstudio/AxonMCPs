@@ -1,0 +1,12 @@
+#pragma once
+
+#include "CoreMinimal.h"
+#include "AxonToolRegistry.h"
+
+/** Action handlers for the "{{Namespace}}" Axon namespace. Stubbed by scaffold — implement real logic. */
+class F{{ModuleName}}Actions
+{
+public:
+	static void RegisterAll();
+{{ActionDeclarations}}
+};

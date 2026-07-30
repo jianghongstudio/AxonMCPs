@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "axon": {
+      "type": "http",
+      "url": "http://localhost:9320/mcp"
+    }
+  }
+}
