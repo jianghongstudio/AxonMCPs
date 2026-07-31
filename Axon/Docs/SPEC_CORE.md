@@ -2,15 +2,19 @@
 
 **Version:** 0.1.0  
 **Default port:** 9320  
-**Transport:** HTTP JSON-RPC 2.0 at `/mcp`
+**Transport:** HTTP JSON-RPC 2.0 at `/mcp`  
+**Product focus:** game **3C** (Character / Camera / Control) editor MCP
+
+Human docs: [`USER_GUIDE.md`](USER_GUIDE.md) · AI knowledge: [`../.Knowledges/`](../.Knowledges/)
 
 ## Modules
 
 | Module | Role |
 |---|---|
 | AxonCore | HTTP MCP server, Action registry, meta tools, describe/bulk_fill framework |
+| AxonEditor (same uplugin) | `editor.*` PIE / build / capture actions |
 
-Domain extensions are sibling plugins under `Plugins/AxonMCPs/` (scaffolded by `axon_create_extension`). In-tree companion module `AxonEditor` (same `Axon.uplugin`) owns PIE timeseries/session actions; keep domain work (animation, etc.) out of Core.
+Domain extensions are sibling plugins under `Plugins/AxonMCPs/` (scaffolded by `axon_create_extension`). Keep domain work (animation, GAS, etc.) out of Core.
 
 ## MCP tools
 

@@ -1,8 +1,11 @@
 # Axon Guide
 
+> Human onboarding (中文)：[`USER_GUIDE.md`](USER_GUIDE.md) · 3C workflows：[`3C_WORKFLOWS.md`](3C_WORKFLOWS.md)  
+> AI knowledge base：[`../.Knowledges/00-routing.md`](../.Knowledges/00-routing.md) · suite index：[`../README.md`](../README.md)
+
 ## onboarding
 
-Axon is an extensible Unreal Editor MCP core. It hosts an HTTP JSON-RPC server and a process-wide Action registry. Domain work lives in sibling plugins that call `FAxonToolRegistry::Get().RegisterAction(...)`.
+Axon is an extensible Unreal Editor MCP core aimed at game **3C** (Character / Camera / Control) authoring and PIE verification. It hosts an HTTP JSON-RPC server and a process-wide Action registry. Domain work lives in sibling plugins that call `FAxonToolRegistry::Get().RegisterAction(...)`.
 
 1. Confirm the server: call `axon_status` (default port 9320).
 2. List namespaces: `axon_discover()`.

@@ -2,6 +2,8 @@
 
 Extend Axon with a separate Unreal Editor plugin that registers MCP Actions into `FAxonToolRegistry` without modifying AxonCore.
 
+Checklist + AI routing: [`../.Knowledges/50-extension-cookbook.md`](../.Knowledges/50-extension-cookbook.md) · user overview: [`USER_GUIDE.md`](USER_GUIDE.md).
+
 ## Scaffold via MCP (preferred)
 
 Use the gated workflow in `Docs/axon_guide.md` → **Create an Axon extension plugin**:
