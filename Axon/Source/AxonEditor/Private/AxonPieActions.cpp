@@ -26,7 +26,9 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogAxonPieActions, Log, All);
 
-namespace
+// Named (not anonymous) so Unity builds do not collide with helpers in
+// AxonEditorActions.cpp / AxonPieSmokeSession.cpp that share the same short names.
+namespace AxonPieActionsPrivate
 {
 	struct FErroredBlueprintEntry
 	{
@@ -350,6 +352,8 @@ void FAxonPieActions::UnregisterActions(FAxonToolRegistry& Registry)
 
 FAxonActionResult FAxonPieActions::HandleSamplePieTimeseries(const TSharedPtr<FJsonObject>& Params)
 {
+	using namespace AxonPieActionsPrivate;
+
 	if (!GEditor || !GUnrealEd)
 	{
 		return FAxonActionResult::Error(TEXT("sample_pie_timeseries requires editor context (GEditor/GUnrealEd)."));
@@ -486,6 +490,8 @@ FAxonActionResult FAxonPieActions::HandleStopPieSmoke(const TSharedPtr<FJsonObje
 
 FAxonActionResult FAxonPieActions::HandleStartPie(const TSharedPtr<FJsonObject>&)
 {
+	using namespace AxonPieActionsPrivate;
+
 	if (FindActivePieWorld())
 	{
 		TSharedPtr<FJsonObject> Result = MakeShared<FJsonObject>();
@@ -506,6 +512,8 @@ FAxonActionResult FAxonPieActions::HandleStartPie(const TSharedPtr<FJsonObject>&
 
 FAxonActionResult FAxonPieActions::HandleStopPie(const TSharedPtr<FJsonObject>&)
 {
+	using namespace AxonPieActionsPrivate;
+
 	if (!GEditor)
 	{
 		return FAxonActionResult::Error(TEXT("GEditor not available"));

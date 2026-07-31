@@ -1,5 +1,6 @@
 #include "AxonPieSmokeSession.h"
 #include "AxonEditorActions.h" // FAxonLogCapture / FAxonLogEntry
+#include "AxonPieObject.h"
 #include "AxonPieObjectActions.h" // Gap 9: shared PIE-object resolver + dotted read
 
 #include "Editor.h"
@@ -43,26 +44,10 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogAxonPieSmoke, Log, All);
 
-namespace
+// Named (not anonymous) so Unity builds do not collide with identically named
+// helpers in AxonPieActions.cpp / AxonPieSession.cpp.
+namespace AxonPieSmokeSessionPrivate
 {
-	// Locate the active PIE world context's UWorld (or nullptr). Self-contained copy
-	// of the actions-module helper so the manager carries no cross-TU dependency.
-	UWorld* FindActivePieWorld()
-	{
-		if (!GEditor)
-		{
-			return nullptr;
-		}
-		for (const FWorldContext& Context : GEditor->GetWorldContexts())
-		{
-			if (Context.WorldType == EWorldType::PIE && Context.World())
-			{
-				return Context.World();
-			}
-		}
-		return nullptr;
-	}
-
 	// Read the pawn's AnimInstance (via its SkeletalMeshComponent) or nullptr.
 	UAnimInstance* PawnAnimInstance(APawn* Pawn)
 	{
@@ -892,6 +877,8 @@ FPieSmokeSession* FPieSmokeSessionManager::Find(const FString& SessionId)
 
 int32 FPieSmokeSessionManager::Stop(const FString& SessionId)
 {
+	using namespace AxonPieSmokeSessionPrivate;
+
 	int32 Stopped = 0;
 	bool bAnyRunning = false;
 
@@ -921,7 +908,7 @@ int32 FPieSmokeSessionManager::Stop(const FString& SessionId)
 			break;
 		}
 	}
-	if (!bAnyRunning && GEditor && FindActivePieWorld())
+	if (!bAnyRunning && GEditor && AxonPieObject::FindPieWorld())
 	{
 		GEditor->RequestEndPlayMap();
 		// #11 mark every session whose PIE we just asked to end as teardown-started.
@@ -1001,6 +988,8 @@ void FPieSmokeSessionManager::TeardownObserverIfIdle()
 
 void FPieSmokeSessionManager::OnPieEnded(const bool /*bIsSimulating*/)
 {
+	using namespace AxonPieSmokeSessionPrivate;
+
 	// PIE is going away — every session loses its world. Mark inactive so the next
 	// observer tick stops sampling. A Running session whose PIE ended before its
 	// duration elapsed is finalised as Complete on the next tick (bPieActive == false).
@@ -1016,7 +1005,9 @@ void FPieSmokeSessionManager::OnPieEnded(const bool /*bIsSimulating*/)
 
 bool FPieSmokeSessionManager::OnFrameTick(float /*DeltaTime*/)
 {
-	UWorld* PieWorld = FindActivePieWorld();
+	using namespace AxonPieSmokeSessionPrivate;
+
+	UWorld* PieWorld = AxonPieObject::FindPieWorld();
 
 	for (TPair<FString, FPieSmokeSession>& Pair : Sessions)
 	{
@@ -1057,7 +1048,7 @@ bool FPieSmokeSessionManager::OnFrameTick(float /*DeltaTime*/)
 	// Stop PIE once no session needs it (and the world is still up).
 	if (!HasRunningSessions())
 	{
-		if (GEditor && FindActivePieWorld())
+		if (GEditor && AxonPieObject::FindPieWorld())
 		{
 			GEditor->RequestEndPlayMap();
 			// #11 mark every session as teardown-started so lifecycle reflects the
@@ -1075,7 +1066,9 @@ bool FPieSmokeSessionManager::OnFrameTick(float /*DeltaTime*/)
 
 void FPieSmokeSessionManager::AdvanceSession(FPieSmokeSession& Session)
 {
-	UWorld* PieWorld = FindActivePieWorld();
+	using namespace AxonPieSmokeSessionPrivate;
+
+	UWorld* PieWorld = AxonPieObject::FindPieWorld();
 	if (!PieWorld)
 	{
 		return;

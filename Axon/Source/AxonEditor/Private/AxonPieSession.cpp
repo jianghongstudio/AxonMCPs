@@ -18,7 +18,9 @@
 
 DEFINE_LOG_CATEGORY_STATIC(LogAxonPieSession, Log, All);
 
-namespace
+// Named (not anonymous) so Unity builds do not collide with identically named
+// helpers in AxonPieSmokeSession.cpp (ResolveProvocationPawn / FireProvocation).
+namespace AxonPieSessionPrivate
 {
 	const TCHAR* StatusToString(EAxonPieSessionStatus Status)
 	{
@@ -255,6 +257,8 @@ bool FAxonPieSessionManager::HasRunningSessions() const
 
 TSharedPtr<FJsonObject> FAxonPieSessionManager::BuildReport(const FAxonPieSession& Session, bool bIncludeSamples) const
 {
+	using namespace AxonPieSessionPrivate;
+
 	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 	Root->SetStringField(TEXT("session_id"), Session.Id);
 	Root->SetStringField(TEXT("status"), StatusToString(Session.Status));
@@ -401,6 +405,8 @@ bool FAxonPieSessionManager::OnFrameTick(float)
 
 void FAxonPieSessionManager::AdvanceSession(FAxonPieSession& Session)
 {
+	using namespace AxonPieSessionPrivate;
+
 	UWorld* PieWorld = AxonPieObject::FindPieWorld();
 	if (!PieWorld)
 	{
