@@ -816,9 +816,11 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseSequenceProperties(co
 	if (SeqIndex < 0 || SeqIndex >= NumAssets)
 		return FAxonActionResult::Error(FString::Printf(TEXT("Invalid sequence_index %d (database has %d entries)"), SeqIndex, NumAssets));
 
-	FPoseSearchDatabaseAnimationAsset* Entry = Database->GetMutableDatabaseAnimationAsset(SeqIndex);
-	if (!Entry)
-		return FAxonActionResult::Error(FString::Printf(TEXT("Failed to get mutable entry at index %d"), SeqIndex));
+	const FPoseSearchDatabaseAnimationAsset* EntryConst = Database->GetDatabaseAnimationAsset(SeqIndex);
+	if (!EntryConst)
+		return FAxonActionResult::Error(FString::Printf(TEXT("Failed to get entry at index %d"), SeqIndex));
+
+	FPoseSearchDatabaseAnimationAsset Entry = *EntryConst;
 
 	GEditor->BeginTransaction(FText::FromString(TEXT("Set PoseSearch Database Sequence Properties")));
 	Database->Modify();
@@ -826,23 +828,23 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseSequenceProperties(co
 #if WITH_EDITORONLY_DATA
 	if (Params->HasField(TEXT("enabled")))
 	{
-		Entry->SetIsEnabled(Params->GetBoolField(TEXT("enabled")));
+		Entry.SetIsEnabled(Params->GetBoolField(TEXT("enabled")));
 	}
 
 	if (Params->HasField(TEXT("disable_reselection")))
 	{
-		Entry->SetDisableReselection(Params->GetBoolField(TEXT("disable_reselection")));
+		Entry.SetDisableReselection(Params->GetBoolField(TEXT("disable_reselection")));
 	}
 
 	if (Params->HasField(TEXT("mirror_option")))
 	{
 		FString MirrorStr = Params->GetStringField(TEXT("mirror_option"));
 		if (MirrorStr.Equals(TEXT("UnmirroredOnly"), ESearchCase::IgnoreCase))
-			Entry->MirrorOption = EPoseSearchMirrorOption::UnmirroredOnly;
+			Entry.MirrorOption = EPoseSearchMirrorOption::UnmirroredOnly;
 		else if (MirrorStr.Equals(TEXT("MirroredOnly"), ESearchCase::IgnoreCase))
-			Entry->MirrorOption = EPoseSearchMirrorOption::MirroredOnly;
+			Entry.MirrorOption = EPoseSearchMirrorOption::MirroredOnly;
 		else if (MirrorStr.Equals(TEXT("UnmirroredAndMirrored"), ESearchCase::IgnoreCase))
-			Entry->MirrorOption = EPoseSearchMirrorOption::UnmirroredAndMirrored;
+			Entry.MirrorOption = EPoseSearchMirrorOption::UnmirroredAndMirrored;
 		else
 		{
 			GEditor->EndTransaction();
@@ -852,16 +854,20 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseSequenceProperties(co
 
 	if (Params->HasField(TEXT("sampling_range_start")) || Params->HasField(TEXT("sampling_range_end")))
 	{
-		FFloatInterval CurrentRange = Entry->GetSamplingRange();
+		FFloatInterval CurrentRange = Entry.GetSamplingRange();
 		float Start = Params->HasField(TEXT("sampling_range_start"))
 			? static_cast<float>(Params->GetNumberField(TEXT("sampling_range_start")))
 			: CurrentRange.Min;
 		float End = Params->HasField(TEXT("sampling_range_end"))
 			? static_cast<float>(Params->GetNumberField(TEXT("sampling_range_end")))
 			: CurrentRange.Max;
-		Entry->SetSamplingRange(FFloatInterval(Start, End));
+		Entry.SetSamplingRange(FFloatInterval(Start, End));
 	}
 #endif // WITH_EDITORONLY_DATA
+
+#if WITH_EDITOR
+	Database->SetAnimationAssetAt(Entry, SeqIndex);
+#endif
 
 	GEditor->EndTransaction();
 	Database->MarkPackageDirty();
@@ -871,17 +877,17 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseSequenceProperties(co
 	Root->SetStringField(TEXT("asset_path"), AssetPath);
 	Root->SetNumberField(TEXT("sequence_index"), SeqIndex);
 
-	if (UObject* AnimAsset = Entry->GetAnimationAsset())
+	if (UObject* AnimAsset = Entry.GetAnimationAsset())
 	{
 		Root->SetStringField(TEXT("animation"), AnimAsset->GetPathName());
 	}
 
 #if WITH_EDITORONLY_DATA
-	Root->SetBoolField(TEXT("enabled"), Entry->IsEnabled());
-	Root->SetBoolField(TEXT("disable_reselection"), Entry->IsDisableReselection());
+	Root->SetBoolField(TEXT("enabled"), Entry.IsEnabled());
+	Root->SetBoolField(TEXT("disable_reselection"), Entry.IsDisableReselection());
 
 	FString MirrorStr;
-	switch (Entry->GetMirrorOption())
+	switch (Entry.GetMirrorOption())
 	{
 	case EPoseSearchMirrorOption::UnmirroredOnly:      MirrorStr = TEXT("UnmirroredOnly"); break;
 	case EPoseSearchMirrorOption::MirroredOnly:        MirrorStr = TEXT("MirroredOnly"); break;
@@ -890,7 +896,7 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseSequenceProperties(co
 	}
 	Root->SetStringField(TEXT("mirror_option"), MirrorStr);
 
-	FFloatInterval Range = Entry->GetSamplingRange();
+	FFloatInterval Range = Entry.GetSamplingRange();
 	Root->SetNumberField(TEXT("sampling_range_start"), Range.Min);
 	Root->SetNumberField(TEXT("sampling_range_end"), Range.Max);
 #endif
@@ -1325,9 +1331,11 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseEntryTags(const TShar
 	if (EntryIndex < 0 || EntryIndex >= NumAssets)
 		return FAxonActionResult::Error(FString::Printf(TEXT("Invalid entry_index %d (database has %d entries)"), EntryIndex, NumAssets));
 
-	FPoseSearchDatabaseAnimationAsset* Entry = Database->GetMutableDatabaseAnimationAsset(EntryIndex);
-	if (!Entry)
-		return FAxonActionResult::Error(FString::Printf(TEXT("Failed to get mutable entry at index %d"), EntryIndex));
+	const FPoseSearchDatabaseAnimationAsset* EntryConst = Database->GetDatabaseAnimationAsset(EntryIndex);
+	if (!EntryConst)
+		return FAxonActionResult::Error(FString::Printf(TEXT("Failed to get entry at index %d"), EntryIndex));
+
+	FPoseSearchDatabaseAnimationAsset Entry = *EntryConst;
 
 #if WITH_EDITORONLY_DATA
 	GEditor->BeginTransaction(FText::FromString(TEXT("Set PoseSearch Database Entry Tags")));
@@ -1335,29 +1343,33 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseEntryTags(const TShar
 
 	if (Params->HasField(TEXT("enabled")))
 	{
-		Entry->SetIsEnabled(Params->GetBoolField(TEXT("enabled")));
+		Entry.SetIsEnabled(Params->GetBoolField(TEXT("enabled")));
 	}
 
 	if (Params->HasField(TEXT("disable_reselection")))
 	{
-		Entry->SetDisableReselection(Params->GetBoolField(TEXT("disable_reselection")));
+		Entry.SetDisableReselection(Params->GetBoolField(TEXT("disable_reselection")));
 	}
 
 	if (Params->HasField(TEXT("mirror_option")))
 	{
 		FString MirrorStr = Params->GetStringField(TEXT("mirror_option"));
 		if (MirrorStr.Equals(TEXT("UnmirroredOnly"), ESearchCase::IgnoreCase))
-			Entry->MirrorOption = EPoseSearchMirrorOption::UnmirroredOnly;
+			Entry.MirrorOption = EPoseSearchMirrorOption::UnmirroredOnly;
 		else if (MirrorStr.Equals(TEXT("MirroredOnly"), ESearchCase::IgnoreCase))
-			Entry->MirrorOption = EPoseSearchMirrorOption::MirroredOnly;
+			Entry.MirrorOption = EPoseSearchMirrorOption::MirroredOnly;
 		else if (MirrorStr.Equals(TEXT("UnmirroredAndMirrored"), ESearchCase::IgnoreCase))
-			Entry->MirrorOption = EPoseSearchMirrorOption::UnmirroredAndMirrored;
+			Entry.MirrorOption = EPoseSearchMirrorOption::UnmirroredAndMirrored;
 		else
 		{
 			GEditor->EndTransaction();
 			return FAxonActionResult::Error(FString::Printf(TEXT("Invalid mirror_option: '%s'. Use UnmirroredOnly, MirroredOnly, or UnmirroredAndMirrored"), *MirrorStr));
 		}
 	}
+
+#if WITH_EDITOR
+	Database->SetAnimationAssetAt(Entry, EntryIndex);
+#endif
 
 	GEditor->EndTransaction();
 	Database->MarkPackageDirty();
@@ -1366,14 +1378,14 @@ FAxonActionResult FAxonPoseSearchActions::HandleSetDatabaseEntryTags(const TShar
 	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 	Root->SetStringField(TEXT("database_path"), DatabasePath);
 	Root->SetNumberField(TEXT("entry_index"), EntryIndex);
-	if (UObject* AnimAsset = Entry->GetAnimationAsset())
+	if (UObject* AnimAsset = Entry.GetAnimationAsset())
 	{
 		Root->SetStringField(TEXT("animation"), AnimAsset->GetPathName());
 	}
-	Root->SetBoolField(TEXT("enabled"), Entry->IsEnabled());
-	Root->SetBoolField(TEXT("disable_reselection"), Entry->IsDisableReselection());
+	Root->SetBoolField(TEXT("enabled"), Entry.IsEnabled());
+	Root->SetBoolField(TEXT("disable_reselection"), Entry.IsDisableReselection());
 	FString MirrorStr;
-	switch (Entry->GetMirrorOption())
+	switch (Entry.GetMirrorOption())
 	{
 	case EPoseSearchMirrorOption::UnmirroredOnly:        MirrorStr = TEXT("UnmirroredOnly"); break;
 	case EPoseSearchMirrorOption::MirroredOnly:          MirrorStr = TEXT("MirroredOnly"); break;

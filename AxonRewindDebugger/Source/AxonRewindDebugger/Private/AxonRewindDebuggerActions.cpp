@@ -155,7 +155,8 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleGetSessionInfo(const TShared
 	J->SetBoolField(TEXT("has_instance"), true);
 	J->SetBoolField(TEXT("is_recording"), Debugger->IsRecording());
 	J->SetBoolField(TEXT("is_pie_simulating"), Debugger->IsPIESimulating());
-	J->SetBoolField(TEXT("is_trace_file_loaded"), Debugger->IsTraceFileLoaded());
+	// IsTraceFileLoaded() was removed in 5.8; analysis-session presence is the closest signal.
+	J->SetBoolField(TEXT("is_trace_file_loaded"), Debugger->GetAnalysisSession() != nullptr);
 	J->SetBoolField(TEXT("can_start_recording"), Debugger->CanStartRecording());
 	J->SetNumberField(TEXT("scrub_time"), Debugger->GetScrubTime());
 	J->SetNumberField(TEXT("trace_time"), Debugger->CurrentTraceTime());
@@ -321,7 +322,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleListAnimInstances(const TSha
 	}
 	if (FAxonActionResult E = NeedAnim(Ctx); !E.bSuccess) return E;
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	TArray<TSharedPtr<FJsonValue>> Instances;
 	int32 Remaining = Ctx.Limit;
 	Ctx.AnimProvider->EnumerateAnimGraphTimelines([&](uint64 ObjectId, const IAnimationProvider::AnimGraphTimeline&)
@@ -348,7 +349,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleAnimNodes(const TShare
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 	if (FAxonActionResult E = NeedAnim(Ctx); !E.bSuccess) return E;
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = Ctx.AnimProvider->ReadAnimNodesTimeline(ObjectId, [&](const IAnimationProvider::AnimNodesTimeline& Timeline)
@@ -397,7 +398,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleAnimNodeValues(const T
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 	if (FAxonActionResult E = NeedAnim(Ctx); !E.bSuccess) return E;
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = Ctx.AnimProvider->ReadAnimNodeValuesTimeline(ObjectId, [&](const IAnimationProvider::AnimNodeValuesTimeline& Timeline)
@@ -441,7 +442,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleStateMachines(const TS
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 	if (FAxonActionResult E = NeedAnim(Ctx); !E.bSuccess) return E;
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = Ctx.AnimProvider->ReadStateMachinesTimeline(ObjectId, [&](const IAnimationProvider::StateMachinesTimeline& Timeline)
@@ -481,7 +482,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleMontages(const TShared
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 	if (FAxonActionResult E = NeedAnim(Ctx); !E.bSuccess) return E;
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = Ctx.AnimProvider->ReadMontageTimeline(ObjectId, [&](const IAnimationProvider::AnimMontageTimeline& Timeline)
@@ -527,7 +528,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleSequencePlayers(const 
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 	if (FAxonActionResult E = NeedAnim(Ctx); !E.bSuccess) return E;
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = Ctx.AnimProvider->ReadAnimSequencePlayersTimeline(ObjectId, [&](const IAnimationProvider::AnimSequencePlayersTimeline& Timeline)
@@ -569,7 +570,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleSkeletalPose(const TSh
 	const bool bFullPose = ParseBool(Params, TEXT("include_full_pose"), false);
 	const int32 BoneLimit = FMath::Clamp(ParseLimit(Params, MaxPoseBones), 1, MaxPoseBones);
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 
 	TSharedPtr<FJsonObject> J = MakeShared<FJsonObject>();
 	J->SetStringField(TEXT("object_id"), LexToString(ObjectId));
@@ -648,13 +649,17 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleCameraGraphResult(cons
 	FSampleContext Ctx;
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
-	const ICameraTraceProvider* CameraProvider = Ctx.Session->ReadProvider<ICameraTraceProvider>(TEXT("CameraTraceProvider"));
+	const ICameraTraceProvider* CameraProvider = nullptr;
+	{
+		TraceServices::FAnalysisSessionReadScope ProviderLookupScope(*Ctx.Session);
+		CameraProvider = Ctx.Session->ReadProvider<ICameraTraceProvider>(TEXT("CameraTraceProvider"));
+	}
 	if (!CameraProvider)
 	{
 		return FAxonActionResult::Error(TEXT("CameraTraceProvider not present in analysis session (was CameraBlueprintChannel enabled while recording?)"));
 	}
 
+	FSampleReadScopes ReadScopes(Ctx, CameraProvider);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = CameraProvider->ReadCameraGraphResultsTimeline(ObjectId, [&](const ICameraTraceProvider::CameraGraphResultsTimeline& Timeline)
@@ -715,13 +720,17 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleSampleCameraWatches(const TS
 	FSampleContext Ctx;
 	if (FString Err = ResolveSampleContext(Params, Ctx); !Err.IsEmpty()) return FAxonActionResult::Error(Err);
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
-	const ICameraTraceProvider* CameraProvider = Ctx.Session->ReadProvider<ICameraTraceProvider>(TEXT("CameraTraceProvider"));
+	const ICameraTraceProvider* CameraProvider = nullptr;
+	{
+		TraceServices::FAnalysisSessionReadScope ProviderLookupScope(*Ctx.Session);
+		CameraProvider = Ctx.Session->ReadProvider<ICameraTraceProvider>(TEXT("CameraTraceProvider"));
+	}
 	if (!CameraProvider)
 	{
 		return FAxonActionResult::Error(TEXT("CameraTraceProvider not present in analysis session"));
 	}
 
+	FSampleReadScopes ReadScopes(Ctx, CameraProvider);
 	TArray<TSharedPtr<FJsonValue>> Events;
 	int32 Remaining = Ctx.Limit;
 	const bool bOk = CameraProvider->ReadCameraWatchesTimeline(ObjectId, [&](const ICameraTraceProvider::CameraWatchesTimeline& Timeline)
@@ -772,7 +781,7 @@ FAxonActionResult FAxonRewindDebuggerActions::HandleResolveObject(const TSharedP
 		return FAxonActionResult::Error(TEXT("GameplayProvider not present in analysis session"));
 	}
 
-	TraceServices::FAnalysisSessionReadScope SessionReadScope(*Ctx.Session);
+	FSampleReadScopes ReadScopes(Ctx);
 	if (!Ctx.GameplayProvider->FindObjectInfo(ObjectId))
 	{
 		return FAxonActionResult::Error(FString::Printf(TEXT("Object id %s not found in session"), *LexToString(ObjectId)));

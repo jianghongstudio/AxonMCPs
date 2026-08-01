@@ -1,4 +1,5 @@
 #include "AxonChooserActions.h"
+#include "AxonJsonUtils.h"
 #include "AxonParamSchema.h"
 
 #include "Dom/JsonObject.h"
@@ -544,7 +545,7 @@ FAxonActionResult FAxonChooserActions::HandleDuplicateChooserTree(const TSharedP
 			FString Val;
 			if (Pair.Value.IsValid() && Pair.Value->TryGetString(Val))
 			{
-				Remap.Add(NormalizePackagePath(Pair.Key), Val);
+				Remap.Add(NormalizePackagePath(AxonKeyToString(Pair.Key)), Val);
 			}
 		}
 	}

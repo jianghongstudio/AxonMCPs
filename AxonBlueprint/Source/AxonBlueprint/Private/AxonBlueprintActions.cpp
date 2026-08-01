@@ -531,7 +531,7 @@ FAxonActionResult FAxonBlueprintActions::HandleGetVariables(const TSharedPtr<FJs
 				if (WidgetTreeObj)
 				{
 					TArray<UObject*> TreeChildren;
-					GetObjectsWithOuter(WidgetTreeObj, TreeChildren, /*bIncludeNestedObjects=*/true);
+					GetObjectsWithOuter(WidgetTreeObj, TreeChildren, EGetObjectsFlags::IncludeNestedObjects);
 					for (UObject* Child : TreeChildren)
 					{
 						if (!Child || !Child->IsA(WidgetBase))

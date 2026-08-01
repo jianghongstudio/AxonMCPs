@@ -751,7 +751,6 @@ FAxonActionResult FAxonRetargetSettingsActions::HandleSetRetargetChainSettings(c
 
 		if (bIKChainFound)
 		{
-			IKOp->SetSettings(IKBaseSettings);
 			bAnyApplied = true;
 		}
 	}
@@ -831,8 +830,6 @@ FAxonActionResult FAxonRetargetSettingsActions::HandleSetRetargetRootSettings(co
 		FVector Offset;
 		if (TryReadVector(*OffsetObjPtr, Offset)) { Settings->TranslationOffsetGlobal = Offset; }
 	}
-
-	PelvisOp->SetSettings(PelvisBaseSettings);
 
 	// Optional pelvis bone reassignment (separate setters on the controller).
 	FString SourcePelvis, TargetPelvis;

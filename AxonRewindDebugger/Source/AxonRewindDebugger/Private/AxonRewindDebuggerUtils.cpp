@@ -122,6 +122,13 @@ namespace AxonRewindDebugger
 		Out.AnimProvider = Out.Session->ReadProvider<IAnimationProvider>(TEXT("AnimationProvider"));
 		Out.GameplayProvider = Out.Session->ReadProvider<IGameplayProvider>(TEXT("GameplayProvider"));
 
+		// GameplayProvider APIs (GetRecordingInfo) require the provider read lock, not just the session.
+		TUniquePtr<TraceServices::FProviderReadScopeLock> GameplayReadScope;
+		if (Out.GameplayProvider)
+		{
+			GameplayReadScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*Out.GameplayProvider);
+		}
+
 		double TimeOverride = 0.0;
 		const bool bHasTime = Params.IsValid() && Params->TryGetNumberField(TEXT("time"), TimeOverride);
 		if (bHasTime)

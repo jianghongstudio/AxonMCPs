@@ -102,8 +102,8 @@ FAxonActionResult FAxonMirrorTableActions::HandleCreateMirrorDataTable(const TSh
 	UMirrorDataTable* MDT = NewObject<UMirrorDataTable>(Pkg, FName(*AssetName), RF_Public | RF_Standalone);
 	if (!MDT) return FAxonActionResult::Error(TEXT("Failed to create UMirrorDataTable object"));
 
-	// FindReplaceMirroredNames() guards on RowStruct (MirrorDataTable.cpp:282) and adds zero rows
-	// when it is unset. The engine factory uses FMirrorTableRow as the result struct.
+	// UpdateFromFindReplaceExpressions() guards on RowStruct and adds zero rows when it is unset.
+	// The engine factory uses FMirrorTableRow as the result struct.
 	MDT->RowStruct = FMirrorTableRow::StaticStruct();
 
 	MDT->Skeleton = Skeleton;
@@ -145,7 +145,7 @@ FAxonActionResult FAxonMirrorTableActions::HandleCreateMirrorDataTable(const TSh
 
 	// Generate mirror rows from the find/replace rules against the skeleton's bone names.
 #if WITH_EDITOR
-	MDT->FindReplaceMirroredNames();
+	MDT->UpdateFromFindReplaceExpressions(UMirrorDataTable::FFindReplaceOptions::AddMissingOnly());
 #endif
 
 	FAssetRegistryModule::AssetCreated(MDT);

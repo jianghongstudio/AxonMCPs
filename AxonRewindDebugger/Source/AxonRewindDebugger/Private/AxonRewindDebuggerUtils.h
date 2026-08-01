@@ -1,6 +1,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Common/ProviderLock.h"
 #include "Dom/JsonObject.h"
 #include "IRewindDebugger.h"
 #include "IAnimationProvider.h"
@@ -27,6 +28,39 @@ namespace AxonRewindDebugger
 		double EndTime = 0.0;
 		int32 Limit = DefaultLimit;
 		bool bMovedScrub = false;
+	};
+
+	/**
+	 * Session BeginRead alone is not enough in UE 5.8+: Animation/Gameplay providers
+	 * each have their own FProviderLock. Reading without FProviderReadScopeLock trips
+	 * "Trying to READ from provider outside of a READ scope".
+	 */
+	struct FSampleReadScopes
+	{
+		explicit FSampleReadScopes(const FSampleContext& Ctx, const TraceServices::IProvider* ExtraProvider = nullptr)
+			: SessionScope(*Ctx.Session)
+		{
+			if (Ctx.AnimProvider)
+			{
+				AnimScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*Ctx.AnimProvider);
+			}
+			if (Ctx.GameplayProvider)
+			{
+				GameplayScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*Ctx.GameplayProvider);
+			}
+			if (ExtraProvider)
+			{
+				ExtraScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*ExtraProvider);
+			}
+		}
+
+		UE_NONCOPYABLE(FSampleReadScopes);
+
+	private:
+		TraceServices::FAnalysisSessionReadScope SessionScope;
+		TUniquePtr<TraceServices::FProviderReadScopeLock> AnimScope;
+		TUniquePtr<TraceServices::FProviderReadScopeLock> GameplayScope;
+		TUniquePtr<TraceServices::FProviderReadScopeLock> ExtraScope;
 	};
 
 	bool ParseObjectId(const TSharedPtr<FJsonObject>& Params, uint64& OutId, FString& OutError, bool bRequired = true);
