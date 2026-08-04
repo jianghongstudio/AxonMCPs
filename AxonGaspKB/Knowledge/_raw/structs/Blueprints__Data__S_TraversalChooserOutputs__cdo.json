@@ -1,0 +1,92 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/Data/S_TraversalChooserOutputs"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Data/S_TraversalChooserOutputs",
+    "native_class": "UserDefinedStruct",
+    "parent_class": "ScriptStruct",
+    "properties": [
+      {
+        "name": "ErrorMessage",
+        "type": "FString",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": ""
+      },
+      {
+        "name": "EditorData",
+        "type": "TObjectPtr<UObject>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "/Game/Blueprints/Data/S_TraversalChooserOutputs.S_TraversalChooserOutputs:UserDefinedStructEditorData_0"
+      },
+      {
+        "name": "Status",
+        "type": "TEnumAsByte<EUserDefinedStructureStatus>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "UDSS_UpToDate"
+      },
+      {
+        "name": "Guid",
+        "type": "FGuid",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": {
+          "A": 1937312316,
+          "B": 1147543679,
+          "C": 1946239899,
+          "D": 2036749360
+        }
+      },
+      {
+        "name": "CachedCookedMetaDataPtr",
+        "type": "TObjectPtr<UStructCookedMetaData>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "None"
+      },
+      {
+        "name": "SuperStruct",
+        "type": "TObjectPtr<UStruct>",
+        "category": "",
+        "owner_class": "Struct",
+        "value": "None"
+      },
+      {
+        "name": "Children",
+        "type": "TObjectPtr<UField>",
+        "category": "",
+        "owner_class": "Struct",
+        "value": "None"
+      },
+      {
+        "name": "ScriptAndPropertyObjectReferences",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "Struct",
+        "value": [
+          "/Game/Blueprints/Data/E_TraversalActionType.E_TraversalActionType"
+        ]
+      },
+      {
+        "name": "PropertyWrappers",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "Struct",
+        "value": []
+      },
+      {
+        "name": "Next",
+        "type": "TObjectPtr<UField>",
+        "category": "",
+        "owner_class": "Field",
+        "value": "None"
+      }
+    ],
+    "property_count": 10
+  }
+}

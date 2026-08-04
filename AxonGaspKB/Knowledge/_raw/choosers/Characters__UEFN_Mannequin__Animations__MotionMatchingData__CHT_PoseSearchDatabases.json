@@ -1,0 +1,102 @@
+{
+  "tool": "chooser_query",
+  "action": "inspect_chooser",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases",
+    "include_cells": true,
+    "recursive": true
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases.CHT_PoseSearchDatabases",
+    "result_type": "ObjectResult",
+    "result_type_value": 0,
+    "result_class": "/Script/PoseSearch.PoseSearchDatabase",
+    "context_data": [
+      {
+        "index": 0,
+        "struct_type": "ContextObjectTypeClass",
+        "kind": "class",
+        "class": "/Game/Blueprints/SandboxCharacter_CMC_ABP.SandboxCharacter_CMC_ABP_C"
+      }
+    ],
+    "row_count": 3,
+    "column_count": 1,
+    "column_types": [
+      "FloatRangeColumn"
+    ],
+    "columns": [
+      {
+        "index": 0,
+        "type": "FloatRangeColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "MMDatabaseLOD"
+          ],
+          "display": "MMDatabaseLOD"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "min": 0,
+            "max": 0
+          },
+          {
+            "row": 1,
+            "min": 1,
+            "max": 1
+          },
+          {
+            "row": 2,
+            "min": 2,
+            "max": 2
+          }
+        ]
+      }
+    ],
+    "referenced_assets": [],
+    "tree": {
+      "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases.CHT_PoseSearchDatabases",
+      "fallback": {
+        "struct_type": "EvaluateChooser",
+        "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+        "is_null": false,
+        "kind": "evaluate_chooser"
+      },
+      "row_count": 3,
+      "rows": [
+        {
+          "struct_type": "EvaluateChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "is_null": false,
+          "kind": "evaluate_chooser",
+          "row": 0
+        },
+        {
+          "struct_type": "EvaluateChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Sparse.CHT_PoseSearchDatabases_Sparse",
+          "is_null": false,
+          "kind": "evaluate_chooser",
+          "row": 1
+        },
+        {
+          "struct_type": "EvaluateChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_ExtremeSparse.CHT_PoseSearchDatabases_ExtremeSparse",
+          "is_null": false,
+          "kind": "evaluate_chooser",
+          "row": 2
+        }
+      ],
+      "output_columns": [],
+      "nested_objects": 1,
+      "child_tables": [
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases.CHT_PoseSearchDatabases",
+          "cycle": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases.CHT_PoseSearchDatabases",
+          "nested_index": 0
+        }
+      ]
+    },
+    "compiled": true
+  }
+}

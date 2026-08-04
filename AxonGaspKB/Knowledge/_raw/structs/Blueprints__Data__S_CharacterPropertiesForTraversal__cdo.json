@@ -1,0 +1,93 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/Data/S_CharacterPropertiesForTraversal"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Data/S_CharacterPropertiesForTraversal",
+    "native_class": "UserDefinedStruct",
+    "parent_class": "ScriptStruct",
+    "properties": [
+      {
+        "name": "ErrorMessage",
+        "type": "FString",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": ""
+      },
+      {
+        "name": "EditorData",
+        "type": "TObjectPtr<UObject>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "/Game/Blueprints/Data/S_CharacterPropertiesForTraversal.S_CharacterPropertiesForTraversal:UserDefinedStructEditorData_0"
+      },
+      {
+        "name": "Status",
+        "type": "TEnumAsByte<EUserDefinedStructureStatus>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "UDSS_UpToDate"
+      },
+      {
+        "name": "Guid",
+        "type": "FGuid",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": {
+          "A": 1325069512,
+          "B": 1141543268,
+          "C": -285473125,
+          "D": 830459318
+        }
+      },
+      {
+        "name": "CachedCookedMetaDataPtr",
+        "type": "TObjectPtr<UStructCookedMetaData>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "None"
+      },
+      {
+        "name": "SuperStruct",
+        "type": "TObjectPtr<UStruct>",
+        "category": "",
+        "owner_class": "Struct",
+        "value": "None"
+      },
+      {
+        "name": "Children",
+        "type": "TObjectPtr<UField>",
+        "category": "",
+        "owner_class": "Struct",
+        "value": "None"
+      },
+      {
+        "name": "ScriptAndPropertyObjectReferences",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "Struct",
+        "value": [
+          "/Game/Blueprints/Data/E_MovementMode.E_MovementMode",
+          "/Game/Blueprints/Data/E_Gait.E_Gait"
+        ]
+      },
+      {
+        "name": "PropertyWrappers",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "Struct",
+        "value": []
+      },
+      {
+        "name": "Next",
+        "type": "TObjectPtr<UField>",
+        "category": "",
+        "owner_class": "Field",
+        "value": "None"
+      }
+    ],
+    "property_count": 10
+  }
+}

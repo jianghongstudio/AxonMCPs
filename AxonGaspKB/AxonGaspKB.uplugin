@@ -1,0 +1,28 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "AxonGaspKB",
+	"Description": "Offline Game Animation Sample (GASP) knowledge corpus: search/read/route distilled markdown without requiring GASP Content assets. Thin shell over AxonKnowledgeLib.",
+	"Category": "Editor",
+	"CreatedBy": "Axon Extension Scaffold",
+	"EnabledByDefault": true,
+	"Installed": false,
+	"Plugins": [
+		{
+			"Name": "Axon",
+			"Enabled": true
+		},
+		{
+			"Name": "AxonKnowledgeLib",
+			"Enabled": true
+		}
+	],
+	"Modules": [
+		{
+			"Name": "AxonGaspKB",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		}
+	]
+}

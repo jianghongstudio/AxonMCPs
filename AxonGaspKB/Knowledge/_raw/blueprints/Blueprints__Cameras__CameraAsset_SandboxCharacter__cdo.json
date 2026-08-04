@@ -1,0 +1,97 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter",
+    "native_class": "CameraAsset",
+    "parent_class": "Object",
+    "properties": [
+      {
+        "name": "CameraDirector",
+        "type": "TObjectPtr<UCameraDirector>",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter.CameraAsset_SandboxCharacter:BlueprintCameraDirector_0"
+      },
+      {
+        "name": "EnterTransitions",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": [
+          "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter.CameraAsset_SandboxCharacter:CameraRigTransition_1"
+        ]
+      },
+      {
+        "name": "ExitTransitions",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": []
+      },
+      {
+        "name": "DefaultParameters",
+        "type": "FInstancedPropertyBag",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": {
+          "Value": {
+            "__struct": "/Engine/Transient.PropertyBag_2d06800538d394c2"
+          }
+        }
+      },
+      {
+        "name": "ParameterDefinitions",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": []
+      },
+      {
+        "name": "AllocationInfo",
+        "type": "FCameraAssetAllocationInfo",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": {
+          "VariableTableInfo": {
+            "VariableDefinitions": []
+          },
+          "ContextDataTableInfo": {
+            "DataDefinitions": []
+          }
+        }
+      },
+      {
+        "name": "TransitionGraphNodePos",
+        "type": "FIntVector2",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": {
+          "X": 0,
+          "Y": 0
+        }
+      },
+      {
+        "name": "TransitionGraphNodeComment",
+        "type": "FString",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": ""
+      },
+      {
+        "name": "AllSharedTransitionsObjects",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "CameraAsset",
+        "value": [
+          "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter.CameraAsset_SandboxCharacter:SmoothBlendCameraNode_1",
+          "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter.CameraAsset_SandboxCharacter:CameraRigTransition_1"
+        ]
+      }
+    ],
+    "property_count": 9
+  }
+}

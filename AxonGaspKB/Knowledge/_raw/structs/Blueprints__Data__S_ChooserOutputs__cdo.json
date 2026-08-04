@@ -1,0 +1,90 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/Data/S_ChooserOutputs"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Data/S_ChooserOutputs",
+    "native_class": "UserDefinedStruct",
+    "parent_class": "ScriptStruct",
+    "properties": [
+      {
+        "name": "ErrorMessage",
+        "type": "FString",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": ""
+      },
+      {
+        "name": "EditorData",
+        "type": "TObjectPtr<UObject>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "/Game/Blueprints/Data/S_ChooserOutputs.S_ChooserOutputs:UserDefinedStructEditorData_0"
+      },
+      {
+        "name": "Status",
+        "type": "TEnumAsByte<EUserDefinedStructureStatus>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "UDSS_UpToDate"
+      },
+      {
+        "name": "Guid",
+        "type": "FGuid",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": {
+          "A": -312199132,
+          "B": 1113793096,
+          "C": -489833835,
+          "D": -711492912
+        }
+      },
+      {
+        "name": "CachedCookedMetaDataPtr",
+        "type": "TObjectPtr<UStructCookedMetaData>",
+        "category": "",
+        "owner_class": "UserDefinedStruct",
+        "value": "None"
+      },
+      {
+        "name": "SuperStruct",
+        "type": "TObjectPtr<UStruct>",
+        "category": "",
+        "owner_class": "Struct",
+        "value": "None"
+      },
+      {
+        "name": "Children",
+        "type": "TObjectPtr<UField>",
+        "category": "",
+        "owner_class": "Struct",
+        "value": "None"
+      },
+      {
+        "name": "ScriptAndPropertyObjectReferences",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "Struct",
+        "value": []
+      },
+      {
+        "name": "PropertyWrappers",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "Struct",
+        "value": []
+      },
+      {
+        "name": "Next",
+        "type": "TObjectPtr<UField>",
+        "category": "",
+        "owner_class": "Field",
+        "value": "None"
+      }
+    ],
+    "property_count": 10
+  }
+}

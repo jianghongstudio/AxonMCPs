@@ -36,6 +36,8 @@ flowchart LR
 | describe / bulk_fill / adapter | `12-describe-bulk-fill.md` | `30-sibling-plugins.md` |
 | PIE smoke / timeseries / 门禁 | `13-pie-sessions.md` | `51-3c-workflows.md`、`Docs/3C_WORKFLOWS.md`、`40` |
 | 新 sibling / namespace | `30-sibling-plugins.md`、README | `50`、`Docs/USER_GUIDE.md` |
+| 蒸馏 / KB 包 / KnowledgeLib / gasp_kb | `31-knowledge-distill.md`、`30-sibling-plugins.md` | `Docs/USER_GUIDE.md`、`Docs/axon_guide.md`、`AxonKnowledgeLib/README.md` |
+| Index / Source 索引行为或 Action 面 | `32-index-and-source.md`、`30-sibling-plugins.md` | `Docs/USER_GUIDE.md`、各插件 README |
 | `editor.*` 注册面 | `40-editor-actions.md` | `51` |
 | 扩展流程 | `50-extension-cookbook.md` | `Docs/SIBLING_PLUGIN_GUIDE.md`、`Docs/axon_guide.md` |
 | 3C 推荐链 | `51-3c-workflows.md` | `Docs/3C_WORKFLOWS.md` |

@@ -1,0 +1,63 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_graph_summary",
+  "params": {
+    "asset_path": "/Game/Blueprints/SandboxCharacter_CMC_ABP",
+    "graph_name": "IsPivoting"
+  },
+  "result": {
+    "graph_name": "IsPivoting",
+    "nodes": [
+      {
+        "id": "K2Node_FunctionEntry_0",
+        "class": "K2Node_FunctionEntry",
+        "title": "IsPivoting",
+        "exec_targets": [
+          "K2Node_FunctionResult_0"
+        ]
+      },
+      {
+        "id": "K2Node_FunctionResult_0",
+        "class": "K2Node_FunctionResult",
+        "title": "Return Node"
+      },
+      {
+        "id": "EdGraphNode_Comment_12",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "This function is used to determine if the character is pivoting by checking if the character’s future trajectory is moving in a much different direction than the character’s current trajectory."
+      },
+      {
+        "id": "K2Node_Select_3",
+        "class": "K2Node_Select",
+        "title": "Select"
+      },
+      {
+        "id": "K2Node_VariableGet_2",
+        "class": "K2Node_VariableGet",
+        "title": "Get UseExperimentalStateMachine"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_0",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "AND Boolean"
+      },
+      {
+        "id": "K2Node_CallFunction_3",
+        "class": "K2Node_CallFunction",
+        "title": "IsMoving"
+      },
+      {
+        "id": "K2Node_Composite_0",
+        "class": "K2Node_Composite",
+        "title": "MM Pivot conditions"
+      },
+      {
+        "id": "K2Node_Composite_2",
+        "class": "K2Node_Composite",
+        "title": "SM Pivot Condition"
+      }
+    ],
+    "node_count": 9
+  }
+}

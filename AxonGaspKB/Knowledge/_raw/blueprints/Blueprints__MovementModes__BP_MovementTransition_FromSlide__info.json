@@ -1,0 +1,28 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_blueprint_info",
+  "params": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementTransition_FromSlide"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementTransition_FromSlide",
+    "parent_class": "BaseMovementModeTransition",
+    "parent_class_path": "/Script/Mover.BaseMovementModeTransition",
+    "blueprint_type": "Normal",
+    "compile_status": "UpToDate",
+    "graph_names": [
+      "EventGraph",
+      "Evaluate"
+    ],
+    "has_tick": false,
+    "has_construction_script": false,
+    "variable_count": 0,
+    "function_count": 1,
+    "interface_count": 0,
+    "component_count": 0,
+    "native_component_count": 0,
+    "generated_class": "BP_MovementTransition_FromSlide_C",
+    "is_data_only": false,
+    "is_actor_based": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "tool": "project_query",
+  "action": "get_asset_details",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter"
+  },
+  "result": {
+    "success": true,
+    "asset": {
+      "package_path": "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter",
+      "asset_name": "CameraAsset_SandboxCharacter",
+      "asset_class": "CameraAsset",
+      "module_name": "",
+      "description": "",
+      "file_size_bytes": 0,
+      "last_modified": "2026-07-16T08:21:39.000Z",
+      "indexed_at": "2026-08-04 16:24:21",
+      "nodes": [],
+      "variables": [],
+      "references": {
+        "depends_on": [
+          {
+            "path": "/Game/Blueprints/Cameras/CameraDirector_SandboxCharacter",
+            "class": "Blueprint",
+            "type": "Hard"
+          }
+        ],
+        "referenced_by": [
+          {
+            "path": "/Game/Blueprints/SandboxCharacter_CMC",
+            "class": "Blueprint",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/SandboxCharacter_Mover",
+            "class": "Blueprint",
+            "type": "Hard"
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "tool": "animation_query",
+  "action": "get_pose_search_database",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Idles"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Idles",
+    "schema": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Relaxed_Idle.PSS_Relaxed_Idle",
+    "sequence_count": 2,
+    "count": 2,
+    "sequences": [
+      {
+        "index": 0,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Idle/M_Relaxed_Stand_Idle_Loop.M_Relaxed_Stand_Idle_Loop",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 1,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Relaxed_Transition_Crouch_to_Stand.M_Relaxed_Transition_Crouch_to_Stand",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0,
+        "mirror_option": "UnmirroredOnly"
+      }
+    ]
+  }
+}

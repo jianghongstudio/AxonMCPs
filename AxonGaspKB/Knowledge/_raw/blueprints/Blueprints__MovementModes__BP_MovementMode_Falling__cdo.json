@@ -1,0 +1,132 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementMode_Falling"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementMode_Falling",
+    "native_class": "FallingMode",
+    "parent_class": "FallingMode",
+    "properties": [
+      {
+        "name": "OnLanded",
+        "type": "FMover_OnLanded",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": "()"
+      },
+      {
+        "name": "bCancelVerticalSpeedOnLanding",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": true
+      },
+      {
+        "name": "AirControlPercentage",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 0.4000000059604645
+      },
+      {
+        "name": "FallingDeceleration",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 200
+      },
+      {
+        "name": "FallingLateralFriction",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 0
+      },
+      {
+        "name": "OverTerminalSpeedFallingDeceleration",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 800
+      },
+      {
+        "name": "TerminalMovementPlaneSpeed",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 1500
+      },
+      {
+        "name": "bShouldClampTerminalVerticalSpeed",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": true
+      },
+      {
+        "name": "VerticalFallingDeceleration",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 4000
+      },
+      {
+        "name": "TerminalVerticalSpeed",
+        "type": "float",
+        "category": "Mover",
+        "owner_class": "FallingMode",
+        "value": 2000
+      },
+      {
+        "name": "SharedSettingsClasses",
+        "type": "TArray",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": [
+          "/Script/Mover.CommonLegacyMovementSettings"
+        ]
+      },
+      {
+        "name": "Transitions",
+        "type": "TArray",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": []
+      },
+      {
+        "name": "GameplayTags",
+        "type": "FGameplayTagContainer",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": {
+          "GameplayTags": [
+            {
+              "TagName": "Mover.IsInAir"
+            },
+            {
+              "TagName": "Mover.IsFalling"
+            },
+            {
+              "TagName": "Mover.SkipVerticalAnimRootMotion"
+            }
+          ],
+          "ParentTags": [
+            {
+              "TagName": "Mover"
+            }
+          ]
+        }
+      },
+      {
+        "name": "bSupportsAsync",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": false
+      }
+    ],
+    "property_count": 14
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "tool": "animation_query",
+  "action": "get_database_stats",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Loops"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Loops",
+    "sequence_count": 7,
+    "count": 7,
+    "normalization_set": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Normalization_Sets/PSN_Dense_All.PSN_Dense_All",
+    "entries": [
+      {
+        "index": 0,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Loop_F.M_Neutral_Sprint_Loop_F",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 1,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Run_to_Sprint_Lfoot.M_Neutral_Transition_Run_to_Sprint_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 2,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Run_to_Sprint_Rfoot.M_Neutral_Transition_Run_to_Sprint_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 3,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Walk_to_Sprint_Lfoot.M_Neutral_Transition_Walk_to_Sprint_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 4,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Walk_to_Sprint_Rfoot.M_Neutral_Transition_Walk_to_Sprint_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 5,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Loop_FL.M_Neutral_Sprint_Loop_FL",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 6,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Loop_FR.M_Neutral_Sprint_Loop_FR",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      }
+    ],
+    "schema": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Default.PSS_Default",
+    "sample_rate": 30,
+    "schema_cardinality": 30,
+    "index_built": true,
+    "total_pose_count": 459,
+    "is_valid": true,
+    "search_mode": "PCAKDTree",
+    "continuing_pose_cost_bias": -0.009999999776482582,
+    "base_cost_bias": 0,
+    "looping_cost_bias": -0.004999999888241291,
+    "tags": [
+      "Loops"
+    ]
+  }
+}

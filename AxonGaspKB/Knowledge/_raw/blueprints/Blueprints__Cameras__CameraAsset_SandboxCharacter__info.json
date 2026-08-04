@@ -1,0 +1,11 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_blueprint_info",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CameraAsset_SandboxCharacter"
+  },
+  "result": {
+    "success": true,
+    "raw_text": "Blueprint not found: /Game/Blueprints/Cameras/CameraAsset_SandboxCharacter"
+  }
+}

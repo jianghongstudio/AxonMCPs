@@ -1,0 +1,2545 @@
+{
+  "tool": "animation_query",
+  "action": "get_database_stats",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSD_SM_CMC_Transitions"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSD_SM_CMC_Transitions",
+    "sequence_count": 315,
+    "count": 315,
+    "normalization_set": null,
+    "entries": [
+      {
+        "index": 0,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_F_Lfoot.M_Neutral_Run_Start_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 1,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_F_Rfoot.M_Neutral_Run_Start_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 2,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Transition_Walk_to_Run_Lfoot.M_Neutral_Transition_Walk_to_Run_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 3,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Transition_Walk_to_Run_Rfoot.M_Neutral_Transition_Walk_to_Run_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 4,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Transition_Sprint_to_Walk_Rfoot.M_Neutral_Transition_Sprint_to_Walk_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 5,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Transition_Sprint_to_Run_Lfoot.M_Neutral_Transition_Sprint_to_Run_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 6,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Transition_Sprint_to_Run_Rfoot.M_Neutral_Transition_Sprint_to_Run_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 7,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Run_to_Sprint_Rfoot.M_Neutral_Transition_Run_to_Sprint_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 8,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Transition_Sprint_to_Walk_Lfoot.M_Neutral_Transition_Sprint_to_Walk_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 9,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Walk_to_Sprint_Lfoot.M_Neutral_Transition_Walk_to_Sprint_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 10,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Walk_to_Sprint_Rfoot.M_Neutral_Transition_Walk_to_Sprint_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 11,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_F_Rfoot.M_Neutral_Walk_Start_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 12,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_F_Lfoot.M_Neutral_Walk_Start_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 13,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Transition_Run_to_Walk_Lfoot.M_Neutral_Transition_Run_to_Walk_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 14,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Transition_Run_to_Walk_Rfoot.M_Neutral_Transition_Run_to_Walk_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 15,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Transition_Run_to_Sprint_Lfoot.M_Neutral_Transition_Run_to_Sprint_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 16,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_F_B_Lfoot.M_Neutral_Run_Pivot_F_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 17,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_F_B_Rfoot.M_Neutral_Run_Pivot_F_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 18,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_LL_RL_Lfoot.M_Neutral_Run_Pivot_LL_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 19,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_LL_RL_Rfoot.M_Neutral_Run_Pivot_LL_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 20,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_RR_LR_Lfoot.M_Neutral_Run_Pivot_RR_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 21,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_RR_LR_Rfoot.M_Neutral_Run_Pivot_RR_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 22,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_LR_RR_Rfoot.M_Neutral_Run_Pivot_LR_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 23,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LL_F_Lfoot.M_Neutral_Run_Box_LL_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 24,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LL_F_Rfoot.M_Neutral_Run_Box_LL_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 25,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LR_F_Lfoot.M_Neutral_Run_Box_LR_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 26,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LR_F_Rfoot.M_Neutral_Run_Box_LR_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 27,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RL_F_Lfoot.M_Neutral_Run_Box_RL_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 28,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RL_F_Rfoot.M_Neutral_Run_Box_RL_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 29,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RR_F_Lfoot.M_Neutral_Run_Box_RR_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 30,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RR_F_Rfoot.M_Neutral_Run_Box_RR_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 31,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RL_B_Lfoot.M_Neutral_Run_Box_RL_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 32,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LL_B_Lfoot.M_Neutral_Run_Box_LL_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 33,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LL_B_Rfoot.M_Neutral_Run_Box_LL_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 34,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_LL_Lfoot.M_Neutral_Run_Box_B_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 35,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_LL_Rfoot.M_Neutral_Run_Box_B_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 36,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_LR_Lfoot.M_Neutral_Run_Box_B_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 37,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_LR_Rfoot.M_Neutral_Run_Box_B_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 38,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_RL_Lfoot.M_Neutral_Run_Box_B_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 39,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_RL_Rfoot.M_Neutral_Run_Box_B_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 40,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_LL_Lfoot.M_Neutral_Run_Box_F_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 41,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_LL_Rfoot.M_Neutral_Run_Box_F_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 42,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_LR_Lfoot.M_Neutral_Run_Box_F_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 43,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_LR_Rfoot.M_Neutral_Run_Box_F_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 44,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_RL_Lfoot.M_Neutral_Run_Box_F_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 45,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_RL_Rfoot.M_Neutral_Run_Box_F_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 46,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_RR_Lfoot.M_Neutral_Run_Box_F_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 47,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_F_RR_Rfoot.M_Neutral_Run_Box_F_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 48,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LR_B_Lfoot.M_Neutral_Run_Box_LR_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 49,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_LR_B_Rfoot.M_Neutral_Run_Box_LR_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 50,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RL_B_Rfoot.M_Neutral_Run_Box_RL_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 51,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RR_B_Lfoot.M_Neutral_Run_Box_RR_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 52,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_RL_LL_Lfoot.M_Neutral_Run_Pivot_RL_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 53,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_RL_LL_Rfoot.M_Neutral_Run_Pivot_RL_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 54,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_B_Rfoot.M_Neutral_Run_Start_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 55,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_B_Lfoot.M_Neutral_Run_Start_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 56,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_LR_Lfoot.M_Neutral_Run_Start_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 57,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_LR_Rfoot.M_Neutral_Run_Start_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 58,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_RL_Lfoot.M_Neutral_Run_Start_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 59,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_RL_Rfoot.M_Neutral_Run_Start_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 60,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_RR_Lfoot.M_Neutral_Run_Start_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 61,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_RR_Rfoot.M_Neutral_Run_Start_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 62,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_F_Lfoot.M_Neutral_Run_Stop_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 63,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_LL_Lfoot.M_Neutral_Run_Stop_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 64,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_LL_Rfoot.M_Neutral_Run_Stop_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 65,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_RL_Lfoot.M_Neutral_Run_Stop_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 66,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_RL_Rfoot.M_Neutral_Run_Stop_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 67,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_B_Lfoot.M_Neutral_Run_Stop_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 68,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_B_Rfoot.M_Neutral_Run_Stop_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 69,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_RR_B_Rfoot.M_Neutral_Run_Box_RR_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 70,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_LR_RR_Lfoot.M_Neutral_Run_Pivot_LR_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 71,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Run_Light_Lfoot.M_Neutral_Jump_F_Land_Run_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 72,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Run_Light_Rfoot.M_Neutral_Jump_F_Land_Run_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 73,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Run_Heavy_Lfoot.M_Neutral_Jump_F_Land_Run_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 74,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Run_Heavy_Rfoot.M_Neutral_Jump_F_Land_Run_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 75,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Run_Light.M_Neutral_Jump_B_Land_Run_Light",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 76,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_B_F_Lfoot.M_Neutral_Run_Pivot_B_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 77,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Pivot_B_F_Rfoot.M_Neutral_Run_Pivot_B_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 78,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Run_Heavy.M_Neutral_Jump_LL_Land_Run_Heavy",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 79,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Run_Light.M_Neutral_Jump_LL_Land_Run_Light",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 80,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Run_Heavy.M_Neutral_Jump_RL_Land_Run_Heavy",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 81,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Run_Light.M_Neutral_Jump_RL_Land_Run_Light",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 82,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_RR_Lfoot.M_Neutral_Run_Box_B_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 83,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Box_B_RR_Rfoot.M_Neutral_Run_Box_B_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 84,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Run_Heavy.M_Neutral_Jump_B_Land_Run_Heavy",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 85,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_run_F_Lfoot.M_Neutral_Traversal_Hurdle_1_0_run_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 86,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_run_F_Rfoot.M_Neutral_Traversal_Hurdle_1_0_run_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 87,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Lfoot.M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 88,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Rfoot.M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 89,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/M_Neutral_Traversal_Mantle_1_0_run_F_Lfoot.M_Neutral_Traversal_Mantle_1_0_run_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 90,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/M_Neutral_Traversal_Mantle_1_0_run_F_Rfoot.M_Neutral_Traversal_Mantle_1_0_run_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 91,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_L_135_Rfoot.M_Neutral_Run_Turn_L_135_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 92,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_R_135_Lfoot.M_Neutral_Run_Turn_R_135_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 93,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_L_090_Lfoot.M_Neutral_Run_Turn_L_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 94,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_B_Lfoot.M_Neutral_Walk_Stop_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 95,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_B_Rfoot.M_Neutral_Walk_Stop_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 96,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_F_Lfoot.M_Neutral_Walk_Stop_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 97,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_F_Rfoot.M_Neutral_Walk_Stop_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 98,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_LL_Lfoot.M_Neutral_Walk_Stop_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 99,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_LL_Rfoot.M_Neutral_Walk_Stop_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 100,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_RL_Lfoot.M_Neutral_Walk_Stop_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 101,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_RL_Rfoot.M_Neutral_Walk_Stop_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 102,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_RR_Lfoot.M_Neutral_Walk_Stop_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 103,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_RR_Rfoot.M_Neutral_Walk_Stop_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 104,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_LR_Rfoot.M_Neutral_Walk_Stop_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 105,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Stop_LR_Lfoot.M_Neutral_Walk_Stop_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 106,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_RR_Lfoot.M_Neutral_Run_Stop_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 107,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_RR_Rfoot.M_Neutral_Run_Stop_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 108,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_LR_Lfoot.M_Neutral_Run_Stop_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 109,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_LR_Rfoot.M_Neutral_Run_Stop_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 110,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Reface_Start_F_L_090.M_Neutral_Run_Reface_Start_F_L_090",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 111,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Reface_Start_F_L_180.M_Neutral_Run_Reface_Start_F_L_180",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 112,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Reface_Start_F_R_090.M_Neutral_Run_Reface_Start_F_R_090",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 113,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_B_F_Lfoot.M_Neutral_Walk_Pivot_B_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 114,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_B_F_Rfoot.M_Neutral_Walk_Pivot_B_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 115,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Reface_Start_F_R_180.M_Neutral_Run_Reface_Start_F_R_180",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 116,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LL_F_Lfoot.M_Neutral_Walk_Box_LL_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 117,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LL_F_Rfoot.M_Neutral_Walk_Box_LL_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 118,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LR_F_Lfoot.M_Neutral_Walk_Box_LR_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 119,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LR_F_Rfoot.M_Neutral_Walk_Box_LR_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 120,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RL_F_Lfoot.M_Neutral_Walk_Box_RL_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 121,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RL_F_Rfoot.M_Neutral_Walk_Box_RL_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 122,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RR_F_Lfoot.M_Neutral_Walk_Box_RR_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 123,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RR_F_Rfoot.M_Neutral_Walk_Box_RR_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 124,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LL_B_Lfoot.M_Neutral_Walk_Box_LL_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 125,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LL_B_Rfoot.M_Neutral_Walk_Box_LL_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 126,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LR_B_Lfoot.M_Neutral_Walk_Box_LR_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 127,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_LR_B_Rfoot.M_Neutral_Walk_Box_LR_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 128,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RL_B_Lfoot.M_Neutral_Walk_Box_RL_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 129,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RL_B_Rfoot.M_Neutral_Walk_Box_RL_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 130,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RR_B_Lfoot.M_Neutral_Walk_Box_RR_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 131,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_RR_B_Rfoot.M_Neutral_Walk_Box_RR_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 132,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_LL_Lfoot.M_Neutral_Walk_Box_B_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 133,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_LL_Rfoot.M_Neutral_Walk_Box_B_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 134,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_LR_Lfoot.M_Neutral_Walk_Box_B_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 135,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_LR_Rfoot.M_Neutral_Walk_Box_B_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 136,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_RL_Lfoot.M_Neutral_Walk_Box_B_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 137,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_RL_Rfoot.M_Neutral_Walk_Box_B_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 138,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_RR_Lfoot.M_Neutral_Walk_Box_B_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 139,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_B_RR_Rfoot.M_Neutral_Walk_Box_B_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 140,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_LL_Rfoot.M_Neutral_Walk_Box_F_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 141,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Walk_Light_Lfoot.M_Neutral_Jump_F_Land_Walk_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 142,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Walk_Heavy_Rfoot.M_Neutral_Jump_F_Land_Walk_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 143,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Walk_Heavy_Lfoot.M_Neutral_Jump_F_Land_Walk_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 144,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Walk_Light_Rfoot.M_Neutral_Jump_F_Land_Walk_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 145,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Walk_Heavy.M_Neutral_Jump_B_Land_Walk_Heavy",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 146,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Walk_Light.M_Neutral_Jump_B_Land_Walk_Light",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 147,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Walk_Heavy.M_Neutral_Jump_LL_Land_Walk_Heavy",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 148,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Walk_Light.M_Neutral_Jump_LL_Land_Walk_Light",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 149,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Walk_Heavy.M_Neutral_Jump_RL_Land_Walk_Heavy",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 150,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Walk_Light.M_Neutral_Jump_RL_Land_Walk_Light",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 151,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_LL_RL_Lfoot.M_Neutral_Walk_Pivot_LL_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 152,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_LL_RL_Rfoot.M_Neutral_Walk_Pivot_LL_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 153,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_LR_RR_Lfoot.M_Neutral_Walk_Pivot_LR_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 154,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_LR_RR_Rfoot.M_Neutral_Walk_Pivot_LR_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 155,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_RL_LL_Lfoot.M_Neutral_Walk_Pivot_RL_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 156,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_RL_LL_Rfoot.M_Neutral_Walk_Pivot_RL_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 157,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_RR_LR_Rfoot.M_Neutral_Walk_Pivot_RR_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 158,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_RR_LR_Lfoot.M_Neutral_Walk_Pivot_RR_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 159,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_LR_Lfoot.M_Neutral_Walk_Start_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 160,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_RL_Lfoot.M_Neutral_Walk_Start_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 161,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_RL_Rfoot.M_Neutral_Walk_Start_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 162,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_walk_F_Lfoot.M_Neutral_Traversal_Hurdle_1_0_walk_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 163,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_walk_F_Rfoot.M_Neutral_Traversal_Hurdle_1_0_walk_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 164,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Lfoot.M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 165,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/M_Neutral_Traversal_Mantle_1_0_walk_F_Lfoot.M_Neutral_Traversal_Mantle_1_0_walk_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 166,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/M_Neutral_Traversal_Mantle_1_0_walk_F_Rfoot.M_Neutral_Traversal_Mantle_1_0_walk_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 167,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_RR_Rfoot.M_Neutral_Walk_Start_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 168,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_RR_Lfoot.M_Neutral_Walk_Start_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 169,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_LR_Rfoot.M_Neutral_Walk_Start_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 170,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_LL_Rfoot.M_Neutral_Walk_Start_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 171,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Start_LL_Lfoot.M_Neutral_Walk_Start_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 172,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Rfoot.M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 173,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Stand_Light_Lfoot.M_Neutral_Jump_F_Land_Stand_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 174,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Stand_Light_Rfoot.M_Neutral_Jump_F_Land_Stand_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 175,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Stand_Light_Rfoot.M_Neutral_Jump_B_Land_Stand_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 176,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Stand_Light_Lfoot.M_Neutral_Jump_B_Land_Stand_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 177,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Stand_Light_Lfoot.M_Neutral_Jump_LL_Land_Stand_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 178,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Stand_Light_Rfoot.M_Neutral_Jump_LL_Land_Stand_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 179,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Stand_Light_Lfoot.M_Neutral_Jump_RL_Land_Stand_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 180,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Stand_Light_Rfoot.M_Neutral_Jump_RL_Land_Stand_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 181,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Stand_Heavy_Lfoot.M_Neutral_Jump_F_Land_Stand_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 182,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Stand_Heavy_Rfoot.M_Neutral_Jump_F_Land_Stand_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 183,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Stand_Heavy_Lfoot.M_Neutral_Jump_LL_Land_Stand_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 184,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Stand_Heavy_Lfoot.M_Neutral_Jump_RL_Land_Stand_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 185,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Stand_Heavy_Lfoot.M_Neutral_Jump_B_Land_Stand_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 186,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Land_Stand_Heavy_Rfoot.M_Neutral_Jump_B_Land_Stand_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 187,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Start_Walk_Lfoot.M_Neutral_Jump_F_Start_Walk_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 188,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Start_Walk_Rfoot.M_Neutral_Jump_F_Start_Walk_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 189,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Land_Stand_Heavy_Rfoot.M_Neutral_Jump_LL_Land_Stand_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 190,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Land_Stand_Heavy_Rfoot.M_Neutral_Jump_RL_Land_Stand_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 191,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Start_Run_Lfoot.M_Neutral_Jump_F_Start_Run_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 192,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Start_Run_Rfoot.M_Neutral_Jump_F_Start_Run_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 193,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Start_Sprint_Lfoot.M_Neutral_Jump_F_Start_Sprint_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 194,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Start_Sprint_Rfoot.M_Neutral_Jump_F_Start_Sprint_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 195,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Off_Run_Lfoot.M_Neutral_Jump_F_Off_Run_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 196,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Off_Run_Rfoot.M_Neutral_Jump_F_Off_Run_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 197,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Off_Walk_Lfoot.M_Neutral_Jump_F_Off_Walk_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 198,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Off_Walk_Rfoot.M_Neutral_Jump_F_Off_Walk_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 199,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_LR_Lfoot.M_Neutral_Walk_Box_F_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 200,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_LL_Lfoot.M_Neutral_Walk_Box_F_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 201,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_LR_Rfoot.M_Neutral_Walk_Box_F_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 202,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Start_Rfoot.M_Neutral_Jump_B_Start_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 203,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Start_Lfoot.M_Neutral_Jump_LL_Start_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 204,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_LL_Start_Rfoot.M_Neutral_Jump_LL_Start_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 205,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Start_Lfoot.M_Neutral_Jump_RL_Start_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 206,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_B_F_Lfoot.M_Neutral_Crouch_Pivot_B_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 207,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_F_B_Lfoot.M_Neutral_Crouch_Pivot_F_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 208,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_F_B_Rfoot.M_Neutral_Crouch_Pivot_F_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 209,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_LL_RL_Lfoot.M_Neutral_Crouch_Pivot_LL_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 210,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_LL_RL_Rfoot.M_Neutral_Crouch_Pivot_LL_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 211,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_LR_RR_Lfoot.M_Neutral_Crouch_Pivot_LR_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 212,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_LR_RR_Rfoot.M_Neutral_Crouch_Pivot_LR_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 213,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_RL_LL_Lfoot.M_Neutral_Crouch_Pivot_RL_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 214,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_RL_LL_Rfoot.M_Neutral_Crouch_Pivot_RL_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 215,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_B_Start_Lfoot.M_Neutral_Jump_B_Start_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 216,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_RL_Start_Rfoot.M_Neutral_Jump_RL_Start_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 217,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_RR_LR_Lfoot.M_Neutral_Crouch_Pivot_RR_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 218,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_RR_LR_Rfoot.M_Neutral_Crouch_Pivot_RR_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 219,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_B_Lfoot.M_Neutral_Crouch_Stop_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 220,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_B_Rfoot.M_Neutral_Crouch_Stop_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 221,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_F_Lfoot.M_Neutral_Crouch_Stop_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 222,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_F_Rfoot.M_Neutral_Crouch_Stop_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 223,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_LL_Lfoot.M_Neutral_Crouch_Stop_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 224,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_LL_Rfoot.M_Neutral_Crouch_Stop_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 225,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_LR_Lfoot.M_Neutral_Crouch_Stop_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 226,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_LR_Rfoot.M_Neutral_Crouch_Stop_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 227,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_RL_Lfoot.M_Neutral_Crouch_Stop_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 228,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_RL_Rfoot.M_Neutral_Crouch_Stop_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 229,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_RR_Lfoot.M_Neutral_Crouch_Stop_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 230,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Stop_RR_Rfoot.M_Neutral_Crouch_Stop_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 231,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Pivot_B_F_Rfoot.M_Neutral_Crouch_Pivot_B_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 232,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_L_090_Rfoot.M_Neutral_Run_Turn_L_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 233,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_R_090_Lfoot.M_Neutral_Run_Turn_R_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 234,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_R_180_Lfoot.M_Neutral_Run_Turn_R_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 235,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Turn_L_180_Rfoot.M_Neutral_Run_Turn_L_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 236,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_F_B_Lfoot.M_Neutral_Walk_Pivot_F_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 237,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Pivot_F_B_Rfoot.M_Neutral_Walk_Pivot_F_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 238,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_LL_Lfoot.M_Neutral_Crouch_Box_B_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 239,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_LL_Rfoot.M_Neutral_Crouch_Box_B_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 240,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_LR_Lfoot.M_Neutral_Crouch_Box_B_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 241,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_LR_Rfoot.M_Neutral_Crouch_Box_B_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 242,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RL_Lfoot.M_Neutral_Crouch_Box_B_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 243,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RL_Rfoot.M_Neutral_Crouch_Box_B_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 244,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RR_Lfoot.M_Neutral_Crouch_Box_B_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 245,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_B_RR_Rfoot.M_Neutral_Crouch_Box_B_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 246,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_LL_Lfoot.M_Neutral_Crouch_Box_F_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 247,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_LL_Rfoot.M_Neutral_Crouch_Box_F_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 248,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_LR_Lfoot.M_Neutral_Crouch_Box_F_LR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 249,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_LR_Rfoot.M_Neutral_Crouch_Box_F_LR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 250,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_RL_Lfoot.M_Neutral_Crouch_Box_F_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 251,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_RL_Rfoot.M_Neutral_Crouch_Box_F_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 252,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_RR_Lfoot.M_Neutral_Crouch_Box_F_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 253,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_F_RR_Rfoot.M_Neutral_Crouch_Box_F_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 254,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LL_B_Lfoot.M_Neutral_Crouch_Box_LL_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 255,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LL_B_Rfoot.M_Neutral_Crouch_Box_LL_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 256,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LL_F_Lfoot.M_Neutral_Crouch_Box_LL_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 257,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LL_F_Rfoot.M_Neutral_Crouch_Box_LL_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 258,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LR_B_Lfoot.M_Neutral_Crouch_Box_LR_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 259,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LR_B_Rfoot.M_Neutral_Crouch_Box_LR_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 260,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LR_F_Lfoot.M_Neutral_Crouch_Box_LR_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 261,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_LR_F_Rfoot.M_Neutral_Crouch_Box_LR_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 262,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RL_B_Lfoot.M_Neutral_Crouch_Box_RL_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 263,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RL_B_Rfoot.M_Neutral_Crouch_Box_RL_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 264,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RL_F_Lfoot.M_Neutral_Crouch_Box_RL_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 265,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RL_F_Rfoot.M_Neutral_Crouch_Box_RL_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 266,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RR_B_Lfoot.M_Neutral_Crouch_Box_RR_B_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 267,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RR_B_Rfoot.M_Neutral_Crouch_Box_RR_B_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 268,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RR_F_Lfoot.M_Neutral_Crouch_Box_RR_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 269,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Box_RR_F_Rfoot.M_Neutral_Crouch_Box_RR_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 270,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Start_F_Lfoot.M_Neutral_Sprint_Start_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 271,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Start_F_Rfoot.M_Neutral_Sprint_Start_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 272,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Reface_Start_F_L_090.M_Neutral_Sprint_Reface_Start_F_L_090",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 273,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Reface_Start_F_L_180.M_Neutral_Sprint_Reface_Start_F_L_180",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 274,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Reface_Start_F_R_180.M_Neutral_Sprint_Reface_Start_F_R_180",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 275,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_L_090_Lfoot.M_Neutral_Sprint_Turn_L_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 276,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_L_090_Rfoot.M_Neutral_Sprint_Turn_L_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 277,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_L_180_Lfoot.M_Neutral_Sprint_Turn_L_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 278,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Sprint_Heavy_Lfoot.M_Neutral_Jump_F_Land_Sprint_Heavy_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 279,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Sprint_Heavy_Rfoot.M_Neutral_Jump_F_Land_Sprint_Heavy_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 280,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Sprint_Light_Lfoot.M_Neutral_Jump_F_Land_Sprint_Light_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 281,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Jump/M_Neutral_Jump_F_Land_Sprint_Light_Rfoot.M_Neutral_Jump_F_Land_Sprint_Light_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 282,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_R_090_Lfoot.M_Neutral_Sprint_Turn_R_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 283,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_R_090_Rfoot.M_Neutral_Sprint_Turn_R_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 284,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_L_180_Rfoot.M_Neutral_Sprint_Turn_L_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 285,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_R_180_Lfoot.M_Neutral_Sprint_Turn_R_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 286,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Turn_R_180_Rfoot.M_Neutral_Sprint_Turn_R_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 287,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Reface_Start_F_R_090.M_Neutral_Sprint_Reface_Start_F_R_090",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 288,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Stop_F_Rfoot.M_Neutral_Run_Stop_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 289,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_LL_Rfoot.M_Neutral_Run_Start_LL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 290,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Run/M_Neutral_Run_Start_LL_Lfoot.M_Neutral_Run_Start_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 291,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_L_090_Rfoot.M_Neutral_Crouch_Turn_L_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 292,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_L_090_Lfoot.M_Neutral_Crouch_Turn_L_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 293,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_L_180_Rfoot.M_Neutral_Crouch_Turn_L_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 294,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_L_180_Lfoot.M_Neutral_Crouch_Turn_L_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 295,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Stop_F_Lfoot.M_Neutral_Sprint_Stop_F_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 296,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Sprint/M_Neutral_Sprint_Stop_F_Rfoot.M_Neutral_Sprint_Stop_F_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 297,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_R_180_Lfoot.M_Neutral_Crouch_Turn_R_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 298,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_R_090_Lfoot.M_Neutral_Crouch_Turn_R_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 299,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_R_090_Rfoot.M_Neutral_Crouch_Turn_R_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 300,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Crouch_Turn_R_180_Rfoot.M_Neutral_Crouch_Turn_R_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 301,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_R_180_Lfoot.M_Neutral_Walk_Turn_R_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 302,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_RL_Lfoot.M_Neutral_Walk_Box_F_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 303,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_RL_Rfoot.M_Neutral_Walk_Box_F_RL_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 304,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_RR_Lfoot.M_Neutral_Walk_Box_F_RR_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 305,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Box_F_RR_Rfoot.M_Neutral_Walk_Box_F_RR_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 306,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_L_090_Rfoot.M_Neutral_Walk_Turn_L_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 307,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Reface_Start_F_L_180_backstep.M_Neutral_Walk_Reface_Start_F_L_180_backstep",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 308,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_R_090_Lfoot.M_Neutral_Walk_Turn_R_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 309,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_R_090_Rfoot.M_Neutral_Walk_Turn_R_090_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 310,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_R_180_Rfoot.M_Neutral_Walk_Turn_R_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 311,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Reface_Start_F_R_180_backstep.M_Neutral_Walk_Reface_Start_F_R_180_backstep",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 312,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_L_180_Lfoot.M_Neutral_Walk_Turn_L_180_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 313,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_L_090_Lfoot.M_Neutral_Walk_Turn_L_090_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 314,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Turn_L_180_Rfoot.M_Neutral_Walk_Turn_L_180_Rfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      }
+    ],
+    "schema": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSS_SM_CMC_LocoTransitions.PSS_SM_CMC_LocoTransitions",
+    "sample_rate": 30,
+    "schema_cardinality": 33,
+    "index_built": true,
+    "total_pose_count": 2211,
+    "is_valid": true,
+    "search_mode": "BruteForce",
+    "continuing_pose_cost_bias": -0.009999999776482582,
+    "base_cost_bias": 0,
+    "looping_cost_bias": -0.004999999888241291
+  }
+}

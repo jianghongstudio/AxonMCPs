@@ -1,0 +1,11 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_blueprint_info",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig"
+  },
+  "result": {
+    "success": true,
+    "raw_text": "Blueprint not found: /Game/Blueprints/Cameras/CHT_CameraRig"
+  }
+}

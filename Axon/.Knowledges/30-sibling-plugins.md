@@ -4,7 +4,7 @@
 > **何时阅读**：查「某个能力在哪个插件」、扩新 sibling、或梳理 3C 工具面时。  
 > **相关源码**：`Plugins/AxonMCPs/*/Source/**`、各 `*.uplugin`  
 > **相关文档**：[01-architecture.md](01-architecture.md)、[50-extension-cookbook.md](50-extension-cookbook.md)、[51-3c-workflows.md](51-3c-workflows.md)  
-> **最后更新**：2026-08-01
+> **最后更新**：2026-08-04
 
 ## 目录约定
 
@@ -18,6 +18,9 @@ Plugins/AxonMCPs/
   AxonGAS/
   AxonConfig/
   AxonRewindDebugger/
+  AxonKnowledgeLib/     ← 共享 KB Corpus/extract/scaffold（knowledge）
+  AxonGaspKB/           ← 离线 GASP 知识语料（gasp_kb）
+  Axon{Project}KB/      ← knowledge.scaffold_kb_plugin 生成的按项目 KB
   <YourSibling>/        ← axon_create_extension 默认落点
 ```
 
@@ -36,6 +39,9 @@ Plugins/AxonMCPs/
 | `gas` / `ui` | AxonGAS | ~135 + alias | 能力与输入绑定 |
 | `config` | AxonConfig | ~7 | 设置/INI |
 | `rewind_debugger` | AxonRewindDebugger | ~15 | 回放采样（含 CameraBP） |
+| `knowledge` | AxonKnowledgeLib | 2 | KB 脚手架（scaffold_kb_plugin / preview_kb_names） |
+| `gasp_kb` | AxonGaspKB | ~11 | 离线 GASP 知识检索 + extract_*（不依赖 Content） |
+| `{project}_kb` | Axon{Project}KB | ~11 | 按项目蒸馏的独立知识包 |
 
 数量为源码静态扫描约数，以运行时 `axon_discover` 为准。
 
@@ -44,15 +50,19 @@ Plugins/AxonMCPs/
 ### AxonSource
 
 - C++ / Shader 源码 SQLite 索引；MCP namespace `source`（`source_query`）。
-- 含 `read_source`、`search_source`、`get_signature`、`trigger_reindex` 等 18 个 Action。
+- 含 `read_source`、`search_source`、`get_signature`、`find_callers`、`trigger_reindex` 等 18 个 Action。
 - DB 默认：`Plugins/AxonMCPs/AxonSource/Saved/EngineSource.db`。
+- **启动不自动全量索引**；首次用前 `trigger_reindex`。Live Coding 后可 project 增量。
+- 专页：[32-index-and-source.md](32-index-and-source.md)；插件 README：[`../AxonSource/README.md`](../AxonSource/README.md)。
 
 ### AxonIndex
 
 - 项目资产深索引（BP / Material / GAS / Niagara 等）；MCP namespace `project`（`project_query`）。
 - 含 `search`、`find_references`、`get_asset_details`、`refresh_assets` 等 11 个 Action。
 - DB 默认：`Plugins/AxonMCPs/AxonIndex/Saved/ProjectIndex.db`。
+- **编辑器启动后自动**全量/增量索引（Asset Registry ready）。
 - 生成资产清理沙箱：`/Game/Tests/Axon/`。
+- 专页：[32-index-and-source.md](32-index-and-source.md)；插件 README：[`../AxonIndex/README.md`](../AxonIndex/README.md)。
 
 ### AxonAnimation
 
@@ -79,6 +89,22 @@ Plugins/AxonMCPs/
 ### AxonRewindDebugger
 
 - 录制会话、Anim track 采样、`sample_camera_graph_result` / `sample_camera_watches`（可选依赖 CameraBlueprint）。
+
+### AxonKnowledgeLib
+
+- **无业务语料**；提供 `FAxonKnowledgeCorpus`、`FAxonKnowledgeRegistration::RegisterAll`、extract 写 `_raw`、以及 meta namespace `knowledge`。
+- `knowledge.scaffold_kb_plugin`：从当前工程名推导 `Axon{Project}KB` / `{snake}_kb` 并生成独立 sibling（含 `Knowledge/` 模板）。
+- Agent 触发：`axon_guide` → **Distill current project**（中文「蒸馏本项目」）。
+- 专页：[31-knowledge-distill.md](31-knowledge-distill.md)；插件 README：[`../AxonKnowledgeLib/README.md`](../AxonKnowledgeLib/README.md)。
+
+### AxonGaspKB
+
+- 打包 Epic Game Animation Sample（GASP）蒸馏语料于 `Knowledge/*.md`；MCP namespace `gasp_kb`（`gasp_kb_query`）。
+- 薄壳：Startup 调用 `FAxonKnowledgeRegistration::RegisterAll("gasp_kb", "AxonGaspKB")`。
+- Actions：`route` / `search` / `read` / `list_topics` + `extract_*`。
+- **不依赖** GASP Content / PoseSearch 运行时资产；可拷到任意带 Axon 的工程使用。
+- 原始 dump 在 `Knowledge/_raw/`（不进主读路径）。
+- 历史命名保留（不改为 `game_animation_sample_kb`）。
 
 ## 当前缺口
 

@@ -1,0 +1,72 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_graph_summary",
+  "params": {
+    "asset_path": "/Game/Blueprints/SandboxCharacter_CMC_ABP",
+    "graph_name": "Update_Logic"
+  },
+  "result": {
+    "graph_name": "Update_Logic",
+    "nodes": [
+      {
+        "id": "K2Node_FunctionEntry_0",
+        "class": "K2Node_FunctionEntry",
+        "title": "Update_Logic",
+        "exec_targets": [
+          "K2Node_CallFunction_19"
+        ]
+      },
+      {
+        "id": "K2Node_CallFunction_8",
+        "class": "K2Node_CallFunction",
+        "title": "Update_EssentialValues",
+        "exec_targets": [
+          "K2Node_CallFunction_2"
+        ]
+      },
+      {
+        "id": "K2Node_CallFunction_19",
+        "class": "K2Node_CallFunction",
+        "title": "Update_Trajectory",
+        "exec_targets": [
+          "K2Node_CallFunction_8"
+        ]
+      },
+      {
+        "id": "K2Node_CallFunction_2",
+        "class": "K2Node_CallFunction",
+        "title": "Update_States",
+        "exec_targets": [
+          "K2Node_IfThenElse_0"
+        ]
+      },
+      {
+        "id": "K2Node_CallFunction_7",
+        "class": "K2Node_CallFunction",
+        "title": "Update_MovementDirection",
+        "exec_targets": [
+          "K2Node_CallFunction_12"
+        ]
+      },
+      {
+        "id": "K2Node_IfThenElse_0",
+        "class": "K2Node_IfThenElse",
+        "title": "Branch",
+        "exec_targets": [
+          "K2Node_CallFunction_7"
+        ]
+      },
+      {
+        "id": "K2Node_VariableGet_6",
+        "class": "K2Node_VariableGet",
+        "title": "Get UseExperimentalStateMachine"
+      },
+      {
+        "id": "K2Node_CallFunction_12",
+        "class": "K2Node_CallFunction",
+        "title": "Update_TargetRotation"
+      }
+    ],
+    "node_count": 8
+  }
+}

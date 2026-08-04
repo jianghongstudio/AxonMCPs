@@ -1,0 +1,334 @@
+{
+  "tool": "chooser_query",
+  "action": "inspect_chooser",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig",
+    "include_cells": true,
+    "recursive": true
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig.CHT_CameraRig",
+    "result_type": "ObjectResult",
+    "result_type_value": 0,
+    "result_class": "/Script/GameplayCameras.CameraRigAsset",
+    "context_data": [
+      {
+        "index": 0,
+        "struct_type": "ContextObjectTypeStruct",
+        "kind": "struct",
+        "struct": "/Game/Blueprints/Data/S_CharacterPropertiesForCamera.S_CharacterPropertiesForCamera"
+      }
+    ],
+    "row_count": 11,
+    "column_count": 2,
+    "column_types": [
+      "EnumColumn",
+      "EnumColumn"
+    ],
+    "columns": [
+      {
+        "index": 0,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "CameraStyle_9_3AB8E4E240527073591DBC8A5CC26A59"
+          ],
+          "display": "CameraStyle_9_3AB8E4E240527073591DBC8A5CC26A59"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 5,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 7,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 8,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 9,
+            "value": 3,
+            "comparison": 0
+          },
+          {
+            "row": 10,
+            "value": 3,
+            "comparison": 2
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "CameraMode_6_A59B5561435DC3553D7444B49C47015A"
+          ],
+          "display": "CameraMode_6_A59B5561435DC3553D7444B49C47015A"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 5,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 7,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 8,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 9,
+            "value": 3,
+            "comparison": 1
+          },
+          {
+            "row": 10,
+            "value": 3,
+            "comparison": 0
+          }
+        ]
+      }
+    ],
+    "referenced_assets": [
+      {
+        "row": 0,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Freecam.CameraRig_Medium_Freecam",
+        "is_null": false
+      },
+      {
+        "row": 1,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Strafe.CameraRig_Medium_Strafe",
+        "is_null": false
+      },
+      {
+        "row": 2,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Aim.CameraRig_Medium_Aim",
+        "is_null": false
+      },
+      {
+        "row": 3,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Freecam.CameraRig_Far_Freecam",
+        "is_null": false
+      },
+      {
+        "row": 4,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Strafe.CameraRig_Far_Strafe",
+        "is_null": false
+      },
+      {
+        "row": 5,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Aim.CameraRig_Far_Aim",
+        "is_null": false
+      },
+      {
+        "row": 6,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Freecam.CameraRig_Close_Freecam",
+        "is_null": false
+      },
+      {
+        "row": 7,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Strafe.CameraRig_Close_Strafe",
+        "is_null": false
+      },
+      {
+        "row": 8,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Aim.CameraRig_Close_Aim",
+        "is_null": false
+      },
+      {
+        "row": 9,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_DebugView.CameraRig_DebugView",
+        "is_null": false
+      },
+      {
+        "row": 10,
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_TwinStick.CameraRig_TwinStick",
+        "is_null": false
+      }
+    ],
+    "tree": {
+      "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig.CHT_CameraRig",
+      "fallback": {
+        "struct_type": "AssetChooser",
+        "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Freecam.CameraRig_Medium_Freecam",
+        "is_null": false,
+        "kind": "asset"
+      },
+      "row_count": 11,
+      "rows": [
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Freecam.CameraRig_Medium_Freecam",
+          "is_null": false,
+          "kind": "asset",
+          "row": 0
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Strafe.CameraRig_Medium_Strafe",
+          "is_null": false,
+          "kind": "asset",
+          "row": 1
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Aim.CameraRig_Medium_Aim",
+          "is_null": false,
+          "kind": "asset",
+          "row": 2
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Freecam.CameraRig_Far_Freecam",
+          "is_null": false,
+          "kind": "asset",
+          "row": 3
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Strafe.CameraRig_Far_Strafe",
+          "is_null": false,
+          "kind": "asset",
+          "row": 4
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Aim.CameraRig_Far_Aim",
+          "is_null": false,
+          "kind": "asset",
+          "row": 5
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Freecam.CameraRig_Close_Freecam",
+          "is_null": false,
+          "kind": "asset",
+          "row": 6
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Strafe.CameraRig_Close_Strafe",
+          "is_null": false,
+          "kind": "asset",
+          "row": 7
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Aim.CameraRig_Close_Aim",
+          "is_null": false,
+          "kind": "asset",
+          "row": 8
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_DebugView.CameraRig_DebugView",
+          "is_null": false,
+          "kind": "asset",
+          "row": 9
+        },
+        {
+          "struct_type": "AssetChooser",
+          "asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_TwinStick.CameraRig_TwinStick",
+          "is_null": false,
+          "kind": "asset",
+          "row": 10
+        }
+      ],
+      "output_columns": [],
+      "nested_objects": 1,
+      "child_tables": [
+        {
+          "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig.CHT_CameraRig",
+          "cycle": "/Game/Blueprints/Cameras/CHT_CameraRig.CHT_CameraRig",
+          "nested_index": 0
+        }
+      ]
+    },
+    "compiled": true
+  }
+}

@@ -1,0 +1,355 @@
+{
+  "tool": "animation_query",
+  "action": "get_pose_search_database",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/PSD_Traversal"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/PSD_Traversal",
+    "schema": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Traversal.PSS_Traversal",
+    "sequence_count": 34,
+    "count": 34,
+    "sequences": [
+      {
+        "index": 0,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Vault/AM_M_Neutral_Traversal_Vault_1_0_walk_F_Rfoot.AM_M_Neutral_Traversal_Vault_1_0_walk_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.5068387985229492,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 1,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Vault/AM_M_Neutral_Traversal_Vault_1_0_stand_F_Lfoot.AM_M_Neutral_Traversal_Vault_1_0_stand_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.08455472439527512,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 2,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Vault/AM_M_Neutral_Traversal_Vault_1_0_run_F_Lfoot.AM_M_Neutral_Traversal_Vault_1_0_run_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.6140714883804321,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 3,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/AM_M_Neutral_Traversal_Mantle_1_0_walk_F_Rfoot.AM_M_Neutral_Traversal_Mantle_1_0_walk_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.7452375888824463,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 4,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/AM_M_Neutral_Traversal_Mantle_1_0_walk_F_Lfoot.AM_M_Neutral_Traversal_Mantle_1_0_walk_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.36885038018226624,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 5,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/AM_M_Neutral_Traversal_Mantle_1_0_stand_F_Rfoot.AM_M_Neutral_Traversal_Mantle_1_0_stand_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.10060383379459381,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 6,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/AM_M_Neutral_Traversal_Mantle_1_0_stand_F_Lfoot.AM_M_Neutral_Traversal_Mantle_1_0_stand_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.09993016719818115,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 7,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/AM_M_Neutral_Traversal_Mantle_1_0_run_F_Rfoot.AM_M_Neutral_Traversal_Mantle_1_0_run_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.32294049859046936,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 8,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Mantle/AM_M_Neutral_Traversal_Mantle_1_0_run_F_Lfoot.AM_M_Neutral_Traversal_Mantle_1_0_run_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.3292352855205536,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 9,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Rfoot.AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.4994231164455414,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 10,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Lfoot.AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_V2_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.5039559602737427,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 11,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_Rfoot.AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.8422250151634216,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 12,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_Lfoot.AM_M_Neutral_Traversal_Hurdle_1_0_walk_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.7255723476409912,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 13,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_stand_F_V2_Rfoot.AM_M_Neutral_Traversal_Hurdle_1_0_stand_F_V2_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.12106142938137054,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 14,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_stand_F_V2_Lfoot.AM_M_Neutral_Traversal_Hurdle_1_0_stand_F_V2_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.07459110021591187,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 15,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Rfoot.AM_M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.6667546033859253,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 16,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Lfoot.AM_M_Neutral_Traversal_Hurdle_1_0_run_F_V2_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.6652936339378357,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 17,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_run_F_Rfoot.AM_M_Neutral_Traversal_Hurdle_1_0_run_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.4783622622489929,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 18,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Hurdle/AM_M_Neutral_Traversal_Hurdle_1_0_run_F_Lfoot.AM_M_Neutral_Traversal_Hurdle_1_0_run_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.48649269342422485,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 19,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_walk_F_Rfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_walk_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 1.0307763814926147,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 20,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_walk_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_walk_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.953502893447876,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 21,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Rfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.16185161471366882,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 22,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_run_F_Rfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_run_F_Rfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.5090320110321045,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 23,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_run_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_run_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.5090319514274597,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 24,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Hurdle/AM_M_Neutral_Traversal_Catch_Hurdle_high_stand.AM_M_Neutral_Traversal_Catch_Hurdle_high_stand",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8774529695510864,
+        "sampling_range_end": 0.9123769998550415,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 25,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Cliff/AM_M_Neutral_Traversal_Catch_Cliff_high_standF.AM_M_Neutral_Traversal_Catch_Cliff_high_standF",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.9053086042404175,
+        "sampling_range_end": 0.9402328729629517,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 26,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Hurdle/AM_M_Neutral_Traversal_Catch_Hurdle_low_stand.AM_M_Neutral_Traversal_Catch_Hurdle_low_stand",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8319624662399292,
+        "sampling_range_end": 0.8668864965438843,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 27,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Hurdle/AM_M_Neutral_Traversal_Catch_Hurdle_med_stand.AM_M_Neutral_Traversal_Catch_Hurdle_med_stand",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8344243764877319,
+        "sampling_range_end": 0.869348406791687,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 28,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Mantle/AM_M_Neutral_Traversal_Catch_Mantle_med_stand.AM_M_Neutral_Traversal_Catch_Mantle_med_stand",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8392879366874695,
+        "sampling_range_end": 0.8726212978363037,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 29,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Vault/AM_M_Neutral_Traversal_Catch_Vault_high.AM_M_Neutral_Traversal_Catch_Vault_high",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8529610633850098,
+        "sampling_range_end": 0.8864984512329102,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 30,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Vault/AM_M_Neutral_Traversal_Catch_Vault_low.AM_M_Neutral_Traversal_Catch_Vault_low",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8798091411590576,
+        "sampling_range_end": 0.9133461713790894,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 31,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Vault/AM_M_Neutral_Traversal_Catch_Vault_med.AM_M_Neutral_Traversal_Catch_Vault_med",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8678786754608154,
+        "sampling_range_end": 0.9014157056808472,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 32,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Catch/Mantle/AM_M_Neutral_Traversal_Catch_Mantle_low_stand.AM_M_Neutral_Traversal_Catch_Mantle_low_stand",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0.8663146495819092,
+        "sampling_range_end": 0.9000648856163025,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 33,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/Climb/AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot.AM_M_Neutral_Traversal_Climb_Start_2_5_stand_F_Lfoot",
+        "asset_class": "AnimMontage",
+        "enabled": true,
+        "disable_reselection": false,
+        "sampling_range_start": 0,
+        "sampling_range_end": 0.16859929263591766,
+        "mirror_option": "UnmirroredOnly"
+      }
+    ]
+  }
+}

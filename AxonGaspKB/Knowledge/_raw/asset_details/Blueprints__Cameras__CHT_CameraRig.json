@@ -1,0 +1,103 @@
+{
+  "tool": "project_query",
+  "action": "get_asset_details",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig"
+  },
+  "result": {
+    "success": true,
+    "asset": {
+      "package_path": "/Game/Blueprints/Cameras/CHT_CameraRig",
+      "asset_name": "CHT_CameraRig",
+      "asset_class": "ChooserTable",
+      "module_name": "",
+      "description": "",
+      "file_size_bytes": 0,
+      "last_modified": "2026-07-16T08:21:39.000Z",
+      "indexed_at": "2026-08-04 16:24:21",
+      "nodes": [],
+      "variables": [],
+      "references": {
+        "depends_on": [
+          {
+            "path": "/Game/Blueprints/Data/S_CharacterPropertiesForCamera",
+            "class": "UserDefinedStruct",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Aim",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Freecam",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Strafe",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_DebugView",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Aim",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Freecam",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Strafe",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Aim",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Freecam",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Strafe",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/Rigs/CameraRig_TwinStick",
+            "class": "CameraRigAsset",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/E_CameraMode",
+            "class": "UserDefinedEnum",
+            "type": "Hard"
+          },
+          {
+            "path": "/Game/Blueprints/Cameras/E_CameraStyle",
+            "class": "UserDefinedEnum",
+            "type": "Hard"
+          }
+        ],
+        "referenced_by": [
+          {
+            "path": "/Game/Blueprints/Cameras/CameraDirector_SandboxCharacter",
+            "class": "Blueprint",
+            "type": "Hard"
+          }
+        ]
+      }
+    }
+  }
+}

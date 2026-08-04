@@ -1,0 +1,98 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_graph_summary",
+  "params": {
+    "asset_path": "/Game/Blueprints/SandboxCharacter_CMC_ABP",
+    "graph_name": "ShouldTurnInPlace"
+  },
+  "result": {
+    "graph_name": "ShouldTurnInPlace",
+    "nodes": [
+      {
+        "id": "K2Node_FunctionEntry_0",
+        "class": "K2Node_FunctionEntry",
+        "title": "ShouldTurnInPlace",
+        "exec_targets": [
+          "K2Node_FunctionResult_0"
+        ]
+      },
+      {
+        "id": "K2Node_FunctionResult_0",
+        "class": "K2Node_FunctionResult",
+        "title": "Return Node"
+      },
+      {
+        "id": "K2Node_VariableGet_2",
+        "class": "K2Node_VariableGet",
+        "title": "Get"
+      },
+      {
+        "id": "K2Node_CallFunction_4",
+        "class": "K2Node_CallFunction",
+        "title": "Delta (Rotator)"
+      },
+      {
+        "id": "K2Node_CallFunction_6",
+        "class": "K2Node_CallFunction",
+        "title": "Absolute (Float)"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_2",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "AND Boolean"
+      },
+      {
+        "id": "K2Node_PromotableOperator_3",
+        "class": "K2Node_PromotableOperator",
+        "title": "float >= float"
+      },
+      {
+        "id": "K2Node_VariableGet_3",
+        "class": "K2Node_VariableGet",
+        "title": "Get MovementState"
+      },
+      {
+        "id": "K2Node_VariableGet_4",
+        "class": "K2Node_VariableGet",
+        "title": "Get MovementState_LastFrame"
+      },
+      {
+        "id": "K2Node_EnumEquality_0",
+        "class": "K2Node_EnumEquality",
+        "title": "Equal (Enum)"
+      },
+      {
+        "id": "K2Node_EnumEquality_1",
+        "class": "K2Node_EnumEquality",
+        "title": "Equal (Enum)"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_3",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "AND Boolean"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_4",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "OR Boolean"
+      },
+      {
+        "id": "EdGraphNode_Comment_13",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "This function is used to determine if the character is turning in place by checking if the root bone rotation is different from the character’s capsule rotation. For this project, if the rotation is greater than 50 degrees and the character is currently aiming, the character should be turned in place. We also allow turn in places to play if the character has just stopped, which gives us a \"Stick Flick\" behavior.\r\n\r\nTurn in place behavior during the aiming state is still WIP. Additional limits need to be applied to the steering or root offset node to prevent the character from lagging too far behind."
+      },
+      {
+        "id": "K2Node_PropertyAccess_1",
+        "class": "K2Node_PropertyAccess",
+        "title": "Property Access"
+      },
+      {
+        "id": "K2Node_PropertyAccess_2",
+        "class": "K2Node_PropertyAccess",
+        "title": "Property Access"
+      }
+    ],
+    "node_count": 16
+  }
+}

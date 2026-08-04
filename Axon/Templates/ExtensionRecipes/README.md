@@ -4,7 +4,11 @@ Drop optional recipe JSON files here (`*.json`, not starting with `_`).
 
 They are listed by `axon_list_extension_recipes` and can be referenced via
 `recipe_id` on `axon_create_extension` when you choose to maintain shared
-scaffolds outside of chat. **Axon Core ships with zero business-domain recipes.**
+scaffolds outside of chat.
+
+**Knowledge packs are different:** use `knowledge_query` → `scaffold_kb_plugin`
+(see `project_kb_plugin.json` as a documentation pointer only). Do not use
+`axon_create_extension` to build `AxonXxxKB` plugins.
 
 ## Schema (informational)
 

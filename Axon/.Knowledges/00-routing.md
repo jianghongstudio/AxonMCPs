@@ -4,7 +4,7 @@
 > **何时阅读**：不确定该打开哪篇 `.Knowledges` 文档时；接到改造任务后的第二步（第一步是 README 索引）。  
 > **相关源码**：全套件 `Plugins/AxonMCPs/`（本文件不绑定单一路径）  
 > **相关文档**：[README.md](../README.md)、[91-ai-maintenance.md](91-ai-maintenance.md)、[Docs/USER_GUIDE.md](../Docs/USER_GUIDE.md)  
-> **最后更新**：2026-08-01
+> **最后更新**：2026-08-04
 
 ## 使用方式
 
@@ -25,6 +25,9 @@
 | 查 sibling namespace 或扩扩展插件 | [30-sibling-plugins.md](30-sibling-plugins.md) → [50-extension-cookbook.md](50-extension-cookbook.md) | [Docs/SIBLING_PLUGIN_GUIDE.md](../Docs/SIBLING_PLUGIN_GUIDE.md) |
 | 改 `editor.*` Action 面（非 PIE 会话内核） | [40-editor-actions.md](40-editor-actions.md) | [13-pie-sessions.md](13-pie-sessions.md) |
 | 脚手架新 sibling / recipe | [50-extension-cookbook.md](50-extension-cookbook.md) | [Docs/axon_guide.md](../Docs/axon_guide.md) |
+| 蒸馏本项目 / 离线 KB 包 / gasp_kb | [31-knowledge-distill.md](31-knowledge-distill.md) | [30-sibling-plugins.md](30-sibling-plugins.md)、[Docs/USER_GUIDE.md](../Docs/USER_GUIDE.md)、[Docs/axon_guide.md](../Docs/axon_guide.md) |
+| 搜项目资产 / 引用图 / GameplayTag | [32-index-and-source.md](32-index-and-source.md) | [30-sibling-plugins.md](30-sibling-plugins.md) |
+| 查引擎/工程 C++、调用方、include | [32-index-and-source.md](32-index-and-source.md) | [30-sibling-plugins.md](30-sibling-plugins.md) |
 | 编排 3C 验证（角色移动 / 输入 / 相机回放） | [51-3c-workflows.md](51-3c-workflows.md) | [Docs/3C_WORKFLOWS.md](../Docs/3C_WORKFLOWS.md) |
 | 评估风险 / Unity 冲突 / 会话分裂 | [60-known-debt.md](60-known-debt.md) | [90-refactor-log.md](90-refactor-log.md) |
 | 记决策 / 查改造史 | [90-refactor-log.md](90-refactor-log.md) | [60-known-debt.md](60-known-debt.md) |
@@ -45,6 +48,10 @@
 | bulk_fill 无 adapter / dry_run 无报告 | [12-describe-bulk-fill.md](12-describe-bulk-fill.md) | 仅 animation/blueprint/gas 已注册 |
 | Camera 采样为空 | [51-3c-workflows.md](51-3c-workflows.md) | 需 CameraBlueprint + RewindDebugger |
 | 根 `.mcp.json` 连错服务器 | [Docs/USER_GUIDE.md](../Docs/USER_GUIDE.md) | Monolith 9316 vs Axon 9320 |
+| 说「蒸馏」未出 AxonXxxKB | [31-knowledge-distill.md](31-knowledge-distill.md) | 须 `scaffold_kb_plugin` + 编译重启 |
+| `knowledge` / `{ns}_kb` 未知 | [31-knowledge-distill.md](31-knowledge-distill.md)、[30-sibling-plugins.md](30-sibling-plugins.md) | 启用 AxonKnowledgeLib / 对应 KB 插件 |
+| `source` 空索引 / 无符号 | [32-index-and-source.md](32-index-and-source.md) | 先 `trigger_reindex` |
+| `project` 搜不到新资产 | [32-index-and-source.md](32-index-and-source.md) | `refresh_assets` 或等启动增量 |
 
 ## 模块 → 文档速查
 
@@ -53,4 +60,6 @@
 | `Source/AxonCore/` | [10-mcp-protocol.md](10-mcp-protocol.md)、[11-action-registry.md](11-action-registry.md)、[12-describe-bulk-fill.md](12-describe-bulk-fill.md) |
 | `Source/AxonEditor/`（PIE） | [13-pie-sessions.md](13-pie-sessions.md)、[40-editor-actions.md](40-editor-actions.md) |
 | `../AxonAnimation/` 等 sibling | [30-sibling-plugins.md](30-sibling-plugins.md)、[51-3c-workflows.md](51-3c-workflows.md) |
+| `../AxonKnowledgeLib/`、`../AxonGaspKB/`、`../Axon*KB/` | [31-knowledge-distill.md](31-knowledge-distill.md)、[30-sibling-plugins.md](30-sibling-plugins.md) |
+| `../AxonIndex/`、`../AxonSource/` | [32-index-and-source.md](32-index-and-source.md)、[30-sibling-plugins.md](30-sibling-plugins.md) |
 | `Docs/` | 人类文档；Agent 速查 `axon_guide.md` |

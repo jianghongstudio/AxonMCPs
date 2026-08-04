@@ -1,0 +1,38 @@
+{
+  "tool": "project_query",
+  "action": "get_asset_details",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/CHT_TraversalAnims_PoseMatch"
+  },
+  "result": {
+    "success": true,
+    "asset": {
+      "package_path": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/CHT_TraversalAnims_PoseMatch",
+      "asset_name": "CHT_TraversalAnims_PoseMatch",
+      "asset_class": "ObjectRedirector",
+      "module_name": "",
+      "description": "",
+      "file_size_bytes": 0,
+      "last_modified": "2026-07-16T08:21:40.000Z",
+      "indexed_at": "2026-08-04 16:24:21",
+      "nodes": [],
+      "variables": [],
+      "references": {
+        "depends_on": [
+          {
+            "path": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/CHT_TraversalMontages_CMC",
+            "class": "ChooserTable",
+            "type": "Hard"
+          }
+        ],
+        "referenced_by": [
+          {
+            "path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Channels/PSC_DistanceToTraversalObject",
+            "class": "Blueprint",
+            "type": "Hard"
+          }
+        ]
+      }
+    }
+  }
+}

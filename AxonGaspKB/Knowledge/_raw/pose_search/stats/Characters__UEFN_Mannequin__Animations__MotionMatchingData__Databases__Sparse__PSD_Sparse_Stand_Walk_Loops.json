@@ -1,0 +1,113 @@
+{
+  "tool": "animation_query",
+  "action": "get_database_stats",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Sparse/PSD_Sparse_Stand_Walk_Loops"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Sparse/PSD_Sparse_Stand_Walk_Loops",
+    "sequence_count": 11,
+    "count": 11,
+    "normalization_set": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Normalization_Sets/PSN_Sparse_All.PSN_Sparse_All",
+    "entries": [
+      {
+        "index": 0,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_B.M_Neutral_Walk_Loop_B",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 1,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_F.M_Neutral_Walk_Loop_F",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 2,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_LL.M_Neutral_Walk_Loop_LL",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 3,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_RL.M_Neutral_Walk_Loop_RL",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 4,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_BL.M_Neutral_Walk_Loop_BL",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 5,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_BR.M_Neutral_Walk_Loop_BR",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 6,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_FL.M_Neutral_Walk_Loop_FL",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 7,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Loop_FR.M_Neutral_Walk_Loop_FR",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 8,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Shuffle_RR_to_RL_Lfoot.M_Neutral_Walk_Shuffle_RR_to_RL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 9,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Walk_Shuffle_LR_to_LL_Lfoot.M_Neutral_Walk_Shuffle_LR_to_LL_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 10,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Walk/M_Neutral_Transition_Run_to_Walk_Lfoot.M_Neutral_Transition_Run_to_Walk_Lfoot",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      }
+    ],
+    "schema": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Default.PSS_Default",
+    "sample_rate": 30,
+    "schema_cardinality": 30,
+    "index_built": true,
+    "total_pose_count": 1207,
+    "is_valid": true,
+    "search_mode": "PCAKDTree",
+    "continuing_pose_cost_bias": -0.009999999776482582,
+    "base_cost_bias": 0,
+    "looping_cost_bias": -0.004999999888241291
+  }
+}

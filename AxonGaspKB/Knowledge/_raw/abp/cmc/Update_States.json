@@ -1,0 +1,199 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_graph_summary",
+  "params": {
+    "asset_path": "/Game/Blueprints/SandboxCharacter_CMC_ABP",
+    "graph_name": "Update_States"
+  },
+  "result": {
+    "graph_name": "Update_States",
+    "nodes": [
+      {
+        "id": "K2Node_FunctionEntry_0",
+        "class": "K2Node_FunctionEntry",
+        "title": "Update_States",
+        "exec_targets": [
+          "K2Node_ExecutionSequence_0"
+        ]
+      },
+      {
+        "id": "K2Node_ExecutionSequence_0",
+        "class": "K2Node_ExecutionSequence",
+        "title": "Sequence",
+        "exec_targets": [
+          "K2Node_VariableSet_0",
+          "K2Node_VariableSet_10",
+          "K2Node_VariableSet_5",
+          "K2Node_VariableSet_6",
+          "K2Node_VariableSet_11"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_0",
+        "class": "K2Node_VariableSet",
+        "title": "Set MovementMode_LastFrame",
+        "exec_targets": [
+          "K2Node_VariableSet_2"
+        ]
+      },
+      {
+        "id": "K2Node_VariableGet_0",
+        "class": "K2Node_VariableGet",
+        "title": "Get MovementMode"
+      },
+      {
+        "id": "K2Node_VariableSet_2",
+        "class": "K2Node_VariableSet",
+        "title": "Set MovementMode"
+      },
+      {
+        "id": "K2Node_VariableSet_4",
+        "class": "K2Node_VariableSet",
+        "title": "Set MovementState"
+      },
+      {
+        "id": "K2Node_CallFunction_0",
+        "class": "K2Node_CallFunction",
+        "title": "IsMoving"
+      },
+      {
+        "id": "K2Node_IfThenElse_0",
+        "class": "K2Node_IfThenElse",
+        "title": "Branch",
+        "exec_targets": [
+          "K2Node_VariableSet_4",
+          "K2Node_VariableSet_3"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_3",
+        "class": "K2Node_VariableSet",
+        "title": "Set MovementState"
+      },
+      {
+        "id": "K2Node_VariableGet_3",
+        "class": "K2Node_VariableGet",
+        "title": "Get MovementState"
+      },
+      {
+        "id": "K2Node_VariableSet_5",
+        "class": "K2Node_VariableSet",
+        "title": "Set MovementState_LastFrame",
+        "exec_targets": [
+          "K2Node_IfThenElse_0"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_6",
+        "class": "K2Node_VariableSet",
+        "title": "Set Gait_LastFrame",
+        "exec_targets": [
+          "K2Node_VariableSet_8"
+        ]
+      },
+      {
+        "id": "K2Node_VariableGet_4",
+        "class": "K2Node_VariableGet",
+        "title": "Get Gait"
+      },
+      {
+        "id": "K2Node_VariableSet_8",
+        "class": "K2Node_VariableSet",
+        "title": "Set Gait"
+      },
+      {
+        "id": "K2Node_VariableSet_11",
+        "class": "K2Node_VariableSet",
+        "title": "Set Stance_LastFrame",
+        "exec_targets": [
+          "K2Node_VariableSet_13"
+        ]
+      },
+      {
+        "id": "K2Node_VariableGet_7",
+        "class": "K2Node_VariableGet",
+        "title": "Get Stance"
+      },
+      {
+        "id": "K2Node_VariableSet_13",
+        "class": "K2Node_VariableSet",
+        "title": "Set Stance"
+      },
+      {
+        "id": "K2Node_VariableGet_6",
+        "class": "K2Node_VariableGet",
+        "title": "Get RotationMode"
+      },
+      {
+        "id": "K2Node_VariableSet_10",
+        "class": "K2Node_VariableSet",
+        "title": "Set RotationMode_LastFrame",
+        "exec_targets": [
+          "K2Node_VariableSet_15"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_15",
+        "class": "K2Node_VariableSet",
+        "title": "Set RotationMode"
+      },
+      {
+        "id": "EdGraphNode_Comment_4",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Caches the character’s Movement Mode and saves the last frame's value. The Movement Mode Enum is the main mode that the character movement component is in. This mode is saved into a custom Enum with similar names, so that we can map multiple modes into one, and gives us more freedom over the naming."
+      },
+      {
+        "id": "EdGraphNode_Comment_5",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Caches the character's Rotation Mode and saves the last frame's value. The Rotation Mode Enum describes the rotation behavior of the capsule in the character movement component.\r\n\r\nOrientToMovement describes when the character rotates toward the direction of movement (traditional 3rd person action adventure style).\r\n\r\nStrafe describes when the character rotates toward the camera direction (traditional 3rd person shooter style).\r\n"
+      },
+      {
+        "id": "EdGraphNode_Comment_6",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Caches the character’s Movement State and saves the last frame's value. The Movement State Enum describes whether or not the character wants to be moving and playing locomotion animations, or wants to be stopped and playing idle animations. It does not represent whether or not the character currently has a velocity, rather it is calculated using the current and future velocities to determine if the character is trying to move (future velocity does not equal 0), or trying to stop (future velocity equals 0)."
+      },
+      {
+        "id": "EdGraphNode_Comment_8",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Caches the character's Gait and saves the last frame's value. The Gait Enum describes the intended style of locomotion from input, not the current speed. For example, the character could be moving slowly but still be in the Run Gait Enum state."
+      },
+      {
+        "id": "EdGraphNode_Comment_9",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Caches the character Stance and saves the last frame's value. The Stance Enum describes whether the character movement component is in the crouching mode or not."
+      },
+      {
+        "id": "EdGraphNode_Comment_10",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "This function caches all of the important gameplay relevant states that the character is in as well as saves the last frame's value so that we can determine when the value has changed. It saves them into easy to read Enums for convenience, which are primarily used in the Motion Matching Chooser to filter out motion matching databases, so that only motions from the current gameplay state can be selected."
+      },
+      {
+        "id": "K2Node_PropertyAccess_1",
+        "class": "K2Node_PropertyAccess",
+        "title": "Property Access"
+      },
+      {
+        "id": "K2Node_PropertyAccess_2",
+        "class": "K2Node_PropertyAccess",
+        "title": "Property Access"
+      },
+      {
+        "id": "K2Node_PropertyAccess_0",
+        "class": "K2Node_PropertyAccess",
+        "title": "Property Access"
+      },
+      {
+        "id": "K2Node_PropertyAccess_3",
+        "class": "K2Node_PropertyAccess",
+        "title": "Property Access"
+      }
+    ],
+    "node_count": 30
+  }
+}

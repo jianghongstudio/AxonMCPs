@@ -4,7 +4,7 @@
 > **何时阅读**：文档或源码中出现陌生词时。  
 > **相关源码**：全套件  
 > **相关文档**：[01-architecture.md](01-architecture.md)、[Docs/USER_GUIDE.md](../Docs/USER_GUIDE.md)  
-> **最后更新**：2026-08-01
+> **最后更新**：2026-08-04
 
 | 术语 | 定义 |
 |------|------|
@@ -12,6 +12,12 @@
 | **Axon** | 本插件核心（`Axon.uplugin`）：HTTP MCP + Registry；含模块 AxonCore、AxonEditor。 |
 | **AxonMCPs** | `Plugins/AxonMCPs/` 目录：Core + 全部 sibling 的安置约定。 |
 | **Sibling / 扩展插件** | 依赖 Axon、自行 `RegisterAction` 的 Editor 插件（如 AxonAnimation）。 |
+| **项目蒸馏 / Distill** | 把当前工程抽成独立离线 KB 插件（`Axon{Project}KB`）：scaffold → extract `_raw` → Agent 写 `Knowledge/*.md`。 |
+| **KB 插件 / AxonXxxKB** | 仅含某工程蒸馏语料的 sibling；一项目一插件一 namespace；可单独拷贝启停。 |
+| **AxonKnowledgeLib** | 蒸馏机制库（Corpus / RegisterAll / extract / `scaffold_kb_plugin`）；不含业务语料。 |
+| **gasp_kb** | AxonGaspKB 的历史 namespace：Epic GASP 离线知识示例包。 |
+| **AxonIndex / project** | 项目 UAsset 深索引（FTS + 引用图）；MCP `project_query`；启动后自动索引。 |
+| **AxonSource / source** | Engine+Project C++/Shader 符号索引；MCP `source_query`；首次需 `trigger_reindex`。 |
 | **Action** | 注册表内 `(namespace, action)` → handler + ParamSchema；内部执行单位。 |
 | **Namespace** | Action 命名空间（如 `editor`、`animation`、`gas`）；MCP 侧常映射为 `{ns}_query`。 |
 | **MCP 工具名** | 客户端可见名：`axon_discover`、`editor_query` 等；与内部 `namespace.action` 不同。 |

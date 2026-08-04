@@ -1,0 +1,368 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Cameras/CHT_CameraRig",
+    "native_class": "ChooserTable",
+    "parent_class": "ChooserSignature",
+    "properties": [
+      {
+        "name": "RootChooser",
+        "type": "TObjectPtr<UChooserTable>",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": "None"
+      },
+      {
+        "name": "FallbackResult",
+        "type": "FInstancedStruct",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": {
+          "__struct": "/Script/Chooser.AssetChooser",
+          "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Freecam.CameraRig_Medium_Freecam"
+        }
+      },
+      {
+        "name": "ResultsStructs",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": [
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Freecam.CameraRig_Medium_Freecam"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Strafe.CameraRig_Medium_Strafe"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Medium_Aim.CameraRig_Medium_Aim"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Freecam.CameraRig_Far_Freecam"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Strafe.CameraRig_Far_Strafe"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Far_Aim.CameraRig_Far_Aim"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Freecam.CameraRig_Close_Freecam"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Strafe.CameraRig_Close_Strafe"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_Close_Aim.CameraRig_Close_Aim"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_DebugView.CameraRig_DebugView"
+          },
+          {
+            "__struct": "/Script/Chooser.AssetChooser",
+            "Asset": "/Game/Blueprints/Cameras/Rigs/CameraRig_TwinStick.CameraRig_TwinStick"
+          }
+        ]
+      },
+      {
+        "name": "DisabledRows",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      },
+      {
+        "name": "NestedChoosers",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": []
+      },
+      {
+        "name": "NestedObjects",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": [
+          "/Game/Blueprints/Cameras/CHT_CameraRig.CHT_CameraRig"
+        ]
+      },
+      {
+        "name": "ParentTable",
+        "type": "TObjectPtr<UChooserTable>",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": "None"
+      },
+      {
+        "name": "EditorResultsColumnWidth",
+        "type": "float",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": 410
+      },
+      {
+        "name": "Version",
+        "type": "uint32",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": 2
+      },
+      {
+        "name": "CookedResults",
+        "type": "TArray",
+        "category": "",
+        "owner_class": "ChooserTable",
+        "value": []
+      },
+      {
+        "name": "ColumnsStructs",
+        "type": "TArray",
+        "category": "Hidden",
+        "owner_class": "ChooserTable",
+        "value": [
+          {
+            "__struct": "/Script/Chooser.EnumColumn",
+            "InputValue": {
+              "__struct": "/Script/Chooser.EnumContextProperty",
+              "PropertyBindingChain": [],
+              "Binding": {
+                "Enum": "/Game/Blueprints/Cameras/E_CameraStyle.E_CameraStyle",
+                "PropertyBindingChain": [
+                  "CameraStyle_9_3AB8E4E240527073591DBC8A5CC26A59"
+                ],
+                "ContextIndex": 0,
+                "IsBoundToRoot": false,
+                "DisplayName": "CameraStyle"
+              },
+              "Enum": "None"
+            },
+            "DefaultRowValue": {
+              "CompareNotEqual": false,
+              "ValueName": "None",
+              "Comparison": "MatchEqual",
+              "Value": 0
+            },
+            "RowValues": [
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator1",
+                "Comparison": "MatchEqual",
+                "Value": 1
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator1",
+                "Comparison": "MatchEqual",
+                "Value": 1
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator1",
+                "Comparison": "MatchEqual",
+                "Value": 1
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator0",
+                "Comparison": "MatchEqual",
+                "Value": 2
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator0",
+                "Comparison": "MatchEqual",
+                "Value": 2
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator0",
+                "Comparison": "MatchEqual",
+                "Value": 2
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator2",
+                "Comparison": "MatchEqual",
+                "Value": 0
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator2",
+                "Comparison": "MatchEqual",
+                "Value": 0
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator2",
+                "Comparison": "MatchEqual",
+                "Value": 0
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator3",
+                "Comparison": "MatchEqual",
+                "Value": 3
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraStyle::NewEnumerator3",
+                "Comparison": "MatchAny",
+                "Value": 3
+              }
+            ],
+            "bDisabled": false,
+            "EditorColumnWidth": 200
+          },
+          {
+            "__struct": "/Script/Chooser.EnumColumn",
+            "InputValue": {
+              "__struct": "/Script/Chooser.EnumContextProperty",
+              "PropertyBindingChain": [],
+              "Binding": {
+                "Enum": "/Game/Blueprints/Cameras/E_CameraMode.E_CameraMode",
+                "PropertyBindingChain": [
+                  "CameraMode_6_A59B5561435DC3553D7444B49C47015A"
+                ],
+                "ContextIndex": 0,
+                "IsBoundToRoot": false,
+                "DisplayName": "CameraMode"
+              },
+              "Enum": "None"
+            },
+            "DefaultRowValue": {
+              "CompareNotEqual": false,
+              "ValueName": "None",
+              "Comparison": "MatchEqual",
+              "Value": 0
+            },
+            "RowValues": [
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator0",
+                "Comparison": "MatchEqual",
+                "Value": 0
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator1",
+                "Comparison": "MatchEqual",
+                "Value": 1
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator2",
+                "Comparison": "MatchEqual",
+                "Value": 2
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator0",
+                "Comparison": "MatchEqual",
+                "Value": 0
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator1",
+                "Comparison": "MatchEqual",
+                "Value": 1
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator2",
+                "Comparison": "MatchEqual",
+                "Value": 2
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator0",
+                "Comparison": "MatchEqual",
+                "Value": 0
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator1",
+                "Comparison": "MatchEqual",
+                "Value": 1
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator2",
+                "Comparison": "MatchEqual",
+                "Value": 2
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator3",
+                "Comparison": "MatchNotEqual",
+                "Value": 3
+              },
+              {
+                "CompareNotEqual": false,
+                "ValueName": "E_CameraMode::NewEnumerator3",
+                "Comparison": "MatchEqual",
+                "Value": 3
+              }
+            ],
+            "bDisabled": false,
+            "EditorColumnWidth": 200
+          }
+        ]
+      },
+      {
+        "name": "ResultType",
+        "type": "EObjectChooserResultType",
+        "category": "Result",
+        "owner_class": "ChooserSignature",
+        "value": "ObjectResult"
+      },
+      {
+        "name": "OutputObjectType",
+        "type": "TObjectPtr<UClass>",
+        "category": "Result",
+        "owner_class": "ChooserSignature",
+        "value": "/Script/GameplayCameras.CameraRigAsset"
+      },
+      {
+        "name": "ContextData",
+        "type": "TArray",
+        "category": "Parameters",
+        "owner_class": "ChooserSignature",
+        "value": [
+          {
+            "__struct": "/Script/Chooser.ContextObjectTypeStruct",
+            "Struct": "/Game/Blueprints/Data/S_CharacterPropertiesForCamera.S_CharacterPropertiesForCamera",
+            "Direction": "Read"
+          }
+        ]
+      }
+    ],
+    "property_count": 14
+  }
+}

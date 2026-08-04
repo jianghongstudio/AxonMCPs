@@ -1,0 +1,36 @@
+{
+  "tool": "animation_query",
+  "action": "get_pose_search_schema",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSS_SM_CMC_Idles"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSS_SM_CMC_Idles",
+    "sample_rate": 30,
+    "skeleton": "/Game/Characters/UEFN_Mannequin/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin",
+    "skeletons": [
+      {
+        "index": 0,
+        "role": "None",
+        "skeleton": "/Game/Characters/UEFN_Mannequin/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin",
+        "mirror_data_table": null
+      }
+    ],
+    "channels": [
+      {
+        "index": 0,
+        "type": "PoseSearchFeatureChannel_Pose",
+        "cardinality": 18,
+        "data_offset": 0,
+        "bone_count": 4,
+        "bones": [
+          "foot_l",
+          "foot_r",
+          "pelvis",
+          "spine_05"
+        ]
+      }
+    ],
+    "schema_cardinality": 18
+  }
+}

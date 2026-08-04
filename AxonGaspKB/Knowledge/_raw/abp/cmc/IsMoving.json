@@ -1,0 +1,68 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_graph_summary",
+  "params": {
+    "asset_path": "/Game/Blueprints/SandboxCharacter_CMC_ABP",
+    "graph_name": "IsMoving"
+  },
+  "result": {
+    "graph_name": "IsMoving",
+    "nodes": [
+      {
+        "id": "K2Node_FunctionEntry_0",
+        "class": "K2Node_FunctionEntry",
+        "title": "IsMoving",
+        "exec_targets": [
+          "K2Node_FunctionResult_0"
+        ]
+      },
+      {
+        "id": "K2Node_FunctionResult_0",
+        "class": "K2Node_FunctionResult",
+        "title": "Return Node"
+      },
+      {
+        "id": "K2Node_VariableGet_1",
+        "class": "K2Node_VariableGet",
+        "title": "Get Trj_FutureVelocity"
+      },
+      {
+        "id": "K2Node_VariableGet_2",
+        "class": "K2Node_VariableGet",
+        "title": "Get Velocity"
+      },
+      {
+        "id": "K2Node_PromotableOperator_3",
+        "class": "K2Node_PromotableOperator",
+        "title": "Not Equal (Vector)"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_0",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "AND Boolean"
+      },
+      {
+        "id": "K2Node_PromotableOperator_2",
+        "class": "K2Node_PromotableOperator",
+        "title": "Not Equal (Vector)"
+      },
+      {
+        "id": "EdGraphNode_Comment_7",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Look at the current and future velocities (determined by trajectory generation) to determine if the character is trying to move (future velocity is greater than 0), or trying to stop (future velocity is 0)."
+      },
+      {
+        "id": "K2Node_VariableGet_3",
+        "class": "K2Node_VariableGet",
+        "title": "Get Acceleration"
+      },
+      {
+        "id": "K2Node_PromotableOperator_0",
+        "class": "K2Node_PromotableOperator",
+        "title": "Not Equal (Vector)"
+      }
+    ],
+    "node_count": 10
+  }
+}

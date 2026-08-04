@@ -1,0 +1,73 @@
+{
+  "tool": "animation_query",
+  "action": "get_database_stats",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSD_SM_CMC_Idles"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSD_SM_CMC_Idles",
+    "sequence_count": 6,
+    "count": 6,
+    "normalization_set": null,
+    "entries": [
+      {
+        "index": 0,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Transition_Crouch_to_Stand.M_Neutral_Transition_Crouch_to_Stand",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 1,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Neutral_Transition_Stand_to_Crouch.M_Neutral_Transition_Stand_to_Crouch",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 2,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Idle/M_Neutral_Crouch_Idle_Loop.M_Neutral_Crouch_Idle_Loop",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 3,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Idle/M_Neutral_Stand_Idle_Loop.M_Neutral_Stand_Idle_Loop",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 4,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Relaxed_Transition_Crouch_to_Stand.M_Relaxed_Transition_Crouch_to_Stand",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": true,
+        "mirror_option": "UnmirroredOnly"
+      },
+      {
+        "index": 5,
+        "animation": "/Game/Characters/UEFN_Mannequin/Animations/Crouch/M_Relaxed_Transition_Stand_to_Crouch.M_Relaxed_Transition_Stand_to_Crouch",
+        "asset_class": "AnimSequence",
+        "enabled": true,
+        "disable_reselection": false,
+        "mirror_option": "UnmirroredOnly"
+      }
+    ],
+    "schema": "/Game/Characters/UEFN_Mannequin/Animations/ExperimentalStateMachineData/PSS_SM_CMC_Idles.PSS_SM_CMC_Idles",
+    "sample_rate": 30,
+    "schema_cardinality": 18,
+    "index_built": true,
+    "total_pose_count": 55,
+    "is_valid": true,
+    "search_mode": "BruteForce",
+    "continuing_pose_cost_bias": -0.009999999776482582,
+    "base_cost_bias": 0,
+    "looping_cost_bias": 0
+  }
+}

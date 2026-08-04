@@ -1,0 +1,959 @@
+{
+  "tool": "chooser_query",
+  "action": "inspect_chooser",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed",
+    "include_cells": true,
+    "recursive": true
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+    "result_type": "ObjectResult",
+    "result_type_value": 0,
+    "result_class": "/Script/PoseSearch.PoseSearchDatabase",
+    "context_data": [
+      {
+        "index": 0,
+        "struct_type": "ContextObjectTypeClass",
+        "kind": "class",
+        "class": "/Game/Blueprints/SandboxCharacter_Mover_ABP.SandboxCharacter_Mover_ABP_C"
+      }
+    ],
+    "row_count": 8,
+    "column_count": 4,
+    "column_types": [
+      "EnumColumn",
+      "EnumColumn",
+      "EnumColumn",
+      "EnumColumn"
+    ],
+    "columns": [
+      {
+        "index": 0,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "MovementMode"
+          ],
+          "display": "MovementMode"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 5,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 7,
+            "value": 1,
+            "comparison": 0
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "Stance"
+          ],
+          "display": "Stance"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 5,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 7,
+            "value": 0,
+            "comparison": 2
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "MovementState"
+          ],
+          "display": "MovementState"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 5,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 7,
+            "value": 0,
+            "comparison": 2
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "Gait"
+          ],
+          "display": "Gait"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 1,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 5,
+            "value": 2,
+            "comparison": 2
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 7,
+            "value": 0,
+            "comparison": 2
+          }
+        ]
+      }
+    ],
+    "referenced_assets": [],
+    "tree": {
+      "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+      "row_count": 8,
+      "rows": [
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Idles",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 0
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Walks",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 1
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Runs",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 2
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Sprint",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 3
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Crouch Idle",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 4
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Crouch Moving",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 5
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Slide",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 6
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:InAir",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 7
+        }
+      ],
+      "output_columns": [],
+      "nested_objects": 9,
+      "child_tables": [
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "cycle": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "nested_index": 0
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Idles",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 8,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Idles.PSD_Relaxed_Stand_Idles",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_Stops.PSD_Relaxed_Stand_Walk_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_Stops.PSD_Relaxed_Stand_Run_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Stops.PSD_Relaxed_Stand_Sprint_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_TurnInPlace.PSD_Relaxed_Stand_TurnInPlace",
+              "is_null": false,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Idle_Lands_Light.PSD_Relaxed_Stand_Idle_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Idle_Lands_Heavy.PSD_Relaxed_Stand_Idle_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 6
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut_ExitToStandIdle.PSD_Relaxed_Slide_FeetOut_ExitToStandIdle",
+              "is_null": false,
+              "kind": "asset",
+              "row": 7
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 1
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Walks",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 25,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_F_Starts.PSD_Relaxed_Stand_Walk_F_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_B_Starts.PSD_Relaxed_Stand_Walk_B_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_LL_Starts.PSD_Relaxed_Stand_Walk_LL_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_RL_Starts.PSD_Relaxed_Stand_Walk_RL_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_F_Loops.PSD_Relaxed_Stand_Walk_F_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_B_Loops.PSD_Relaxed_Stand_Walk_B_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 6
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_LL_Loops.PSD_Relaxed_Stand_Walk_LL_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 7
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_RL_Loops.PSD_Relaxed_Stand_Walk_RL_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 8
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 9
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_F_Turns.PSD_Relaxed_Stand_Walk_F_Turns",
+              "is_null": false,
+              "kind": "asset",
+              "row": 10
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_F_Pivots.PSD_Relaxed_Stand_Walk_F_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 11
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_B_Pivots.PSD_Relaxed_Stand_Walk_B_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 12
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_LL_Pivots.PSD_Relaxed_Stand_Walk_LL_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 13
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_RL_Pivots.PSD_Relaxed_Stand_Walk_RL_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 14
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 15
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_F_Spins.PSD_Relaxed_Stand_Walk_F_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 16
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_B_Spins.PSD_Relaxed_Stand_Walk_B_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 17
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_LL_Spins.PSD_Relaxed_Stand_Walk_LL_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 18
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_RL_Spins.PSD_Relaxed_Stand_Walk_RL_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 19
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 20
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_FromTraversal.PSD_Relaxed_Stand_Walk_FromTraversal",
+              "is_null": false,
+              "kind": "asset",
+              "row": 21
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_Lands_Light.PSD_Relaxed_Stand_Walk_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 22
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Walk_Lands_Heavy.PSD_Relaxed_Stand_Walk_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 23
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut_ExitToWalk.PSD_Relaxed_Slide_FeetOut_ExitToWalk",
+              "is_null": false,
+              "kind": "asset",
+              "row": 24
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 2
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Runs",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 26,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_F_Starts.PSD_Relaxed_Stand_Run_F_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_B_Starts.PSD_Relaxed_Stand_Run_B_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_LL_Starts.PSD_Relaxed_Stand_Run_LL_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_RL_Starts.PSD_Relaxed_Stand_Run_RL_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_F_GaitTransitions.PSD_Relaxed_Stand_Run_F_GaitTransitions",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_F_Loops.PSD_Relaxed_Stand_Run_F_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 6
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_B_Loops.PSD_Relaxed_Stand_Run_B_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 7
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_LL_Loops.PSD_Relaxed_Stand_Run_LL_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 8
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_RL_Loops.PSD_Relaxed_Stand_Run_RL_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 9
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 10
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_F_Turns.PSD_Relaxed_Stand_Run_F_Turns",
+              "is_null": false,
+              "kind": "asset",
+              "row": 11
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_F_Pivots.PSD_Relaxed_Stand_Run_F_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 12
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_B_Pivots.PSD_Relaxed_Stand_Run_B_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 13
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_LL_Pivots.PSD_Relaxed_Stand_Run_LL_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 14
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_RL_Pivots.PSD_Relaxed_Stand_Run_RL_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 15
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 16
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_F_Spins.PSD_Relaxed_Stand_Run_F_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 17
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_B_Spins.PSD_Relaxed_Stand_Run_B_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 18
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_LL_Spins.PSD_Relaxed_Stand_Run_LL_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 19
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_RL_Spins.PSD_Relaxed_Stand_Run_RL_Spins",
+              "is_null": false,
+              "kind": "asset",
+              "row": 20
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "",
+              "is_null": true,
+              "kind": "asset",
+              "row": 21
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_FromTraversal.PSD_Relaxed_Stand_Run_FromTraversal",
+              "is_null": false,
+              "kind": "asset",
+              "row": 22
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_Lands_Light.PSD_Relaxed_Stand_Run_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 23
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Run_Lands_Heavy.PSD_Relaxed_Stand_Run_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 24
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut_ExitToRun.PSD_Relaxed_Slide_FeetOut_ExitToRun",
+              "is_null": false,
+              "kind": "asset",
+              "row": 25
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 3
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Stand Sprint",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 6,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Starts.PSD_Relaxed_Stand_Sprint_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Loops.PSD_Relaxed_Stand_Sprint_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Turns.PSD_Relaxed_Stand_Sprint_Turns",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Lands_Light.PSD_Relaxed_Stand_Sprint_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Lands_Heavy.PSD_Relaxed_Stand_Sprint_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut_ExitToSprint.PSD_Relaxed_Slide_FeetOut_ExitToSprint",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 4
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:InAir",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 4,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Jump.PSD_Relaxed_Stand_Jump",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_WalkAndRun_Jump.PSD_Relaxed_Stand_WalkAndRun_Jump",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Sprint_Jump.PSD_Relaxed_Stand_Sprint_Jump",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Stand_Jumps_FromTraversal.PSD_Relaxed_Stand_Jumps_FromTraversal",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 5
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Crouch Idle",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 4,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Crouch_Idles.PSD_Relaxed_Crouch_Idles",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Crouch_Walk_Stops.PSD_Relaxed_Crouch_Walk_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Crouch_TurnInPlace.PSD_Relaxed_Crouch_TurnInPlace",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut_ExitToCrouchIdle.PSD_Relaxed_Slide_FeetOut_ExitToCrouchIdle",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 6
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Crouch Moving",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 4,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Crouch_Walk_Starts.PSD_Relaxed_Crouch_Walk_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Crouch_Walk_Pivots.PSD_Relaxed_Crouch_Walk_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Crouch_Walk_Loops.PSD_Relaxed_Crouch_Walk_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut_ExitToCrouchWalk.PSD_Relaxed_Slide_FeetOut_ExitToCrouchWalk",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 7
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed:Slide",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Relaxed.CHT_PoseSearchDatabases_Relaxed",
+          "row_count": 2,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_FeetOut.PSD_Relaxed_Slide_FeetOut",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Relaxed/PSD_Relaxed_Slide_KneesOut.PSD_Relaxed_Slide_KneesOut",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 8
+        }
+      ]
+    },
+    "compiled": true
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "tool": "describe_query",
+  "action": "schema",
+  "params": {
+    "target_namespace": "describe",
+    "target": "/Game/Blueprints/Data/S_CharacterPropertiesForCamera"
+  },
+  "result": {
+    "success": true,
+    "raw_text": "no describe adapter registered for namespace 'describe'"
+  }
+}

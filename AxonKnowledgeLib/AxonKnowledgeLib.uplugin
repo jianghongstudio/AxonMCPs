@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "0.1.0",
+	"FriendlyName": "AxonKnowledgeLib",
+	"Description": "Shared corpus query, extract-to-_raw helpers, and scaffold_kb_plugin for per-project AxonXxxKB sibling plugins. Contains no business knowledge.",
+	"Category": "Editor",
+	"CreatedBy": "Axon",
+	"EnabledByDefault": true,
+	"Installed": false,
+	"Plugins": [
+		{
+			"Name": "Axon",
+			"Enabled": true
+		}
+	],
+	"Modules": [
+		{
+			"Name": "AxonKnowledgeLib",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		}
+	]
+}

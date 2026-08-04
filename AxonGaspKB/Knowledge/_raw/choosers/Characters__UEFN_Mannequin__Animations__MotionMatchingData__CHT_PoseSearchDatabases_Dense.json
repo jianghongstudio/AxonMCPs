@@ -1,0 +1,613 @@
+{
+  "tool": "chooser_query",
+  "action": "inspect_chooser",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense",
+    "include_cells": true,
+    "recursive": true
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+    "result_type": "ObjectResult",
+    "result_type_value": 0,
+    "result_class": "/Script/PoseSearch.PoseSearchDatabase",
+    "context_data": [
+      {
+        "index": 0,
+        "struct_type": "ContextObjectTypeClass",
+        "kind": "class",
+        "class": "/Game/Blueprints/SandboxCharacter_CMC_ABP.SandboxCharacter_CMC_ABP_C"
+      }
+    ],
+    "row_count": 7,
+    "column_count": 4,
+    "column_types": [
+      "EnumColumn",
+      "EnumColumn",
+      "EnumColumn",
+      "EnumColumn"
+    ],
+    "columns": [
+      {
+        "index": 0,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "MovementMode"
+          ],
+          "display": "MovementMode"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 5,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 0
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "Stance"
+          ],
+          "display": "Stance"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 5,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 1,
+            "comparison": 0
+          }
+        ]
+      },
+      {
+        "index": 2,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "MovementState"
+          ],
+          "display": "MovementState"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 1,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 5,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 6,
+            "value": 1,
+            "comparison": 0
+          }
+        ]
+      },
+      {
+        "index": 3,
+        "type": "EnumColumn",
+        "is_input": true,
+        "input_binding": {
+          "chain": [
+            "Gait"
+          ],
+          "display": "Gait"
+        },
+        "cells": [
+          {
+            "row": 0,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 1,
+            "value": 0,
+            "comparison": 0
+          },
+          {
+            "row": 2,
+            "value": 1,
+            "comparison": 0
+          },
+          {
+            "row": 3,
+            "value": 2,
+            "comparison": 0
+          },
+          {
+            "row": 4,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 5,
+            "value": 0,
+            "comparison": 2
+          },
+          {
+            "row": 6,
+            "value": 0,
+            "comparison": 2
+          }
+        ]
+      }
+    ],
+    "referenced_assets": [],
+    "tree": {
+      "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+      "row_count": 7,
+      "rows": [
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Idles",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 0
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Walks",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 1
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Runs",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 2
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Sprint",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 3
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:InAir",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 4
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Crouch Idle",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 5
+        },
+        {
+          "struct_type": "NestedChooser",
+          "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Crouch Moving",
+          "is_null": false,
+          "kind": "nested_chooser",
+          "row": 6
+        }
+      ],
+      "output_columns": [],
+      "nested_objects": 8,
+      "child_tables": [
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "cycle": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "nested_index": 0
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:InAir",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 3,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Jumps.PSD_Dense_Jumps",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Jumps_Far.PSD_Dense_Jumps_Far",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Jumps_FromTraversal.PSD_Dense_Jumps_FromTraversal",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 1
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Idles",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 7,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Idles.PSD_Dense_Stand_Idles",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_Stops.PSD_Dense_Stand_Walk_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_Stops.PSD_Dense_Stand_Run_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Stops.PSD_Dense_Stand_Sprint_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Idle_Lands_Light.PSD_Dense_Stand_Idle_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Idle_Lands_Heavy.PSD_Dense_Stand_Idle_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_TurnInPlace.PSD_Dense_Stand_TurnInPlace",
+              "is_null": false,
+              "kind": "asset",
+              "row": 6
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 2
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Runs",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 7,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_Starts.PSD_Dense_Stand_Run_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_Loops.PSD_Dense_Stand_Run_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_Pivots.PSD_Dense_Stand_Run_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_SpinTransition.PSD_Dense_Stand_Run_SpinTransition",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_FromTraversal.PSD_Dense_Stand_Run_FromTraversal",
+              "is_null": false,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_Lands_Light.PSD_Dense_Stand_Run_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Run_Lands_Heavy.PSD_Dense_Stand_Run_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 6
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 3
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Walks",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 7,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_Starts.PSD_Dense_Stand_Walk_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_Loops.PSD_Dense_Stand_Walk_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_Pivots.PSD_Dense_Stand_Walk_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_SpinTransition.PSD_Dense_Stand_Walk_SpinTransition",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_FromTraversal.PSD_Dense_Stand_Walk_FromTraversal",
+              "is_null": false,
+              "kind": "asset",
+              "row": 4
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_Lands_Light.PSD_Dense_Stand_Walk_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 5
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Walk_Lands_Heavy.PSD_Dense_Stand_Walk_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 6
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 4
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Crouch Moving",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 3,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Crouch_Walk_Starts.PSD_Dense_Crouch_Walk_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Crouch_Walk_Loops.PSD_Dense_Crouch_Walk_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Crouch_Walk_Pivots.PSD_Dense_Crouch_Walk_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 5
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Crouch Idle",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 3,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Crouch_Idles.PSD_Dense_Crouch_Idles",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Crouch_Walk_Stops.PSD_Dense_Crouch_Walk_Stops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Crouch_TurnInPlace.PSD_Dense_Crouch_TurnInPlace",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 6
+        },
+        {
+          "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense:Stand Sprint",
+          "root_chooser": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/CHT_PoseSearchDatabases_Dense.CHT_PoseSearchDatabases_Dense",
+          "row_count": 5,
+          "rows": [
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Loops.PSD_Dense_Stand_Sprint_Loops",
+              "is_null": false,
+              "kind": "asset",
+              "row": 0
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Starts.PSD_Dense_Stand_Sprint_Starts",
+              "is_null": false,
+              "kind": "asset",
+              "row": 1
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Pivots.PSD_Dense_Stand_Sprint_Pivots",
+              "is_null": false,
+              "kind": "asset",
+              "row": 2
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Lands_Light.PSD_Dense_Stand_Sprint_Lands_Light",
+              "is_null": false,
+              "kind": "asset",
+              "row": 3
+            },
+            {
+              "struct_type": "AssetChooser",
+              "asset": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Databases/Dense/PSD_Dense_Stand_Sprint_Lands_Heavy.PSD_Dense_Stand_Sprint_Lands_Heavy",
+              "is_null": false,
+              "kind": "asset",
+              "row": 4
+            }
+          ],
+          "output_columns": [],
+          "nested_objects": 0,
+          "child_tables": [],
+          "nested_index": 7
+        }
+      ]
+    },
+    "compiled": true
+  }
+}

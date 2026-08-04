@@ -1,0 +1,176 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_graph_summary",
+  "params": {
+    "asset_path": "/Game/Blueprints/SandboxCharacter_CMC_ABP",
+    "graph_name": "Update_CVarDrivenVariables"
+  },
+  "result": {
+    "graph_name": "Update_CVarDrivenVariables",
+    "nodes": [
+      {
+        "id": "K2Node_FunctionEntry_0",
+        "class": "K2Node_FunctionEntry",
+        "title": "Update_CVarDrivenVariables",
+        "exec_targets": [
+          "K2Node_ExecutionSequence_0"
+        ]
+      },
+      {
+        "id": "K2Node_CallFunction_6",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Bool Value",
+        "exec_targets": [
+          "K2Node_VariableSet_17"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_17",
+        "class": "K2Node_VariableSet",
+        "title": "Set OffsetRootBoneEnabled"
+      },
+      {
+        "id": "K2Node_CallFunction_10",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Int Value",
+        "exec_targets": [
+          "K2Node_VariableSet_13"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_13",
+        "class": "K2Node_VariableSet",
+        "title": "Set MMDatabaseLOD"
+      },
+      {
+        "id": "K2Node_VariableSet_4",
+        "class": "K2Node_VariableSet",
+        "title": "Set UseExperimentalStateMachine"
+      },
+      {
+        "id": "K2Node_CallFunction_20",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Bool Value",
+        "exec_targets": [
+          "K2Node_VariableSet_4"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_3",
+        "class": "K2Node_VariableSet",
+        "title": "Set DebugExperimentalStateMachine"
+      },
+      {
+        "id": "K2Node_CallFunction_1",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Bool Value",
+        "exec_targets": [
+          "K2Node_VariableSet_3"
+        ]
+      },
+      {
+        "id": "K2Node_ExecutionSequence_0",
+        "class": "K2Node_ExecutionSequence",
+        "title": "Sequence",
+        "exec_targets": [
+          "K2Node_CallFunction_6",
+          "K2Node_CallFunction_10",
+          "K2Node_CallFunction_0",
+          "K2Node_CallFunction_2",
+          "K2Node_CallFunction_1",
+          "K2Node_CallFunction_20",
+          "K2Node_CallFunction_8"
+        ]
+      },
+      {
+        "id": "EdGraphNode_Comment_0",
+        "class": "EdGraphNode_Comment",
+        "title": "Comment",
+        "comment": "Since getting Console Variables values in Blueprint is not thread safe yet we have to cache the values queried to later be able to be used by BlueprintThreadSafe functions."
+      },
+      {
+        "id": "K2Node_CallFunction_0",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Float Value",
+        "exec_targets": [
+          "K2Node_VariableSet_0"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_0",
+        "class": "K2Node_VariableSet",
+        "title": "Set OffsetRootTranslationRadius"
+      },
+      {
+        "id": "K2Node_CallFunction_2",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Bool Value",
+        "exec_targets": [
+          "K2Node_VariableSet_1"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_1",
+        "class": "K2Node_VariableSet",
+        "title": "Set UseThreadSafeUpdateAnimation"
+      },
+      {
+        "id": "K2Node_CallFunction_3",
+        "class": "K2Node_CallFunction",
+        "title": "Get Owning Component"
+      },
+      {
+        "id": "K2Node_CallFunction_5",
+        "class": "K2Node_CallFunction",
+        "title": "Component Has Tag"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_0",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "OR Boolean"
+      },
+      {
+        "id": "K2Node_CommutativeAssociativeBinaryOperator_1",
+        "class": "K2Node_CommutativeAssociativeBinaryOperator",
+        "title": "AND Boolean"
+      },
+      {
+        "id": "K2Node_CallFunction_4",
+        "class": "K2Node_CallFunction",
+        "title": "Component Has Tag"
+      },
+      {
+        "id": "K2Node_CallFunction_7",
+        "class": "K2Node_CallFunction",
+        "title": "NOT Boolean"
+      },
+      {
+        "id": "K2Node_CallFunction_8",
+        "class": "K2Node_CallFunction",
+        "title": "Get Console Variable Int Value",
+        "exec_targets": [
+          "K2Node_VariableSet_2"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_2",
+        "class": "K2Node_VariableSet",
+        "title": "Set LocomotionSetup",
+        "exec_targets": [
+          "K2Node_VariableSet_7"
+        ]
+      },
+      {
+        "id": "K2Node_VariableSet_7",
+        "class": "K2Node_VariableSet",
+        "title": "Set UseExperimentalStateMachine"
+      },
+      {
+        "id": "K2Node_CallFunction_12",
+        "class": "K2Node_CallFunction",
+        "title": "To Boolean (Integer)"
+      }
+    ],
+    "node_count": 25
+  }
+}

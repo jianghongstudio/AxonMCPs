@@ -1,0 +1,13 @@
+{
+  "tool": "chooser_query",
+  "action": "inspect_chooser",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/Traversal/CHT_TraversalAnims_PoseMatch",
+    "include_cells": true,
+    "recursive": true
+  },
+  "result": {
+    "success": true,
+    "raw_text": "ChooserTable not found: /Game/Characters/UEFN_Mannequin/Animations/Traversal/CHT_TraversalAnims_PoseMatch"
+  }
+}

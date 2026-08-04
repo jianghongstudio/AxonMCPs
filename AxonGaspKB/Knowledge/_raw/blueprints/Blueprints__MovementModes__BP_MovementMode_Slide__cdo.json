@@ -1,0 +1,269 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementMode_Slide"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementMode_Slide",
+    "native_class": "SmoothWalkingMode",
+    "parent_class": "SmoothWalkingMode",
+    "properties": [
+      {
+        "name": "InitialBoost",
+        "type": "bool",
+        "category": "Default",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": false
+      },
+      {
+        "name": "InitialBoostTime",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 0.2
+      },
+      {
+        "name": "InitialBoostSpeed",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 800
+      },
+      {
+        "name": "InitialBoostAcceleration",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 2000
+      },
+      {
+        "name": "AfterBoostAcceleration",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 300
+      },
+      {
+        "name": "SteepSlopeAngle",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 40
+      },
+      {
+        "name": "ShallowSlopeAngle",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 10
+      },
+      {
+        "name": "SteepSlopeSpeed",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 800
+      },
+      {
+        "name": "ShallowSlopeSpeed",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 500
+      },
+      {
+        "name": "FlatGroundSpeed",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 100
+      },
+      {
+        "name": "SteepSlopeDeceleration",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 2000
+      },
+      {
+        "name": "FlatGroundDeceleration",
+        "type": "double",
+        "category": "Blueprint Overrides (Change These)",
+        "owner_class": "BP_MovementMode_Slide_C",
+        "value": 500
+      },
+      {
+        "name": "Acceleration",
+        "type": "float",
+        "category": "Mover|Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 2000
+      },
+      {
+        "name": "Deceleration",
+        "type": "float",
+        "category": "Mover|Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 200
+      },
+      {
+        "name": "DirectionalAccelerationFactor",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 1
+      },
+      {
+        "name": "TurningStrength",
+        "type": "float",
+        "category": "Mover|Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 1
+      },
+      {
+        "name": "AccelerationSmoothingTime",
+        "type": "float",
+        "category": "Mover|Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0
+      },
+      {
+        "name": "DecelerationSmoothingTime",
+        "type": "float",
+        "category": "Mover|Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0
+      },
+      {
+        "name": "AccelerationSmoothingCompensation",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0
+      },
+      {
+        "name": "DecelerationSmoothingCompensation",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0
+      },
+      {
+        "name": "VelocityDeadzoneThreshold",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0.009999999776482582
+      },
+      {
+        "name": "AccelerationDeadzoneThreshold",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0.0010000000474974513
+      },
+      {
+        "name": "OutsideInfluenceSmoothingTime",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0.05000000074505806
+      },
+      {
+        "name": "FacingSmoothingTime",
+        "type": "float",
+        "category": "Mover|Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0.15000000596046448
+      },
+      {
+        "name": "bSmoothFacingWithDoubleSpring",
+        "type": "bool",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": false
+      },
+      {
+        "name": "FacingDeadzoneThreshold",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0.10000000149011612
+      },
+      {
+        "name": "AngularVelocityDeadzoneThreshold",
+        "type": "float",
+        "category": "Mover|Advanced Smooth Walking Settings",
+        "owner_class": "SmoothWalkingMode",
+        "value": 0.009999999776482582
+      },
+      {
+        "name": "MaxSpeedOverride",
+        "type": "float",
+        "category": "Mover|Walking Settings",
+        "owner_class": "SimpleWalkingMode",
+        "value": -1
+      },
+      {
+        "name": "FloorCheckPolicy",
+        "type": "EStaticFloorCheckPolicy",
+        "category": "Mover",
+        "owner_class": "WalkingMode",
+        "value": "OnDynamicBaseOnly"
+      },
+      {
+        "name": "TurnGenerator",
+        "type": "TObjectPtr<UObject>",
+        "category": "Mover",
+        "owner_class": "WalkingMode",
+        "value": "None"
+      },
+      {
+        "name": "SharedSettingsClasses",
+        "type": "TArray",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": [
+          "/Script/Mover.CommonLegacyMovementSettings",
+          "/Script/Mover.StanceSettings"
+        ]
+      },
+      {
+        "name": "Transitions",
+        "type": "TArray",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": [
+          "/Game/Blueprints/MovementModes/BP_MovementMode_Slide.Default__BP_MovementMode_Slide_C:BP_MovementTransition_FromSlide_C_0"
+        ]
+      },
+      {
+        "name": "GameplayTags",
+        "type": "FGameplayTagContainer",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": {
+          "GameplayTags": [
+            {
+              "TagName": "Mover.IsOnGround"
+            }
+          ],
+          "ParentTags": [
+            {
+              "TagName": "Mover"
+            }
+          ]
+        }
+      },
+      {
+        "name": "bSupportsAsync",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "BaseMovementMode",
+        "value": false
+      }
+    ],
+    "property_count": 34
+  }
+}

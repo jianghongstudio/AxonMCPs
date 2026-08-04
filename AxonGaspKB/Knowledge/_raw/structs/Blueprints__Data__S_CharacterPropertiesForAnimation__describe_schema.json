@@ -1,0 +1,183 @@
+{
+  "tool": "blueprint_query",
+  "action": "describe_cdo_schema",
+  "params": {
+    "asset_path": "/Game/Blueprints/Data/S_CharacterPropertiesForAnimation"
+  },
+  "result": {
+    "field_path": "UserDefinedStruct",
+    "type_name": "UserDefinedStruct",
+    "import_text_form": "",
+    "required": false,
+    "set_once": false,
+    "pie_blocked": false,
+    "range_min": 0,
+    "range_max": 0,
+    "children": [
+      {
+        "field_path": "PrimaryStruct",
+        "type_name": "TWeakObjectPtr<UUserDefinedStruct>",
+        "import_text_form": "",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "ErrorMessage",
+        "type_name": "FString",
+        "import_text_form": "",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "EditorData",
+        "type_name": "Object*",
+        "import_text_form": "/Game/Path/To/Asset.Asset",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "Status",
+        "type_name": "TEnumAsByte<EUserDefinedStructureStatus>",
+        "import_text_form": "",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "Guid",
+        "type_name": "FGuid",
+        "import_text_form": "(Field1=...,Field2=...)",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0,
+        "children": [
+          {
+            "field_path": "Guid",
+            "type_name": "Guid",
+            "import_text_form": "",
+            "required": false,
+            "set_once": false,
+            "pie_blocked": false,
+            "range_min": 0,
+            "range_max": 0,
+            "children": [
+              {
+                "field_path": "A",
+                "type_name": "int32",
+                "import_text_form": "",
+                "required": false,
+                "set_once": false,
+                "pie_blocked": false,
+                "range_min": 0,
+                "range_max": 0
+              },
+              {
+                "field_path": "B",
+                "type_name": "int32",
+                "import_text_form": "",
+                "required": false,
+                "set_once": false,
+                "pie_blocked": false,
+                "range_min": 0,
+                "range_max": 0
+              },
+              {
+                "field_path": "C",
+                "type_name": "int32",
+                "import_text_form": "",
+                "required": false,
+                "set_once": false,
+                "pie_blocked": false,
+                "range_min": 0,
+                "range_max": 0
+              },
+              {
+                "field_path": "D",
+                "type_name": "int32",
+                "import_text_form": "",
+                "required": false,
+                "set_once": false,
+                "pie_blocked": false,
+                "range_min": 0,
+                "range_max": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "field_path": "CachedCookedMetaDataPtr",
+        "type_name": "StructCookedMetaData*",
+        "import_text_form": "/Game/Path/To/Asset.Asset",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "SuperStruct",
+        "type_name": "Struct*",
+        "import_text_form": "/Game/Path/To/Asset.Asset",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "Children",
+        "type_name": "Field*",
+        "import_text_form": "/Game/Path/To/Asset.Asset",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "ScriptAndPropertyObjectReferences",
+        "type_name": "TArray",
+        "import_text_form": "(Element1,Element2,Element3)",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "PropertyWrappers",
+        "type_name": "TArray",
+        "import_text_form": "(Element1,Element2,Element3)",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      },
+      {
+        "field_path": "Next",
+        "type_name": "Field*",
+        "import_text_form": "/Game/Path/To/Asset.Asset",
+        "required": false,
+        "set_once": false,
+        "pie_blocked": false,
+        "range_min": 0,
+        "range_max": 0
+      }
+    ]
+  }
+}

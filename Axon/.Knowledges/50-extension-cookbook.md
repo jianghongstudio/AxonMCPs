@@ -4,7 +4,7 @@
 > **何时阅读**：要扩展 Axon 能力，且不想改 Core 时。  
 > **相关源码**：`Docs/SIBLING_PLUGIN_GUIDE.md`、`Templates/ExtensionPlugin/`、`AxonExtensionScaffolder.*`  
 > **相关文档**：[11-action-registry.md](11-action-registry.md)、[12-describe-bulk-fill.md](12-describe-bulk-fill.md)、[30-sibling-plugins.md](30-sibling-plugins.md)、[Docs/axon_guide.md](../Docs/axon_guide.md)  
-> **最后更新**：2026-08-01
+> **最后更新**：2026-08-04
 
 ## A. 用 MCP 脚手架（推荐）
 
@@ -16,6 +16,16 @@
 4. 关编辑器 → 编译 → 重启 → `axon_discover({namespace})`。
 
 可选：`axon_list_extension_recipes` 查看外部 recipe JSON。
+
+## A2. 蒸馏独立知识包（KB plugin）
+
+用户说「蒸馏本项目」/ distill 时走 **此路径**，不要用 A 的 `create_extension`。
+
+1. `knowledge_query` → `preview_kb_names` / `scaffold_kb_plugin`（先 `dry_run`）。  
+2. 关编辑器 → UBT → 重启。  
+3. `{ns}_query` → `extract_*` → Agent 蒸馏 `Knowledge/*.md` → search/read 验收。  
+
+权威说明：[31-knowledge-distill.md](31-knowledge-distill.md)、`Docs/axon_guide.md` → Distill current project。
 
 ## B. 手工最小插件
 
@@ -48,4 +58,6 @@
 
 - 未经用户确认编造业务 Action 列表（在「要推荐」路径上）。  
 - Fork AxonCore 塞游戏逻辑。  
-- 文件级 `using namespace XxxPrivate`（Unity 歧义）。
+- 文件级 `using namespace XxxPrivate`（Unity 歧义）。  
+- 用 `axon_create_extension` 冒充 KB 包（缺 KnowledgeLib / Knowledge 模板）。  
+- 把多工程语料塞进同一个宿主插件。

@@ -1,0 +1,13 @@
+{
+	"plugin_name": "AxonProjectKB",
+	"namespace": "project_kb",
+	"intent": "Standalone offline knowledge pack (thin shell over AxonKnowledgeLib). Prefer knowledge_query scaffold_kb_plugin — it derives names from the current project and writes Knowledge/ templates. This recipe is a documentation pointer for axon_list_extension_recipes; do not use create_extension for KB packs.",
+	"depend_plugins": ["AxonKnowledgeLib"],
+	"build_modules": ["AxonKnowledgeLib"],
+	"actions": [
+		{ "name": "route", "description": "Route questions via 00-routing.md" },
+		{ "name": "search", "description": "Full-text search Knowledge corpus" },
+		{ "name": "read", "description": "Read a Knowledge markdown doc" },
+		{ "name": "list_topics", "description": "List Knowledge topics" }
+	]
+}

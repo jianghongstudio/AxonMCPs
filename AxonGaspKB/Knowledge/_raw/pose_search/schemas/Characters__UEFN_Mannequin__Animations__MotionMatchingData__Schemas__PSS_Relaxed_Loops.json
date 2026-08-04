@@ -1,0 +1,75 @@
+{
+  "tool": "animation_query",
+  "action": "get_pose_search_schema",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Relaxed_Loops"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Relaxed_Loops",
+    "sample_rate": 30,
+    "skeleton": "/Game/Characters/UEFN_Mannequin/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin",
+    "skeletons": [
+      {
+        "index": 0,
+        "role": "None",
+        "skeleton": "/Game/Characters/UEFN_Mannequin/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin",
+        "mirror_data_table": null
+      }
+    ],
+    "channels": [
+      {
+        "index": 0,
+        "type": "PoseSearchFeatureChannel_Trajectory",
+        "cardinality": 20,
+        "data_offset": 0,
+        "sample_count": 5,
+        "samples": [
+          {
+            "offset": -0.125,
+            "flags": 48,
+            "weight": 1
+          },
+          {
+            "offset": 0,
+            "flags": 48,
+            "weight": 1
+          },
+          {
+            "offset": 0.33000001311302185,
+            "flags": 48,
+            "weight": 1
+          },
+          {
+            "offset": 0.800000011920929,
+            "flags": 48,
+            "weight": 1
+          },
+          {
+            "offset": 1.350000023841858,
+            "flags": 48,
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "type": "PoseSearchFeatureChannel_Curve",
+        "cardinality": 1,
+        "data_offset": 20
+      },
+      {
+        "index": 2,
+        "type": "PoseSearchFeatureChannel_Curve",
+        "cardinality": 1,
+        "data_offset": 21
+      },
+      {
+        "index": 3,
+        "type": "PoseSearchFeatureChannel_Heading",
+        "cardinality": 3,
+        "data_offset": 22
+      }
+    ],
+    "schema_cardinality": 25
+  }
+}

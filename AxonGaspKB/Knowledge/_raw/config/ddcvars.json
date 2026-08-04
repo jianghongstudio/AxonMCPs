@@ -1,0 +1,206 @@
+{
+  "source": "D:\\GameAnimationSample\\Config\\DefaultEngine.ini",
+  "count": 25,
+  "cvars": [
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.Traversal.DrawDebugLevel",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarFloat",
+      "name": "DDCvar.Traversal.DrawDebugDuration",
+      "tooltip": "",
+      "default_float": 1.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.MMDatabaseLOD",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCvar.DrawVisLogShapesForFoleySounds",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCVar.AttributeBasedRootMotion.Enable",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarFloat",
+      "name": "DDCvar.OffsetRootBone.TranslationRadius",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCVar.ExperimentalStateMachine.Enable",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCVar.ExperimentalStateMachine.Debug",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCVar.ThreadSafeAnimationUpdate.Enable",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": true
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCVar.NewGameplayCameraSystem.Enable",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": true
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.LocomotionSetupCMC",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.LocomotionSetupMover",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 1,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCVar.DefaultAnimSet",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": true
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.StrafeStyle",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 1,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.AimStyle",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.CameraStyle",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 1,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCvar.UseUnrealAnimationFramework",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCvar.DrawCharacterDebugShapes",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCvar.DrawCharacterDebugStates",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarBool",
+      "name": "DDCvar.DrawCharacterDebugGraphs",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.FootPlacementMode",
+      "tooltip": "0 == off",
+      "default_float": 0.0,
+      "default_int": 1,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.ControlStyle",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.PawnClass",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": -1,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.VisualOverride",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": -1,
+      "default_bool": false
+    },
+    {
+      "type": "CVarInt",
+      "name": "DDCvar.AnalogInputStyle",
+      "tooltip": "",
+      "default_float": 0.0,
+      "default_int": 0,
+      "default_bool": false
+    }
+  ]
+}

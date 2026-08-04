@@ -1,0 +1,48 @@
+{
+  "tool": "animation_query",
+  "action": "get_pose_search_schema",
+  "params": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Traversal"
+  },
+  "result": {
+    "asset_path": "/Game/Characters/UEFN_Mannequin/Animations/MotionMatchingData/Schemas/PSS_Traversal",
+    "sample_rate": 30,
+    "skeleton": "/Game/Characters/UEFN_Mannequin/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin",
+    "skeletons": [
+      {
+        "index": 0,
+        "role": "None",
+        "skeleton": "/Game/Characters/UEFN_Mannequin/Meshes/SK_UEFN_Mannequin.SK_UEFN_Mannequin",
+        "mirror_data_table": null
+      }
+    ],
+    "channels": [
+      {
+        "index": 0,
+        "type": "PoseSearchFeatureChannel_Trajectory",
+        "cardinality": 4,
+        "data_offset": 0,
+        "sample_count": 2,
+        "samples": [
+          {
+            "offset": -0.4000000059604645,
+            "flags": 32,
+            "weight": 0.5
+          },
+          {
+            "offset": 0,
+            "flags": 16,
+            "weight": 1
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "type": "PoseSearchFeatureChannel_Group",
+        "cardinality": 14,
+        "data_offset": 4
+      }
+    ],
+    "schema_cardinality": 18
+  }
+}

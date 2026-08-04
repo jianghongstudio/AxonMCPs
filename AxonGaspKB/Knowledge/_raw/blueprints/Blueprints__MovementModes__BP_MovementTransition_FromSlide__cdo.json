@@ -1,0 +1,43 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementTransition_FromSlide"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/MovementModes/BP_MovementTransition_FromSlide",
+    "native_class": "BaseMovementModeTransition",
+    "parent_class": "BaseMovementModeTransition",
+    "properties": [
+      {
+        "name": "SharedSettingsClasses",
+        "type": "TArray",
+        "category": "Mover",
+        "owner_class": "BaseMovementModeTransition",
+        "value": []
+      },
+      {
+        "name": "bAllowModeReentry",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "BaseMovementModeTransition",
+        "value": false
+      },
+      {
+        "name": "bFirstSubStepOnly",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "BaseMovementModeTransition",
+        "value": false
+      },
+      {
+        "name": "bSupportsAsync",
+        "type": "bool",
+        "category": "Mover",
+        "owner_class": "BaseMovementModeTransition",
+        "value": false
+      }
+    ],
+    "property_count": 4
+  }
+}

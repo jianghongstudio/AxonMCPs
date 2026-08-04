@@ -4,15 +4,26 @@
 > **何时阅读**：了解「为什么现在是这样」；实质性改造后必须追加。  
 > **相关源码**：随条目变化  
 > **相关文档**：[60-known-debt.md](60-known-debt.md)、[README.md](../README.md)、[91-ai-maintenance.md](91-ai-maintenance.md)  
-> **最后更新**：2026-08-01
+> **最后更新**：2026-08-04
 
 ## 当前阶段
 
 | 字段 | 值 |
 |------|----|
-| 阶段 | 知识库初建 + PIE Unity 冲突缓解；3C 向文档对齐 |
-| 基线日期 | 2026-08-01 |
+| 阶段 | 项目蒸馏（独立 KB 插件）已落地；文档对齐 Distill 能力 |
+| 基线日期 | 2026-08-04 |
 | 技术债索引 | [60-known-debt.md](60-known-debt.md) |
+
+### 2026-08-04 — 按项目独立 KB 蒸馏
+
+- **动机**：任意工程可蒸馏为可拷贝的离线知识包；一项目一插件，便于启停与隔离。
+- **方案**：
+  - sibling `AxonKnowledgeLib`：Corpus / RegisterAll / extract_* / `knowledge.scaffold_kb_plugin`
+  - `AxonGaspKB` 薄壳接入 Lib；历史 namespace `gasp_kb` 保留
+  - `axon_guide` 强制 Distill recipe；文档 `31-knowledge-distill.md` + USER_GUIDE §项目蒸馏
+- **影响面**：新插件、AxonGaspKB、guide / Knowledges / USER_GUIDE
+- **文档同步**：`31`、`30`、`00`、`02`、`50`、`91`、README、USER_GUIDE、AxonMCPs README
+- **关联债务**：无新开；Markdown 全书仍由 Agent 撰写（非 C++ 一键生成）
 
 ### 2026-08-01 — 建立 `.Knowledges` 与人类 Docs
 

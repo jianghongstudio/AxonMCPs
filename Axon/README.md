@@ -2,6 +2,8 @@
 
 面向游戏 **3C（Character / Camera / Control）** 制作与验证的 Unreal Editor **MCP 核心**：在编辑器进程内托管 HTTP JSON-RPC（默认端口 **9320**），通过 `FAxonToolRegistry` 暴露可发现的 Action；同包 `AxonEditor` 提供 PIE 启动/时序采样/输入注入等编辑器侧能力。动画、蓝图、GAS 等领域工作放在 `Plugins/AxonMCPs/` 下的 sibling 插件，而不是塞进 Core。
 
+另支持 **项目蒸馏**：把任意工程抽成独立离线知识包插件（`Axon{Project}KB`），供 Agent 在无源 Content 时检索实现细节。机制在 sibling [`AxonKnowledgeLib`](../AxonKnowledgeLib/)，说明见 [`.Knowledges/31-knowledge-distill.md`](.Knowledges/31-knowledge-distill.md)。
+
 > **AI 入口**：先读本 README 的知识索引，再按任务打开 [`.Knowledges/00-routing.md`](.Knowledges/00-routing.md)。改代码后按 [`.Knowledges/91-ai-maintenance.md`](.Knowledges/91-ai-maintenance.md) 同步文档。  
 > **人类用户 / 扩展开发者**：优先读 [`Docs/USER_GUIDE.md`](Docs/USER_GUIDE.md)、[`Docs/3C_WORKFLOWS.md`](Docs/3C_WORKFLOWS.md)；Agent 速查仍可用 [`Docs/axon_guide.md`](Docs/axon_guide.md)。
 
@@ -12,7 +14,7 @@
 | **AxonCore** | Editor / PostEngineInit | [`Source/AxonCore/`](Source/AxonCore/) | HTTP MCP（`FAxonHttpServer`）、Action 注册表、`axon_*` meta、describe/bulk_fill 框架、扩展研究与脚手架 |
 | **AxonEditor** | Editor / PostEngineInit | [`Source/AxonEditor/`](Source/AxonEditor/) | `editor.*`：构建/日志、地图、PIE smoke & timeseries、PIE 输入/对象、预览捕获、Stat |
 
-Sibling（同级目录，依赖本插件）：`AxonAnimation`、`AxonBlueprint`、`AxonGAS`、`AxonConfig`、`AxonRewindDebugger`。总览见 [`../README.md`](../README.md)。
+Sibling（同级目录，依赖本插件）：`AxonAnimation`、`AxonBlueprint`、`AxonGAS`、`AxonConfig`、`AxonRewindDebugger`、`AxonIndex`（项目资产索引）、`AxonSource`（C++/Shader 索引）、`AxonKnowledgeLib`（蒸馏脚手架）、`AxonGaspKB`（GASP 离线语料示例）。总览见 [`../README.md`](../README.md)。
 
 ## 主数据流（摘要）
 
@@ -42,6 +44,8 @@ Cursor / MCP Client
 | [12-describe-bulk-fill.md](.Knowledges/12-describe-bulk-fill.md) | 改反射写入 / schema 描述时 | describe / bulk_fill / dry_run |
 | [13-pie-sessions.md](.Knowledges/13-pie-sessions.md) | 改 PIE smoke / timeseries / poll 时 | 异步 PIE 会话模型 |
 | [30-sibling-plugins.md](.Knowledges/30-sibling-plugins.md) | 扩 sibling 或查 namespace 地图时 | 插件族与 namespace 边界 |
+| [31-knowledge-distill.md](.Knowledges/31-knowledge-distill.md) | 「蒸馏本项目」/ KB 包 / gasp_kb | 独立知识包蒸馏能力 |
+| [32-index-and-source.md](.Knowledges/32-index-and-source.md) | 搜资产 / 查 C++ API / 引用图 | AxonIndex 与 AxonSource |
 | [40-editor-actions.md](.Knowledges/40-editor-actions.md) | 改 AxonEditor Action 面时 | `editor.*` 按文件分组 |
 | [50-extension-cookbook.md](.Knowledges/50-extension-cookbook.md) | 要落地扩展插件时 | 脚手架 Checklist |
 | [51-3c-workflows.md](.Knowledges/51-3c-workflows.md) | 做 3C 验证 / Agent 编排时 | Character/Camera/Control 工作流 |
@@ -68,8 +72,10 @@ Cursor / MCP Client
 | describe / bulk_fill 框架 | 已落地（animation / blueprint / gas adapter） |
 | AxonEditor PIE smoke / timeseries | 已落地（会话模型仍分裂，见债务） |
 | Sibling：Animation / Blueprint / GAS / Config / RewindDebugger | 已落地 |
+| 项目蒸馏：AxonKnowledgeLib + scaffold_kb_plugin + 按项目 AxonXxxKB | 已落地 |
+| 离线示例包 AxonGaspKB（gasp_kb） | 已落地（薄壳接入 KnowledgeLib） |
 | Unity 匿名命名空间冲突（PIE helpers） | 已缓解（具名 `*Private` namespace） |
 | 项目根 `.mcp.json` 指向 Axon | 已落地（`http://localhost:9320/mcp`；Monolith 已禁用） |
 | 独立 AxonCamera sibling | 无（Camera 经 RewindDebugger + CameraBlueprint 可选路径） |
 
-当前阶段摘要：Axon 是 3C 向 MCP **总线 + 编辑器 PIE 验证核**；领域 authoring 在 sibling。见 [01-architecture.md](.Knowledges/01-architecture.md)、[51-3c-workflows.md](.Knowledges/51-3c-workflows.md)。
+当前阶段摘要：Axon 是 3C 向 MCP **总线 + 编辑器 PIE 验证核**；领域 authoring 在 sibling；另支持把工程蒸馏成可拷贝的离线 KB 插件。见 [01-architecture.md](.Knowledges/01-architecture.md)、[31-knowledge-distill.md](.Knowledges/31-knowledge-distill.md)、[51-3c-workflows.md](.Knowledges/51-3c-workflows.md)。

@@ -1,0 +1,27 @@
+{
+  "tool": "blueprint_query",
+  "action": "get_cdo_properties",
+  "params": {
+    "asset_path": "/Game/Blueprints/Cameras/CameraDirector_SandboxCharacter"
+  },
+  "result": {
+    "asset_path": "/Game/Blueprints/Cameras/CameraDirector_SandboxCharacter",
+    "native_class": "BlueprintCameraDirectorEvaluator",
+    "parent_class": "BlueprintCameraDirectorEvaluator",
+    "properties": [
+      {
+        "name": "CharacterPropertiesForCamera",
+        "type": "FS_CharacterPropertiesForCamera",
+        "category": "Default",
+        "owner_class": "CameraDirector_SandboxCharacter_C",
+        "value": {
+          "CameraStyle_9_3AB8E4E240527073591DBC8A5CC26A59": "NewEnumerator2",
+          "CameraMode_6_A59B5561435DC3553D7444B49C47015A": "NewEnumerator0",
+          "Gait_23_479D639548BC1B9BF402EEAB5E71E3C3": "NewEnumerator0",
+          "Stance_10_65A83BF64BE8EDFA2FA9FC817B1ECD53": "NewEnumerator0"
+        }
+      }
+    ],
+    "property_count": 1
+  }
+}
