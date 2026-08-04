@@ -37,11 +37,9 @@ public class AxonRewindDebugger : ModuleRules
 			"Json",
 			"JsonUtilities",
 			"RewindDebuggerInterface",
+			// StopRecording/IsRecording are exported on FRewindDebuggerRuntime
+			// (REWINDDEBUGGERRUNTIME_API) in this engine; TraceBasedDebuggers does not exist.
 			"RewindDebuggerRuntime",
-			// StopRecording/IsRecording live on FRuntimeModule (TRACEBASEDDEBUGGERS_API);
-			// RewindDebuggerRuntime only Privately depends on TraceBasedDebuggers, so the
-			// import lib is not transitive — link it explicitly.
-			"TraceBasedDebuggers",
 			"GameplayInsights",
 			"TraceServices",
 			"TraceAnalysis"
