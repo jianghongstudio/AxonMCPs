@@ -11,6 +11,8 @@
 ```
 Plugins/AxonMCPs/
   Axon/                 ← Core + AxonEditor（本知识库宿主）
+  AxonSource/
+  AxonIndex/
   AxonAnimation/
   AxonBlueprint/
   AxonGAS/
@@ -26,6 +28,8 @@ Plugins/AxonMCPs/
 | `axon` | AxonCore | meta | 发现/状态/指南/脚手架 |
 | `describe` / `bulk_fill` | AxonCore | 框架 | 反射读写 |
 | `editor` | AxonEditor | ~50 | PIE、输入、捕获、构建日志 |
+| `source` | AxonSource | 18 | Engine/Project C++ / Shader 索引查询 |
+| `project` | AxonIndex | 11 | 资产 FTS 搜索 / 依赖 / GameplayTags |
 | `animation` | AxonAnimation（+ 部分 Editor alias） | ~200 | 角色动画 authoring / PIE anim 采样 |
 | `chooser` | AxonAnimation | ~10 | 选择表 |
 | `blueprint` | AxonBlueprint | ~128 | MM 角色脚手架、图手术 |
@@ -36,6 +40,19 @@ Plugins/AxonMCPs/
 数量为源码静态扫描约数，以运行时 `axon_discover` 为准。
 
 ## 各 sibling 要点
+
+### AxonSource
+
+- C++ / Shader 源码 SQLite 索引；MCP namespace `source`（`source_query`）。
+- 含 `read_source`、`search_source`、`get_signature`、`trigger_reindex` 等 18 个 Action。
+- DB 默认：`Plugins/AxonMCPs/AxonSource/Saved/EngineSource.db`。
+
+### AxonIndex
+
+- 项目资产深索引（BP / Material / GAS / Niagara 等）；MCP namespace `project`（`project_query`）。
+- 含 `search`、`find_references`、`get_asset_details`、`refresh_assets` 等 11 个 Action。
+- DB 默认：`Plugins/AxonMCPs/AxonIndex/Saved/ProjectIndex.db`。
+- 生成资产清理沙箱：`/Game/Tests/Axon/`。
 
 ### AxonAnimation
 
@@ -66,7 +83,6 @@ Plugins/AxonMCPs/
 ## 当前缺口
 
 - **无独立 AxonCamera sibling**：镜头制作主要靠项目 CameraBlueprint + Rewind 采样 + Editor 捕获。
-- 根 MCP 配置未必启用 Axon（见用户文档）。
 
 ## 待充实
 

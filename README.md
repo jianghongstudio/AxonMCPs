@@ -5,6 +5,8 @@
 | 插件 | 角色 |
 |------|------|
 | **[Axon](Axon/)** | 核心：HTTP MCP、`FAxonToolRegistry`、discover/guide、describe/bulk_fill；同包 `AxonEditor` 承载 PIE / 编辑器 Action |
+| [AxonSource](AxonSource/) | Engine/Project C++ 与 Shader 源码索引（`source_query`） |
+| [AxonIndex](AxonIndex/) | 项目资产 SQLite+FTS 索引与搜索（`project_query`） |
 | [AxonAnimation](AxonAnimation/) | 动画 / Chooser / PoseSearch / Locomotion authoring |
 | [AxonBlueprint](AxonBlueprint/) | Blueprint 图手术 + Motion Matching 角色脚手架 |
 | [AxonGAS](AxonGAS/) | Gameplay Ability System authoring / inspect / 输入绑定 |

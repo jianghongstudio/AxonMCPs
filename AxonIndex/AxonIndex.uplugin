@@ -1,0 +1,28 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Axon Index",
+  "Description": "Axon MCP project asset indexing and search actions (project_query).",
+  "Category": "Editor",
+  "CreatedBy": "Axon",
+  "CanContainContent": false,
+  "IsBetaVersion": true,
+  "EnabledByDefault": true,
+  "Plugins": [
+    { "Name": "Axon", "Enabled": true },
+    { "Name": "SQLiteCore", "Enabled": true },
+    { "Name": "Niagara", "Enabled": true },
+    { "Name": "GameplayAbilities", "Enabled": true },
+    { "Name": "EnhancedInput", "Enabled": true },
+    { "Name": "EditorScriptingUtilities", "Enabled": true },
+    { "Name": "Metasound", "Enabled": true, "Optional": true }
+  ],
+  "Modules": [
+    {
+      "Name": "AxonIndex",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit"
+    }
+  ]
+}

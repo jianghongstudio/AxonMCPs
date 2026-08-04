@@ -1,0 +1,23 @@
+{
+  "FileVersion": 3,
+  "Version": 1,
+  "VersionName": "0.1.0",
+  "FriendlyName": "Axon Source",
+  "Description": "Axon MCP source indexing and C++/shader query actions (source_query).",
+  "Category": "Editor",
+  "CreatedBy": "Axon",
+  "CanContainContent": false,
+  "IsBetaVersion": true,
+  "EnabledByDefault": true,
+  "Plugins": [
+    { "Name": "Axon", "Enabled": true },
+    { "Name": "SQLiteCore", "Enabled": true }
+  ],
+  "Modules": [
+    {
+      "Name": "AxonSource",
+      "Type": "Editor",
+      "LoadingPhase": "PostEngineInit"
+    }
+  ]
+}

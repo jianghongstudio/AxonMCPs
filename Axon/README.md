@@ -69,7 +69,7 @@ Cursor / MCP Client
 | AxonEditor PIE smoke / timeseries | 已落地（会话模型仍分裂，见债务） |
 | Sibling：Animation / Blueprint / GAS / Config / RewindDebugger | 已落地 |
 | Unity 匿名命名空间冲突（PIE helpers） | 已缓解（具名 `*Private` namespace） |
-| 项目根 `.mcp.json` 指向 Axon | 待充实（示例见 `Templates/.mcp.json.example`；根配置可能仍指向 Monolith） |
+| 项目根 `.mcp.json` 指向 Axon | 已落地（`http://localhost:9320/mcp`；Monolith 已禁用） |
 | 独立 AxonCamera sibling | 无（Camera 经 RewindDebugger + CameraBlueprint 可选路径） |
 
 当前阶段摘要：Axon 是 3C 向 MCP **总线 + 编辑器 PIE 验证核**；领域 authoring 在 sibling。见 [01-architecture.md](.Knowledges/01-architecture.md)、[51-3c-workflows.md](.Knowledges/51-3c-workflows.md)。
