@@ -19,6 +19,7 @@ Plugins/AxonMCPs/
   AxonConfig/
   AxonRewindDebugger/
   AxonKnowledgeLib/     ← 共享 KB Corpus/extract/scaffold（knowledge）
+  AxonLLM/              ← 本地 LLM 工人池（worker）
   AxonGaspKB/           ← 离线 GASP 知识语料（gasp_kb）
   Axon{Project}KB/      ← knowledge.scaffold_kb_plugin 生成的按项目 KB
   <YourSibling>/        ← axon_create_extension 默认落点
@@ -39,7 +40,8 @@ Plugins/AxonMCPs/
 | `gas` / `ui` | AxonGAS | ~135 + alias | 能力与输入绑定 |
 | `config` | AxonConfig | ~7 | 设置/INI |
 | `rewind_debugger` | AxonRewindDebugger | ~15 | 回放采样（含 CameraBP） |
-| `knowledge` | AxonKnowledgeLib | 2 | KB 脚手架（scaffold_kb_plugin / preview_kb_names） |
+| `knowledge` | AxonKnowledgeLib | 3 | KB 脚手架 + `list_kb_packs`（注册表索引） |
+| `worker` | AxonLLM | 7 | 本地 LLM 工人（status/list/run/run_async/job_*/usage_summary） |
 | `gasp_kb` | AxonGaspKB | ~11 | 离线 GASP 知识检索 + extract_*（不依赖 Content） |
 | `{project}_kb` | Axon{Project}KB | ~11 | 按项目蒸馏的独立知识包 |
 
@@ -93,9 +95,19 @@ Plugins/AxonMCPs/
 ### AxonKnowledgeLib
 
 - **无业务语料**；提供 `FAxonKnowledgeCorpus`、`FAxonKnowledgeRegistration::RegisterAll`、extract 写 `_raw`、以及 meta namespace `knowledge`。
-- `knowledge.scaffold_kb_plugin`：从当前工程名推导 `Axon{Project}KB` / `{snake}_kb` 并生成独立 sibling（含 `Knowledge/` 模板）。
+- `RegisterAll` 同步登记到 `FAxonKnowledgeRegistry`；`UnregisterAll` 注销。消费者（AxonLLM 下拉等）按注册表索引，不靠插件名猜测。
+- `knowledge.list_kb_packs` / `scaffold_kb_plugin` / `preview_kb_names`。
 - Agent 触发：`axon_guide` → **Distill current project**（中文「蒸馏本项目」）。
 - 专页：[31-knowledge-distill.md](31-knowledge-distill.md)；插件 README：[`../AxonKnowledgeLib/README.md`](../AxonKnowledgeLib/README.md)。
+
+### AxonLLM
+
+- 本地 LLM 工人池；MCP namespace `worker`（`worker_query`）。
+- Actions：`status` / `list` / `run` / `run_async` / `job_status` / `job_cancel` / `usage_summary`。
+- Scopes：`knowledge.summarize_raw`、`knowledge.draft_topic`（写 `_draft/`）、`log.summarize`、`knowledge.promote_draft`（文件升格，不调 LLM）。
+- 配置：Project Settings → Plugins → Axon LLM；能力用中文勾选；Model 从 BaseUrl `/api/tags` 下拉。工人身份 = `Workers[]` 下标，无需 `worker_id`。
+- Agent 调度；工人不递归调用其他 MCP；升格需显式 `promote_draft`。
+- 插件 README：[`../AxonLLM/README.md`](../AxonLLM/README.md)；蒸馏联用见 [31-knowledge-distill.md](31-knowledge-distill.md)。
 
 ### AxonGaspKB
 

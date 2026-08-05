@@ -511,9 +511,11 @@ TSharedPtr<FJsonObject> FAxonHttpServer::HandleInitialize(const TSharedPtr<FJson
 	// Capabilities
 	TSharedPtr<FJsonObject> Capabilities = MakeShared<FJsonObject>();
 
-	// We support tools
+	// Advertise listChanged so clients know the tool surface can grow as sibling
+	// plugins register. (UE HTTP cannot hold long-lived SSE push; clients still
+	// need to re-call tools/list / reconnect after late registrations.)
 	TSharedPtr<FJsonObject> ToolsCap = MakeShared<FJsonObject>();
-	ToolsCap->SetBoolField(TEXT("listChanged"), false);
+	ToolsCap->SetBoolField(TEXT("listChanged"), true);
 	Capabilities->SetObjectField(TEXT("tools"), ToolsCap);
 
 	Result->SetObjectField(TEXT("capabilities"), Capabilities);

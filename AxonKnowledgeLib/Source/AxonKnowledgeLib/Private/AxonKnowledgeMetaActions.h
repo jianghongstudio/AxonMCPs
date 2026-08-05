@@ -11,4 +11,5 @@ public:
 
 	static FAxonActionResult HandleScaffoldKbPlugin(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandlePreviewKbNames(const TSharedPtr<FJsonObject>& Params);
+	static FAxonActionResult HandleListKbPacks(const TSharedPtr<FJsonObject>& Params);
 };

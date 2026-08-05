@@ -28,7 +28,8 @@ public class AxonCore : ModuleRules
 			// now lives in CoreUObject (already a Public dep above).
 			"ToolMenus",
 			"StatusBar",
-			"InputCore"
+			"InputCore",
+			"Settings"
 		});
 	}
 }

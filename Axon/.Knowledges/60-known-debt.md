@@ -4,11 +4,11 @@
 > **何时阅读**：规划改造、排查诡异行为时。  
 > **相关源码**：全套件；见各条目  
 > **相关文档**：[90-refactor-log.md](90-refactor-log.md)、[13-pie-sessions.md](13-pie-sessions.md)  
-> **最后更新**：2026-08-01
+> **最后更新**：2026-08-05
 
 ## 基线快照
 
-- **日期**：2026-08-01  
+- **日期**：2026-08-05  
 - **状态**：套件可用；下列来自源码结构与近期编译/拆分经验，非完整审计。
 
 ## 债务清单
@@ -33,11 +33,18 @@
 - **状态**：**已缓解**（`*Private` 具名 namespace + `AxonPieObject::FindPieWorld`）。
 - **残余**：其它 Editor cpp 仍大量 `namespace { }`；新增同名符号仍可能炸。
 
-### D4 — 项目 MCP 客户端默认可能指向 Monolith
+### D4 — 项目 MCP 客户端默认可能指向 Monolith（部分缓解）
 
 - **位置**：仓库根 `.mcp.json` vs `Templates/.mcp.json.example`
 - **问题**：用户以为连了 Axon，实际打到 9316。
-- **建议**：文档醒目标注；可选双 server 配置示例。
+- **状态**：根 `.mcp.json` 已可同时配置 monolith + axon；仍需用户侧确认 URL。
+
+### D8 — Cursor 缓存残缺 `tools/list`（worker_query 等缺失）（已缓解）
+
+- **位置**：`FAxonCoreModule::StartupModule` 过早 `HttpServer->Start`；`initialize.capabilities.tools.listChanged=false`
+- **问题**：端口一开 Cursor 立即 `tools/list` 并缓存；此时 `AxonLLM`（`worker`）等 sibling 尚未 `RegisterAction`，导致客户端永久看不到 `worker_query` 等（服务端稍后 `tools/list` 其实是全的）。
+- **状态**：**已缓解**（2026-08-05）：HTTP 延后到 `OnAllModuleLoadingPhasesComplete`（+ ticker 兜底）；`listChanged=true`。已连接会话仍需重载 MCP 一次。
+- **残余**：UE HTTP 无长连接 SSE push，运行中途新启用的 sibling 仍需客户端重连。
 
 ### D5 — 无独立 Camera sibling
 
@@ -61,3 +68,4 @@
 | ID | 摘要 | 解决时间 |
 |----|------|----------|
 | D3 | PIE Unity 匿名命名空间冲突 | 2026-08-01 |
+| D8 | Cursor 缓存残缺 tools/list（worker_query） | 2026-08-05 |

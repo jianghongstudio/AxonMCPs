@@ -6,10 +6,12 @@
 #include "AxonCoreTools.h"
 #include "SAxonStatusBarWidget.h"
 #include "Actions/AxonBulkFillActions.h"
+#include "Misc/CoreDelegates.h"
 #include "Misc/FileHelper.h"
 #include "GenericPlatform/GenericPlatformProcess.h"
 #include "Interfaces/IPluginManager.h"
 #include "HAL/IConsoleManager.h"
+#include "Containers/Ticker.h"
 #include "ToolMenus.h"
 
 #define LOCTEXT_NAMESPACE "FAxonCoreModule"
@@ -43,36 +45,46 @@ void FAxonCoreModule::StartupModule()
 	// FAxonBulkFillRegistry::RegisterAdapter — those land in Phases 1-5.
 	FAxonBulkFillActions::RegisterAll();
 
-	// Start HTTP server (gated on bMcpServerEnabled — Issue #38 kill-switch)
-	const UAxonSettings* Settings = UAxonSettings::Get();
-	if (Settings && !Settings->bMcpServerEnabled)
-	{
-		UE_LOG(LogAxon, Log,
-			TEXT("Axon — MCP server disabled in settings (bMcpServerEnabled=false), skipping HTTP listener startup"));
-	}
-	else
-	{
-		int32 Port = Settings ? Settings->ServerPort : 9320;
-
-		HttpServer = MakeUnique<FAxonHttpServer>();
-		if (HttpServer->Start(Port))
+	// Defer HTTP bind until sibling PostEngineInit modules (AxonLLM / Animation /
+	// …) have registered their namespaces. Opening the port inside this
+	// StartupModule races MCP clients (Cursor) that tools/list immediately and
+	// then cache a partial surface when listChanged notifications are unavailable.
+	DeferredHttpStartHandle = FCoreDelegates::OnAllModuleLoadingPhasesComplete.AddRaw(
+		this, &FAxonCoreModule::StartHttpServerIfEnabled);
+	// Fallback: if the complete delegate already fired (hot-reload / late load),
+	// start on the next ticker tick so we never leave MCP permanently off.
+	FTSTicker::GetCoreTicker().AddTicker(
+		FTickerDelegate::CreateLambda([this](float)
 		{
-			WriteSentinelFile(Port);
-		}
-		else
-		{
-			UE_LOG(LogAxon, Error, TEXT("Failed to start MCP server on port %d"), Port);
-		}
-	}
+			StartHttpServerIfEnabled();
+			return false;
+		}),
+		0.0f);
 
 	// Status bar chip (red/yellow/green) — register once ToolMenus is ready.
 	ToolMenusStartupHandle = UToolMenus::RegisterStartupCallback(
 		FSimpleMulticastDelegate::FDelegate::CreateRaw(this, &FAxonCoreModule::RegisterStatusBar));
 }
 
+void FAxonCoreModule::SetWorkerHudProvider(FAxonWorkerHudProvider Provider)
+{
+	WorkerHudProvider = MoveTemp(Provider);
+}
+
+FAxonWorkerHudStatus FAxonCoreModule::QueryWorkerHudStatus() const
+{
+	if (WorkerHudProvider)
+	{
+		return WorkerHudProvider();
+	}
+	return FAxonWorkerHudStatus();
+}
+
 void FAxonCoreModule::ShutdownModule()
 {
+	WorkerHudProvider = nullptr;
 	UnregisterStatusBar();
+	CancelDeferredHttpStart();
 
 	RemoveSentinelFile();
 
@@ -86,6 +98,53 @@ void FAxonCoreModule::ShutdownModule()
 	FAxonBulkFillActions::UnregisterAll();
 
 	UE_LOG(LogAxon, Log, TEXT("Axon — Core module shut down"));
+}
+
+void FAxonCoreModule::CancelDeferredHttpStart()
+{
+	if (DeferredHttpStartHandle.IsValid())
+	{
+		FCoreDelegates::OnAllModuleLoadingPhasesComplete.Remove(DeferredHttpStartHandle);
+		DeferredHttpStartHandle.Reset();
+	}
+}
+
+void FAxonCoreModule::StartHttpServerIfEnabled()
+{
+	CancelDeferredHttpStart();
+
+	if (HttpServer.IsValid() && HttpServer->IsRunning())
+	{
+		return;
+	}
+
+	const UAxonSettings* Settings = UAxonSettings::Get();
+	if (Settings && !Settings->bMcpServerEnabled)
+	{
+		UE_LOG(LogAxon, Log,
+			TEXT("Axon — MCP server disabled in settings (bMcpServerEnabled=false), skipping HTTP listener startup"));
+		return;
+	}
+
+	const int32 Port = Settings ? Settings->ServerPort : 9320;
+	if (!HttpServer.IsValid())
+	{
+		HttpServer = MakeUnique<FAxonHttpServer>();
+	}
+
+	if (HttpServer->Start(Port))
+	{
+		WriteSentinelFile(Port);
+		UE_LOG(LogAxon, Log,
+			TEXT("Axon — MCP HTTP listening on %d after module load (%d namespaces, %d actions)"),
+			Port,
+			FAxonToolRegistry::Get().GetNamespaces().Num(),
+			FAxonToolRegistry::Get().GetActionCount());
+	}
+	else
+	{
+		UE_LOG(LogAxon, Error, TEXT("Failed to start MCP server on port %d"), Port);
+	}
 }
 
 void FAxonCoreModule::RegisterCoreTools()
@@ -213,20 +272,27 @@ void FAxonCoreModule::RestartHttpServer()
 	}
 
 	FAxonCoreModule& Module = Get();
-	if (!Module.HttpServer.IsValid())
+	Module.CancelDeferredHttpStart();
+
+	const UAxonSettings* Settings = UAxonSettings::Get();
+	if (Settings && !Settings->bMcpServerEnabled)
 	{
-		UE_LOG(LogAxon, Warning, TEXT("Axon.Restart: HTTP server instance missing"));
+		UE_LOG(LogAxon, Warning, TEXT("Axon.Restart: bMcpServerEnabled=false — not starting"));
 		return;
 	}
 
-	const UAxonSettings* Settings = UAxonSettings::Get();
 	const int32 Port = Settings ? Settings->ServerPort : 9320;
+	if (!Module.HttpServer.IsValid())
+	{
+		Module.HttpServer = MakeUnique<FAxonHttpServer>();
+	}
 
 	UE_LOG(LogAxon, Log, TEXT("Axon.Restart: restarting HTTP server on port %d"), Port);
 	if (Module.HttpServer->Restart(Port))
 	{
 		Module.WriteSentinelFile(Port);
-		UE_LOG(LogAxon, Log, TEXT("Axon.Restart: success"));
+		UE_LOG(LogAxon, Log, TEXT("Axon.Restart: success (%d namespaces)"),
+			FAxonToolRegistry::Get().GetNamespaces().Num());
 	}
 	else
 	{

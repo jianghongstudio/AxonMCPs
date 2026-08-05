@@ -20,6 +20,7 @@ Axon 是一套跑在 **Unreal Editor** 里的 MCP 服务，面向游戏 **3C（�
   - **AxonIndex** — 项目资产 FTS / 引用图（`project_query`）
   - **AxonSource** — 引擎与工程 C++/Shader 索引（`source_query`；首次需 reindex）
   - **AxonKnowledgeLib** — 项目蒸馏脚手架与 KB 共享库（要「蒸馏本项目」时必选）
+  - **AxonLLM**（可选）— 本地 LLM 工人池（`worker_query`；Ollama 摘要 / `_draft`）
   - **AxonGaspKB**（可选）— Epic Game Animation Sample 的离线知识示例（`gasp_kb`）
 - 编辑器已启动（MCP 挂在编辑器进程内，不是独立 exe）
 - MCP 客户端（Cursor 等）能访问本机 HTTP
@@ -56,7 +57,7 @@ http://localhost:9320/mcp
 | Enable MCP Server | true | 总开关 |
 | Server Port | 9320 | 与客户端 URL 一致 |
 
-改端口后需重启服务（重启编辑器，或使用控制台 `Axon.Restart`，以当前构建为准）。状态栏可看到 Axon 监听/连接状态。
+改端口后需重启服务（重启编辑器，或使用控制台 `Axon.Restart`，以当前构建为准）。状态栏 **Axon MCP** 芯片：灯色=监听/连接；点击可打开 Axon / Axon LLM 设置；工人忙碌时文案变为 `Axon · {model}`。
 
 ## 3. 工具怎么用（概念）
 
@@ -69,7 +70,8 @@ Axon 把能力分成 **namespace + action**。客户端上通常看到：
 | `animation_query` / `blueprint_query` / `gas_query` / … | 各 sibling |
 | `project_query` | 项目资产索引（AxonIndex）：搜资产、引用、Tag |
 | `source_query` | 源码索引（AxonSource）：签名、调用方、搜 C++/Shader |
-| `knowledge_query` | 蒸馏脚手架：`preview_kb_names` / `scaffold_kb_plugin` |
+| `knowledge_query` | 蒸馏脚手架：`preview_kb_names` / `list_kb_packs` / `scaffold_kb_plugin` |
+| `worker_query` | 本地 LLM 工人（AxonLLM）：`status` / `list` / `run` / `run_async` / `job_*` / `usage_summary` |
 | `{project}_kb_query` / `gasp_kb_query` | 某工程离线知识包：search / read / extract… |
 | `describe_query` / `bulk_fill_query` | 查 schema / 反射批量写入 |
 
@@ -93,7 +95,7 @@ Axon 把能力分成 **namespace + action**。客户端上通常看到：
 
 ## 4. 第一次 5 分钟
 
-1. 开编辑器，确认状态栏 Axon 在监听。  
+1. 开编辑器，确认状态栏 **Axon MCP** 为黄/绿（点击可开设置）。  
 2. 客户端调用 `axon_status`（端口、uptime、action 数）。  
 3. `axon_discover` 应能看到 `editor`、`animation` 等（取决于已启用 sibling）。  
 4. 若只要验证连通：`editor_query` → `action: "get_viewport_info"`（或任意只读 action）。  
@@ -143,10 +145,20 @@ Axon 把能力分成 **namespace + action**。客户端上通常看到：
    - 撰写 `Knowledge/*.md` 并用 `{ns}_query` 验收  
 4. 需要带到其他工程时：拷贝整个 `Plugins/AxonMCPs/AxonXxxKB/`（并确保目标工程有 AxonKnowledgeLib），在 `.uproject` 启用即可。
 
+### 可选：本地 LLM 工人（AxonLLM）
+
+若已部署 Ollama 并启用 **AxonLLM**：
+
+1. 状态栏点 **Axon MCP** → 打开 Axon LLM 设置（或 Project Settings → Plugins → Axon LLM）：确认启用、`BaseUrl`；点 **刷新模型** 选 Model；用中文勾选能力。  
+2. Agent 可用 `worker_query`：`status` / `list` / `run` / `run_async`（长任务）/ `job_status` / `usage_summary`。  
+3. 蒸馏时可先 `knowledge.summarize_raw` 压缩 `_raw`，或 `knowledge.draft_topic` 写出 `Knowledge/_draft/*.md`，再用 `knowledge.promote_draft` 升格。  
+
+详见 [`../../AxonLLM/README.md`](../../AxonLLM/README.md)。
+
 ### 边界（请预期）
 
 - 新插件必须编译重启后，新的 `{ns}_query` 才会出现。  
-- Markdown 全书由 Agent 蒸馏，不是 C++ 一键生成。  
+- Markdown 全书由 Agent 蒸馏（可委派 AxonLLM 出草稿），不是 C++ 一键生成。  
 - 示例包：本仓库的 **AxonGaspKB**（`gasp_kb_query`）已是蒸馏成品，不要为 GASP 再 scaffold 一套新名字。
 
 AI 强制步骤见 [axon_guide.md](axon_guide.md) 的 **Distill current project**；细节见 [31-knowledge-distill.md](../.Knowledges/31-knowledge-distill.md)。
@@ -170,11 +182,13 @@ AI 强制步骤见 [axon_guide.md](axon_guide.md) 的 **Distill current project*
 | Load 地图报 World Memory Leaks | 先 `stop_pie` / `stop_pie_smoke`，再 load |
 | bulk_fill 失败 | 该 namespace 是否注册了 adapter（目前常见：animation / blueprint / gas）；先 `dry_run=true` |
 | 连上了但工具不像 Axon | 检查是否误连 Monolith 9316 |
+| 有 `axon_discover` 能看到 `worker`，但 Cursor 没有 `worker_query` | 客户端缓存了启动早期的 `tools/list`；重载 MCP（或重启 Agent）。服务端已延后开端口避免此竞态 |
 | `source` 查不到符号 / 空索引 | 先 `source_query` → `trigger_reindex`（首次全量，耗时） |
 | `project` 结果过旧 | `refresh_assets`；或等启动增量完成后再搜 |
 | 说了「蒸馏」但没出新插件 | 确认 AxonKnowledgeLib 已启用；Agent 须走 `scaffold_kb_plugin` 而非只 dump 资产 |
 | 找不到 `knowledge` / 新 `{ns}_kb` | 插件未编译或未重启；`axon_discover` 核对 |
 | 想复用 GASP 知识 | 启用 AxonGaspKB，用 `gasp_kb_query`（search/read） |
+| 找不到 `worker` / 本地蒸馏草稿 | 启用并编译 AxonLLM；`worker_query` → `status` 检查 Ollama |
 
 ## 9. 相关文档
 

@@ -251,22 +251,17 @@ FString FAxonKnowledgeScaffold::MakeModuleCpp(const FString& ModuleName, const F
 {
 	return FString::Printf(
 		TEXT("#include \"%sModule.h\"\n")
-		TEXT("#include \"AxonKnowledgeRegistration.h\"\n")
-		TEXT("#include \"AxonCoreModule.h\"\n")
-		TEXT("#include \"AxonToolRegistry.h\"\n\n")
+		TEXT("#include \"AxonKnowledgeRegistration.h\"\n\n")
 		TEXT("void F%sModule::StartupModule()\n")
 		TEXT("{\n")
 		TEXT("\tFAxonKnowledgeRegistration::RegisterAll(TEXT(\"%s\"), TEXT(\"%s\"));\n")
 		TEXT("}\n\n")
 		TEXT("void F%sModule::ShutdownModule()\n")
 		TEXT("{\n")
-		TEXT("\tif (FAxonCoreModule::IsAvailable())\n")
-		TEXT("\t{\n")
-		TEXT("\t\tFAxonToolRegistry::Get().UnregisterNamespace(TEXT(\"%s\"));\n")
-		TEXT("\t}\n")
+		TEXT("\tFAxonKnowledgeRegistration::UnregisterAll(TEXT(\"%s\"), TEXT(\"%s\"));\n")
 		TEXT("}\n\n")
 		TEXT("IMPLEMENT_MODULE(F%sModule, %s)\n"),
-		*ModuleName, *ModuleName, *Namespace, *PluginName, *ModuleName, *Namespace, *ModuleName, *ModuleName);
+		*ModuleName, *ModuleName, *Namespace, *PluginName, *ModuleName, *Namespace, *PluginName, *ModuleName, *ModuleName);
 }
 
 FString FAxonKnowledgeScaffold::MakeRoutingMd(const FString& ProjectName, const FString& Namespace)

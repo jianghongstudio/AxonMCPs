@@ -1,7 +1,5 @@
 #include "AxonGaspKBModule.h"
 #include "AxonKnowledgeRegistration.h"
-#include "AxonCoreModule.h"
-#include "AxonToolRegistry.h"
 
 void FAxonGaspKBModule::StartupModule()
 {
@@ -11,10 +9,7 @@ void FAxonGaspKBModule::StartupModule()
 
 void FAxonGaspKBModule::ShutdownModule()
 {
-	if (FAxonCoreModule::IsAvailable())
-	{
-		FAxonToolRegistry::Get().UnregisterNamespace(TEXT("gasp_kb"));
-	}
+	FAxonKnowledgeRegistration::UnregisterAll(TEXT("gasp_kb"), TEXT("AxonGaspKB"));
 }
 
 IMPLEMENT_MODULE(FAxonGaspKBModule, AxonGaspKB)

@@ -101,6 +101,7 @@ When the user asks to distill **any** Axon-enabled project into offline knowledg
 4. **Extract** evidence into that plugin's `Knowledge/_raw/` via `{ns}_query`:
    `extract_state_machines` / `extract_anim_graph_overview` / `extract_chooser` / `extract_config_ddcvars` / `extract_bundle` / `extract_invoke`.
 5. **Distill** `Knowledge/*.md` from `_raw` (Agent-authored markdown; C++ does not auto-generate docs). Depth bar: match AxonGaspKB (State Controller–level detail for major systems).
+   - **Optional local workers (AxonLLM)**: `worker_query` → `status` / `run` / `run_async` with scopes `knowledge.summarize_raw`, `knowledge.draft_topic` (`_draft/{topic}.md`), then `knowledge.promote_draft` to formal topics. Long jobs: `run_async` + `job_status`. Do not treat drafts as published Knowledge.
 6. **Accept** with `{ns}_query` `search` / `read` / `list_topics`.
 7. Copying the whole `AxonXxxKB/` folder to another project is a human decision (enable/disable plugin).
 
@@ -110,10 +111,26 @@ knowledge_query({ "action": "scaffold_kb_plugin", "dry_run": true })
 knowledge_query({ "action": "scaffold_kb_plugin" })
 # close editor → UBT → relaunch
 {ns}_query({ "action": "extract_bundle", "jobs": [ ... ] })
+# optional: worker_query({ "action": "run", "scope": "knowledge.draft_topic", ... })
 {ns}_query({ "action": "search", "query": "..." })
 ```
 
-Requires sibling plugin **AxonKnowledgeLib** (`knowledge` namespace). Each distilled project is its own `AxonXxxKB` plugin — never dump multi-project corpora into one host.
+Requires sibling plugin **AxonKnowledgeLib** (`knowledge` namespace). Each distilled project is its own `AxonXxxKB` plugin — never dump multi-project corpora into one host. Optional **AxonLLM** (`worker` namespace) for local Ollama drafts — see `../AxonLLM/README.md`.
+
+### Local LLM workers (optional)
+
+When **AxonLLM** is enabled and Ollama is reachable:
+
+| Need | Call |
+|---|---|
+| Probe workers / models | `worker_query` / `status` or `list` |
+| Compress `_raw` for the Agent | `worker_query` / `run` + `scope=knowledge.summarize_raw` + `kb_plugin` + `paths` (auto-picks Workers[] by index order) |
+| Draft a topic under `_draft/` | `worker_query` / `run` or `run_async` + `scope=knowledge.draft_topic` + `topic` + `paths` |
+| Promote draft → formal md | `worker_query` / `run` + `scope=knowledge.promote_draft` + `topic` (+ optional `overwrite`) |
+| Summarize build/logs | `worker_query` / `run` + `scope=log.summarize` + `text` and/or Saved `paths` |
+| Usage totals | `worker_query` / `usage_summary` |
+
+Workers never recurse into other MCP actions. Promote is explicit (`knowledge.promote_draft`).
 
 ## decisions
 
@@ -127,6 +144,8 @@ Requires sibling plugin **AxonKnowledgeLib** (`knowledge` namespace). Each disti
 | Scaffold a sibling extension | `axon_create_extension` |
 | Distill project → standalone KB plugin | `knowledge_query` / `scaffold_kb_plugin` (see Distill recipe) |
 | Preview KB plugin/namespace names | `knowledge_query` / `preview_kb_names` |
+| List registered KB packs | `knowledge_query` / `list_kb_packs` |
+| Local LLM summarize / draft / promote | `worker_query` / `status` / `list` / `run` / `run_async` / `job_*` / `usage_summary` (AxonLLM) |
 | Search project assets / refs / tags | `project_query` (AxonIndex) |
 | Search engine/project C++ / callers | `source_query` (AxonSource; reindex first if empty) |
 | List optional external recipes | `axon_list_extension_recipes` |

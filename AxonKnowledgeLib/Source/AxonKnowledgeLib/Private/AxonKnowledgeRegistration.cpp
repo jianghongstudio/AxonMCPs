@@ -1,6 +1,8 @@
 #include "AxonKnowledgeRegistration.h"
 #include "AxonKnowledgeCorpus.h"
+#include "AxonKnowledgeRegistry.h"
 #include "AxonKnowledgeExtract.h"
+#include "AxonCoreModule.h"
 #include "AxonToolRegistry.h"
 #include "AxonParamSchema.h"
 
@@ -238,4 +240,14 @@ void FAxonKnowledgeRegistration::RegisterAll(const FString& Namespace, const FSt
 	{
 		RegisterExtractActions(Namespace, PluginName);
 	}
+	FAxonKnowledgeRegistry::Register(PluginName, Namespace);
+}
+
+void FAxonKnowledgeRegistration::UnregisterAll(const FString& Namespace, const FString& PluginName)
+{
+	if (FAxonCoreModule::IsAvailable())
+	{
+		FAxonToolRegistry::Get().UnregisterNamespace(Namespace);
+	}
+	FAxonKnowledgeRegistry::Unregister(PluginName);
 }
