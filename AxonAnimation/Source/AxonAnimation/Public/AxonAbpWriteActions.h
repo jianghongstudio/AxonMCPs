@@ -16,6 +16,9 @@ public:
 
 private:
 	static FAxonActionResult HandleAddAnimGraphNode(const TSharedPtr<FJsonObject>& Params);
+	static FAxonActionResult HandleReplaceAnimGraphNode(const TSharedPtr<FJsonObject>& Params);
+	/** Copy BoundGraph (sample graph) contents between BlendStack-family nodes. */
+	static FAxonActionResult HandleCopyBlendStackSampleGraph(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandleConnectAnimGraphPins(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandleSetStateAnimation(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandleAddVariableGet(const TSharedPtr<FJsonObject>& Params);

@@ -15,7 +15,7 @@
 		{
 			"Name": "{{ModuleName}}",
 			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit"
+			"LoadingPhase": "Default"
 		}
 	]
 }

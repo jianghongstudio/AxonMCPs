@@ -22,7 +22,7 @@
 		{
 			"Name": "AxonGaspKB",
 			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit"
+			"LoadingPhase": "Default"
 		}
 	]
 }

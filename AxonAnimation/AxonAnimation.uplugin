@@ -48,7 +48,7 @@
 		{
 			"Name": "AxonAnimation",
 			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit"
+			"LoadingPhase": "Default"
 		}
 	]
 }

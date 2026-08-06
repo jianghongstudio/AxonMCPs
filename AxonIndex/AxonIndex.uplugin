@@ -22,7 +22,7 @@
     {
       "Name": "AxonIndex",
       "Type": "Editor",
-      "LoadingPhase": "PostEngineInit"
+      "LoadingPhase": "Default"
     }
   ]
 }

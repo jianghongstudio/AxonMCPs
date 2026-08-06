@@ -201,7 +201,7 @@ FString FAxonKnowledgeScaffold::MakeUplugin(const FString& PluginName, const FSt
 		TEXT("\t\t{\n")
 		TEXT("\t\t\t\"Name\": \"%s\",\n")
 		TEXT("\t\t\t\"Type\": \"Editor\",\n")
-		TEXT("\t\t\t\"LoadingPhase\": \"PostEngineInit\"\n")
+		TEXT("\t\t\t\"LoadingPhase\": \"Default\"\n")
 		TEXT("\t\t}\n")
 		TEXT("\t]\n")
 		TEXT("}\n"),

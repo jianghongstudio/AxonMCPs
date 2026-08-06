@@ -45,13 +45,14 @@ void FAxonCoreModule::StartupModule()
 	// FAxonBulkFillRegistry::RegisterAdapter — those land in Phases 1-5.
 	FAxonBulkFillActions::RegisterAll();
 
-	// Defer HTTP bind until sibling PostEngineInit modules (AxonLLM / Animation /
-	// …) have registered their namespaces. Opening the port inside this
-	// StartupModule races MCP clients (Cursor) that tools/list immediately and
-	// then cache a partial surface when listChanged notifications are unavailable.
-	DeferredHttpStartHandle = FCoreDelegates::OnAllModuleLoadingPhasesComplete.AddRaw(
+	// Defer HTTP bind until PostEngineInit to ensure ALL modules (including those
+	// with deep dependency chains like AxonStructChooser) have completed their
+	// StartupModule() and registered their MCP actions. OnAllModuleLoadingPhasesComplete
+	// fires when phases transition, not when all StartupModule() calls finish.
+	// PostEngineInit is the last initialization delegate, guaranteeing all modules ready.
+	DeferredHttpStartHandle = FCoreDelegates::OnPostEngineInit.AddRaw(
 		this, &FAxonCoreModule::StartHttpServerIfEnabled);
-	// Fallback: if the complete delegate already fired (hot-reload / late load),
+	// Fallback: if PostEngineInit already fired (hot-reload / late load),
 	// start on the next ticker tick so we never leave MCP permanently off.
 	FTSTicker::GetCoreTicker().AddTicker(
 		FTickerDelegate::CreateLambda([this](float)

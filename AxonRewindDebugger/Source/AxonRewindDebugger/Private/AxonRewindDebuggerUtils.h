@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Common/ProviderLock.h"
 #include "Dom/JsonObject.h"
 #include "IRewindDebugger.h"
 #include "IAnimationProvider.h"
@@ -31,43 +30,29 @@ namespace AxonRewindDebugger
 	};
 
 	/**
-	 * Session BeginRead alone is not enough in UE 5.8+: Animation/Gameplay providers
-	 * each have their own FProviderLock. Reading without FProviderReadScopeLock trips
-	 * "Trying to READ from provider outside of a READ scope".
+	 * GameplayInsights Animation/Gameplay providers in this engine only use
+	 * Session.ReadAccessCheck() — they do NOT override IProvider::BeginRead/EndRead
+	 * (base stubs are unimplemented() and will crash). Match engine RewindDebugger:
+	 * hold FAnalysisSessionReadScope only.
 	 */
 	struct FSampleReadScopes
 	{
-		explicit FSampleReadScopes(const FSampleContext& Ctx, const TraceServices::IProvider* ExtraProvider = nullptr)
+		explicit FSampleReadScopes(const FSampleContext& Ctx, const TraceServices::IProvider* /*ExtraProvider*/ = nullptr)
 			: SessionScope(*Ctx.Session)
 		{
-			if (Ctx.AnimProvider)
-			{
-				AnimScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*Ctx.AnimProvider);
-			}
-			if (Ctx.GameplayProvider)
-			{
-				GameplayScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*Ctx.GameplayProvider);
-			}
-			if (ExtraProvider)
-			{
-				ExtraScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*ExtraProvider);
-			}
 		}
 
 		UE_NONCOPYABLE(FSampleReadScopes);
 
 	private:
 		TraceServices::FAnalysisSessionReadScope SessionScope;
-		TUniquePtr<TraceServices::FProviderReadScopeLock> AnimScope;
-		TUniquePtr<TraceServices::FProviderReadScopeLock> GameplayScope;
-		TUniquePtr<TraceServices::FProviderReadScopeLock> ExtraScope;
 	};
 
 	bool ParseObjectId(const TSharedPtr<FJsonObject>& Params, uint64& OutId, FString& OutError, bool bRequired = true);
 	int32 ParseLimit(const TSharedPtr<FJsonObject>& Params, int32 DefaultValue = DefaultLimit);
 	bool ParseBool(const TSharedPtr<FJsonObject>& Params, const TCHAR* Field, bool DefaultValue);
 
-	/** Resolve debugger + session + optional scrub time override 뿯↽ frame window. */
+	/** Resolve debugger + session + optional scrub time override / frame window. */
 	FString ResolveSampleContext(const TSharedPtr<FJsonObject>& Params, FSampleContext& Out, bool bAllowScrubWrite = true);
 
 	TSharedPtr<FJsonObject> MakeObjectInfoJson(const IGameplayProvider* Provider, uint64 ObjectId);

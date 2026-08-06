@@ -52,6 +52,14 @@ axon_create_extension({
 
 See also `Docs/SIBLING_PLUGIN_GUIDE.md`.
 
+### Edit graph nodes with layout awareness
+
+When adding or swapping nodes in AnimGraphs or Blueprint graphs:
+
+1. **Replace in place:** `animation.replace_anim_graph_node` or `blueprint.replace_blueprint_node` — preserves coordinates and reconnects by pin name.
+2. **Add adjacent:** `add_anim_graph_node` / `add_node` with `anchor_node` + `anchor_mode` (`at`|`right`|`below`) instead of raw coordinates.
+3. **Tidy after local edits:** `auto_layout` with `layout_mode=selected` or `new_only`; query positions via `animation.get_anim_node_positions`.
+
 ### Introspect an action schema
 
 ```
@@ -182,9 +190,17 @@ Workers never recurse into other MCP actions. Promote is explicit (`knowledge.pr
 
 ## gotchas
 
+### Graph layout (Agent must follow)
+
+- Replace node → `animation.replace_anim_graph_node` / `blueprint.replace_blueprint_node` (keeps coordinates).
+- Add near existing → pass `anchor_node` + `anchor_mode` (`at`|`right`|`below`).
+- After local edits → `auto_layout` with `layout_mode=selected` or `new_only` (BP); AnimGraph same.
+- Never use full-graph `layout_mode=all` on partitioned/comment-heavy graphs unless rebuilding the whole graph.
+- Prefer `get_anim_node_positions` over dumping full get_nodes for layout.
+
 - Core meta tools expand as `axon_*`; everything else is `{namespace}_query`.
 - Default port is **9320** so Axon can coexist with Monolith on 9316.
-- Sibling modules should use `LoadingPhase: PostEngineInit`.
+- Sibling modules should use `LoadingPhase: Default` (AxonCore delays HTTP start until `OnPostEngineInit`, ensuring all Default-phase modules complete first).
 - Claim a unique lowercase namespace; action names are `snake_case`.
 - `bulk_fill` / `describe.schema` only work for namespaces that registered adapters; `describe.action_schema` works for any registered Action ParamSchema.
 - Extension scaffolding is domain-agnostic: Core never ships built-in business recipes.

@@ -8,6 +8,7 @@ public:
 	static void RegisterActions(FAxonToolRegistry& Registry);
 
 	static FAxonActionResult HandleAddNode(const TSharedPtr<FJsonObject>& Params);
+	static FAxonActionResult HandleReplaceBlueprintNode(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandleRemoveNode(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandleConnectPins(const TSharedPtr<FJsonObject>& Params);
 	static FAxonActionResult HandleDisconnectPins(const TSharedPtr<FJsonObject>& Params);

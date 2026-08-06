@@ -24,7 +24,8 @@ void FAxonBlueprintLayoutActions::RegisterActions(FAxonToolRegistry& Registry)
 	Registry.RegisterAction(TEXT("blueprint"), TEXT("auto_layout"),
 		TEXT("Auto-layout nodes in a Blueprint graph using a modified Sugiyama algorithm. "
 			"Produces clean left-to-right flow: events on left, exec chain flows right, data feeders positioned left of consumers. "
-			"Supports full, new-only, and selected-node modes."),
+			"Supports full, new-only, and selected-node modes. After local edits use layout_mode='new_only' or 'selected'; "
+			"reserve layout_mode='all' for full graph rebuilds — avoid 'all' on partitioned/comment-heavy graphs."),
 		FAxonActionHandler::CreateStatic(&HandleAutoLayout),
 		FParamSchemaBuilder()
 			.RequiredAssetPath(TEXT("asset_path"), TEXT("Blueprint asset path"))

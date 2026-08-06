@@ -15,4 +15,6 @@ public:
 
 private:
 	static FAxonActionResult HandleAutoLayout(const TSharedPtr<FJsonObject>& Params);
+	static FAxonActionResult HandleGetAnimNodePositions(const TSharedPtr<FJsonObject>& Params);
+	static FAxonActionResult HandleSetAnimNodePosition(const TSharedPtr<FJsonObject>& Params);
 };

@@ -117,7 +117,12 @@ void FAxonHttpServer::Stop()
 		RouteHandles.Empty();
 	}
 
-	FHttpServerModule::Get().StopAllListeners();
+	// Check if HTTPServer module is still available before calling StopAllListeners
+	// The module may have been unloaded before AxonCore during shutdown
+	if (FModuleManager::Get().IsModuleLoaded("HTTPServer"))
+	{
+		FHttpServerModule::Get().StopAllListeners();
+	}
 	HttpRouter.Reset();
 
 	bIsRunning = false;

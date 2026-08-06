@@ -45,11 +45,13 @@ All Axon MCP plugins (core + siblings) live under `Plugins/AxonMCPs/`.
     {
       "Name": "MyBridge",
       "Type": "Editor",
-      "LoadingPhase": "PostEngineInit"
+      "LoadingPhase": "Default"
     }
   ]
 }
 ```
+
+> **Note on LoadingPhase**: AxonCore now delays HTTP server start until `OnPostEngineInit`, which fires after all `Default` phase modules complete their `StartupModule()`. This ensures sibling plugins have registered their MCP actions before the server starts accepting connections.
 
 ## Build.cs
 
@@ -107,7 +109,7 @@ Unregister with `UnregisterAdapter` in `ShutdownModule`.
 ## Rules
 
 - Unique lowercase namespace; `snake_case` actions.
-- Sibling module `LoadingPhase` should be `PostEngineInit` so `AxonCore` has already started (see `AxonSample`).
+- Sibling module `LoadingPhase` should be `Default` (AxonCore delays HTTP start until `OnPostEngineInit`, ensuring all Default-phase modules complete first).
 - Return `FAxonActionResult::Success(JsonObject)` or `Error(Message, Code)`.
 - Do not register into the reserved `axon` / `describe` / `bulk_fill` namespaces.
 - Scaffold stubs return `-32020` (`ErrNotImplemented`) until you replace the handlers.

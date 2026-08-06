@@ -17,7 +17,7 @@
     {
       "Name": "AxonLLM",
       "Type": "Editor",
-      "LoadingPhase": "PostEngineInit"
+      "LoadingPhase": "Default"
     }
   ]
 }

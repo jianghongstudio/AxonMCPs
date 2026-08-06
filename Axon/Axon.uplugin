@@ -44,12 +44,12 @@
                     {
                         "Name":  "AxonCore",
                         "Type":  "Editor",
-                        "LoadingPhase":  "PostEngineInit"
+                        "LoadingPhase":  "Default"
                     },
                     {
                         "Name":  "AxonEditor",
                         "Type":  "Editor",
-                        "LoadingPhase":  "PostEngineInit"
+                        "LoadingPhase":  "Default"
                     }
                 ]
 }

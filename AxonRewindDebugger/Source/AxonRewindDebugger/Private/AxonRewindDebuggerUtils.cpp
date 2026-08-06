@@ -118,16 +118,11 @@ namespace AxonRewindDebugger
 		Out.ScrubTime = Out.Debugger->GetScrubTime();
 		Out.TraceTime = Out.Debugger->CurrentTraceTime();
 
+		// Session lock only — Gameplay/Animation providers do not implement IProvider::BeginRead
+		// on this engine; FProviderReadScopeLock would hit unimplemented() and crash.
 		TraceServices::FAnalysisSessionReadScope SessionReadScope(*Out.Session);
 		Out.AnimProvider = Out.Session->ReadProvider<IAnimationProvider>(TEXT("AnimationProvider"));
 		Out.GameplayProvider = Out.Session->ReadProvider<IGameplayProvider>(TEXT("GameplayProvider"));
-
-		// GameplayProvider APIs (GetRecordingInfo) require the provider read lock, not just the session.
-		TUniquePtr<TraceServices::FProviderReadScopeLock> GameplayReadScope;
-		if (Out.GameplayProvider)
-		{
-			GameplayReadScope = MakeUnique<TraceServices::FProviderReadScopeLock>(*Out.GameplayProvider);
-		}
 
 		double TimeOverride = 0.0;
 		const bool bHasTime = Params.IsValid() && Params->TryGetNumberField(TEXT("time"), TimeOverride);

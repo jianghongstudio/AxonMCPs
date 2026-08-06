@@ -78,6 +78,9 @@
 #include "Animation/BoneReference.h"
 // BlendStackEditor module — UAnimGraphNode_BlendStack_Base (BoundGraph-node spawn fix)
 #include "AnimGraphNode_BlendStack.h"
+#include "AnimGraphNode_BlendStackResult.h"
+#include "AnimationBlendStackGraph.h"
+#include "EdGraphUtilities.h"
 // FGraphNodeCreator — pristine node spawn for BoundGraph-owning nodes
 #include "EdGraph/EdGraph.h"
 
@@ -89,7 +92,10 @@ void FAxonAbpWriteActions::RegisterActions(FAxonToolRegistry& Registry)
 {
 	// --- add_anim_graph_node ---
 	Registry.RegisterAction(TEXT("animation"), TEXT("add_anim_graph_node"),
-		TEXT("Place an animation graph node in a state or the main AnimGraph. node_type accepts built-in aliases; node_class accepts any loaded non-abstract UAnimGraphNode_Base subclass by path or name."),
+		TEXT("Place an animation graph node in a state or the main AnimGraph. node_type accepts built-in aliases; "
+			 "node_class accepts any loaded non-abstract UAnimGraphNode_Base subclass by path or name. "
+			 "For replacements use replace_anim_graph_node; for new nodes prefer anchor_node + anchor_mode "
+			 "instead of raw coordinates."),
 		FAxonActionHandler::CreateStatic(&HandleAddAnimGraphNode),
 		FParamSchemaBuilder()
 			.RequiredAssetPath(TEXT("asset_path"), TEXT("Animation Blueprint asset path"))
@@ -97,14 +103,49 @@ void FAxonAbpWriteActions::RegisterActions(FAxonToolRegistry& Registry)
 			.Optional(TEXT("node_class"), TEXT("string"), TEXT("UAnimGraphNode_Base subclass path or name, e.g. /Script/AnimGraph.AnimGraphNode_TwoBoneIK. Use this instead of node_type when not using an alias."))
 			.Optional(TEXT("graph_name"), TEXT("string"), TEXT("Target graph name — 'AnimGraph' for top-level, or a state name for state inner graphs (default: AnimGraph)"), TEXT("AnimGraph"))
 			.Optional(TEXT("state_name"), TEXT("string"), TEXT("State name — if set, node is placed inside this state's inner graph (searched within the state machine found via graph_name if graph_name is a SM name, otherwise searches all SMs)"))
-			.Optional(TEXT("position_x"), TEXT("number"), TEXT("Node X position (default: 200)"), TEXT("200"))
-			.Optional(TEXT("position_y"), TEXT("number"), TEXT("Node Y position (default: 0)"), TEXT("0"))
+			.Optional(TEXT("position_x"), TEXT("number"), TEXT("Node X position (default: 200). Ignored when anchor_node is set without explicit position_x/y."))
+			.Optional(TEXT("position_y"), TEXT("number"), TEXT("Node Y position (default: 0). Ignored when anchor_node is set without explicit position_x/y."))
+			.Optional(TEXT("anchor_node"), TEXT("string"), TEXT("Existing node UObject name — when set and position_x/y omitted, spawn relative to this node"))
+			.Optional(TEXT("anchor_mode"), TEXT("string"), TEXT("Placement relative to anchor_node: 'at' | 'right' (default) | 'below'"), TEXT("right"))
 			.Optional(TEXT("anim_asset"), TEXT("string"), TEXT("Animation/BlendSpace asset path — for SequencePlayer and BlendSpacePlayer nodes"))
 			.Optional(TEXT("ik_bone"), TEXT("string"), TEXT("TwoBoneIK only: end-of-chain bone name (e.g. 'hand_l')"))
 			.Optional(TEXT("effector_space"), TEXT("string"), TEXT("TwoBoneIK only: EffectorLocationSpace — WorldSpace, ComponentSpace (default), ParentBoneSpace, BoneSpace"))
 			.Optional(TEXT("joint_target_space"), TEXT("string"), TEXT("TwoBoneIK only: JointTargetLocationSpace — WorldSpace, ComponentSpace (default), ParentBoneSpace, BoneSpace"))
 			.Optional(TEXT("bone_to_modify"), TEXT("string"), TEXT("ModifyBone only: bone to modify (e.g. 'spine_01')"))
 			.Optional(TEXT("expose_pins"), TEXT("array"), TEXT("Names of optional properties to expose as input pins (e.g. ['EffectorLocation','JointTargetLocation','Alpha']). TwoBoneIK exposes these three by default."))
+			.Build());
+
+	Registry.RegisterAction(TEXT("animation"), TEXT("replace_anim_graph_node"),
+		TEXT("Replace an existing anim graph node with a new node type at the same coordinates, reconnecting pins by name. "
+			 "When both old and new are BlendStack-family nodes, the BoundGraph (sample graph) is copied. "
+			 "Does not run auto_layout. Use instead of remove+add when preserving graph layout."),
+		FAxonActionHandler::CreateStatic(&HandleReplaceAnimGraphNode),
+		FParamSchemaBuilder()
+			.RequiredAssetPath(TEXT("asset_path"), TEXT("Animation Blueprint asset path"))
+			.Required(TEXT("old_node"), TEXT("string"), TEXT("UObject name of the node to replace"))
+			.Optional(TEXT("node_type"), TEXT("string"), TEXT("Replacement node alias (same as add_anim_graph_node)"))
+			.Optional(TEXT("node_class"), TEXT("string"), TEXT("Replacement UAnimGraphNode_Base class path/name (same as add_anim_graph_node)"))
+			.Optional(TEXT("graph_name"), TEXT("string"), TEXT("Graph scope for finding old_node (default: AnimGraph)"), TEXT("AnimGraph"))
+			.Optional(TEXT("state_name"), TEXT("string"), TEXT("State inner graph scope (same as add_anim_graph_node)"))
+			.Optional(TEXT("anim_asset"), TEXT("string"), TEXT("Animation/BlendSpace asset path for asset-player nodes"))
+			.Optional(TEXT("ik_bone"), TEXT("string"), TEXT("TwoBoneIK only: end-of-chain bone name"))
+			.Optional(TEXT("effector_space"), TEXT("string"), TEXT("TwoBoneIK only: EffectorLocationSpace"))
+			.Optional(TEXT("joint_target_space"), TEXT("string"), TEXT("TwoBoneIK only: JointTargetLocationSpace"))
+			.Optional(TEXT("bone_to_modify"), TEXT("string"), TEXT("ModifyBone only: bone to modify"))
+			.Optional(TEXT("expose_pins"), TEXT("array"), TEXT("Optional pin names to expose on the new node"))
+			.Optional(TEXT("compile"), TEXT("bool"), TEXT("Compile ABP after replace (default: true)"), TEXT("true"))
+			.Build());
+
+	Registry.RegisterAction(TEXT("animation"), TEXT("copy_blend_stack_sample_graph"),
+		TEXT("Copy a BlendStack-family node's BoundGraph (double-click sample graph: Steering / Orientation Warping / etc.) "
+			 "onto another BlendStack-family node. Use when ASMBlendStack/MM was spawned with an empty default sample graph."),
+		FAxonActionHandler::CreateStatic(&HandleCopyBlendStackSampleGraph),
+		FParamSchemaBuilder()
+			.RequiredAssetPath(TEXT("source_asset"), TEXT("Source Animation Blueprint asset path"))
+			.Required(TEXT("source_node"), TEXT("string"), TEXT("Source BlendStack-family node UObject name (e.g. AnimGraphNode_MotionMatching_0)"))
+			.RequiredAssetPath(TEXT("target_asset"), TEXT("Target Animation Blueprint asset path"))
+			.Required(TEXT("target_node"), TEXT("string"), TEXT("Target BlendStack-family node UObject name (e.g. AnimGraphNode_ASMBlendStack_1)"))
+			.Optional(TEXT("compile"), TEXT("bool"), TEXT("Compile target ABP after copy (default: true)"), TEXT("true"))
 			.Build());
 
 	// --- connect_anim_graph_pins ---
@@ -934,6 +975,52 @@ FString ListOutputPins(UEdGraphNode* Node)
 	return Out;
 }
 
+/** Apply anchor_node/anchor_mode offsets when explicit position was not provided. */
+bool ApplyAnimGraphAnchorPosition(
+	UAnimBlueprint* ABP, UEdGraph* TargetGraph, const TSharedPtr<FJsonObject>& Params,
+	float& InOutPosX, float& InOutPosY, FString& OutError)
+{
+	const bool bPositionExplicit = Params->HasField(TEXT("position_x")) || Params->HasField(TEXT("position_y"));
+	if (bPositionExplicit)
+	{
+		return true;
+	}
+
+	FString AnchorNodeName;
+	if (!Params->TryGetStringField(TEXT("anchor_node"), AnchorNodeName) || AnchorNodeName.IsEmpty())
+	{
+		return true;
+	}
+
+	UEdGraphNode* AnchorNode = FindNodeByName(ABP, AnchorNodeName, TargetGraph);
+	if (!AnchorNode)
+	{
+		OutError = FString::Printf(TEXT("anchor_node '%s' not found in target graph"), *AnchorNodeName);
+		return false;
+	}
+
+	FString AnchorMode = TEXT("right");
+	Params->TryGetStringField(TEXT("anchor_mode"), AnchorMode);
+	AnchorMode = AnchorMode.ToLower();
+
+	if (AnchorMode == TEXT("at"))
+	{
+		InOutPosX = static_cast<float>(AnchorNode->NodePosX);
+		InOutPosY = static_cast<float>(AnchorNode->NodePosY);
+	}
+	else if (AnchorMode == TEXT("below"))
+	{
+		InOutPosX = static_cast<float>(AnchorNode->NodePosX);
+		InOutPosY = static_cast<float>(AnchorNode->NodePosY + 180);
+	}
+	else
+	{
+		InOutPosX = static_cast<float>(AnchorNode->NodePosX + 280);
+		InOutPosY = static_cast<float>(AnchorNode->NodePosY);
+	}
+	return true;
+}
+
 /**
  * Spawn an AnimGraph node of NodeClass into Graph at (X,Y) using the correct
  * path — FGraphNodeCreator for BoundGraph-owning classes (which assert in
@@ -1089,6 +1176,12 @@ FAxonActionResult FAxonAbpWriteActions::HandleAddAnimGraphNode(const TSharedPtr<
 	FString GraphError;
 	UEdGraph* TargetGraph = ResolveTargetGraph(ABP, GraphName, StateName, GraphError);
 	if (!TargetGraph) return FAxonActionResult::Error(GraphError);
+
+	FString AnchorError;
+	if (!ApplyAnimGraphAnchorPosition(ABP, TargetGraph, Params, PosX, PosY, AnchorError))
+	{
+		return FAxonActionResult::Error(AnchorError);
+	}
 
 	// ---- BlendStack-derived nodes (MotionMatching, MotionMatchingInteraction) ----
 	// These own a UPROPERTY BoundGraph and CreateGraph() does check(BoundGraph == nullptr)
@@ -1265,6 +1358,533 @@ FAxonActionResult FAxonAbpWriteActions::HandleAddAnimGraphNode(const TSharedPtr<
 	Root->SetNumberField(TEXT("position_x"), SpawnedNode->NodePosX);
 	Root->SetNumberField(TEXT("position_y"), SpawnedNode->NodePosY);
 	Root->SetArrayField(TEXT("pins"), BuildPinList(SpawnedNode));
+	return FAxonActionResult::Success(Root);
+}
+
+// ---------------------------------------------------------------------------
+// BlendStack BoundGraph (sample graph) helpers
+// ---------------------------------------------------------------------------
+
+static UEdGraph* GetBlendStackBoundGraph(UAnimGraphNode_BlendStack_Base* Node)
+{
+	if (!Node)
+	{
+		return nullptr;
+	}
+	const TArray<UEdGraph*> SubGraphs = Node->GetSubGraphs();
+	return SubGraphs.Num() > 0 ? SubGraphs[0] : nullptr;
+}
+
+/** Replace Dst BoundGraph contents with a T3D clone of Src BoundGraph. */
+static bool CopyBlendStackBoundGraphContents(UEdGraph* SrcGraph, UEdGraph* DstGraph, FString& OutError)
+{
+	if (!SrcGraph || !DstGraph)
+	{
+		OutError = TEXT("Source or target BoundGraph is null");
+		return false;
+	}
+
+	UAnimationBlendStackGraph* DstBlendGraph = Cast<UAnimationBlendStackGraph>(DstGraph);
+	if (!DstBlendGraph)
+	{
+		OutError = FString::Printf(TEXT("Target BoundGraph '%s' is not a UAnimationBlendStackGraph"), *DstGraph->GetName());
+		return false;
+	}
+
+	DstGraph->Modify();
+
+	// Clear existing sample-graph nodes (default Input→Output shell).
+	TArray<UEdGraphNode*> Existing = DstGraph->Nodes;
+	for (UEdGraphNode* Node : Existing)
+	{
+		if (Node)
+		{
+			DstGraph->RemoveNode(Node);
+		}
+	}
+	DstBlendGraph->ResultNode = nullptr;
+
+	TSet<UObject*> NodesToExport;
+	for (UEdGraphNode* Node : SrcGraph->Nodes)
+	{
+		if (Node)
+		{
+			NodesToExport.Add(Node);
+		}
+	}
+	if (NodesToExport.Num() == 0)
+	{
+		OutError = TEXT("Source BoundGraph has no nodes to copy");
+		return false;
+	}
+
+	FString ExportedText;
+	FEdGraphUtilities::ExportNodesToText(NodesToExport, ExportedText);
+
+	TSet<UEdGraphNode*> ImportedNodes;
+	FEdGraphUtilities::ImportNodesFromText(DstGraph, ExportedText, ImportedNodes);
+
+	// Prefer scanning the graph after import — ImportNodesFromText may not list every node
+	// in the out-set depending on UE version / schema.
+	TArray<UEdGraphNode*> AllDstNodes = DstGraph->Nodes;
+	if (AllDstNodes.Num() == 0)
+	{
+		OutError = FString::Printf(
+			TEXT("ImportNodesFromText produced no nodes (exported %d chars, import set %d)"),
+			ExportedText.Len(), ImportedNodes.Num());
+		return false;
+	}
+
+	UAnimGraphNode_Root* NewResult = nullptr;
+	TArray<FString> ImportedClasses;
+	for (UEdGraphNode* Node : AllDstNodes)
+	{
+		if (!Node)
+		{
+			continue;
+		}
+		ImportedClasses.Add(Node->GetClass()->GetName());
+		Node->CreateNewGuid();
+		Node->PostPasteNode();
+		Node->ReconstructNode();
+
+		if (UAnimGraphNode_BlendStackResult* BlendResult = Cast<UAnimGraphNode_BlendStackResult>(Node))
+		{
+			NewResult = BlendResult;
+		}
+		else if (!NewResult)
+		{
+			if (UAnimGraphNode_Root* Root = Cast<UAnimGraphNode_Root>(Node))
+			{
+				NewResult = Root;
+			}
+		}
+	}
+
+	if (!NewResult)
+	{
+		// Export/import of BoundGraphs often drops the BlendStackResult root. Recreate it and
+		// wire the dangling sample-graph pose output (typically ComponentToLocalSpace).
+		FGraphNodeCreator<UAnimGraphNode_BlendStackResult> ResultCreator(*DstGraph);
+		UAnimGraphNode_BlendStackResult* CreatedResult = ResultCreator.CreateNode(/*bSelectNewNode=*/false);
+		if (!CreatedResult)
+		{
+			OutError = FString::Printf(
+				TEXT("Copied sample graph missing Result and failed to recreate BlendStackResult. Imported classes: [%s]"),
+				*FString::Join(ImportedClasses, TEXT(", ")));
+			return false;
+		}
+		CreatedResult->NodePosX = 640;
+		CreatedResult->NodePosY = 0;
+		ResultCreator.Finalize();
+		NewResult = CreatedResult;
+		ImportedClasses.Add(TEXT("AnimGraphNode_BlendStackResult(recreated)"));
+
+		UEdGraphPin* ResultIn = NewResult->FindPin(TEXT("Result"), EGPD_Input);
+		UEdGraphPin* BestOut = nullptr;
+		// Prefer ComponentToLocalSpace pose out with no consumers.
+		for (UEdGraphNode* Node : DstGraph->Nodes)
+		{
+			if (!Node || Node == NewResult) continue;
+			if (!Node->GetClass()->GetName().Contains(TEXT("ComponentToLocalSpace"))) continue;
+			UEdGraphPin* PoseOut = Node->FindPin(TEXT("Pose"), EGPD_Output);
+			if (PoseOut && PoseOut->LinkedTo.Num() == 0)
+			{
+				BestOut = PoseOut;
+				break;
+			}
+		}
+		if (!BestOut)
+		{
+			for (UEdGraphNode* Node : DstGraph->Nodes)
+			{
+				if (!Node || Node == NewResult) continue;
+				for (UEdGraphPin* Pin : Node->Pins)
+				{
+					if (Pin && Pin->Direction == EGPD_Output && Pin->PinType.PinCategory == TEXT("struct")
+						&& Pin->LinkedTo.Num() == 0
+						&& (Pin->PinName == TEXT("Pose") || Pin->PinName == TEXT("ComponentPose")))
+					{
+						BestOut = Pin;
+						break;
+					}
+				}
+				if (BestOut) break;
+			}
+		}
+		if (ResultIn && BestOut)
+		{
+			const UEdGraphSchema* Schema = DstGraph->GetSchema();
+			if (Schema)
+			{
+				Schema->TryCreateConnection(BestOut, ResultIn);
+			}
+		}
+	}
+
+	DstBlendGraph->ResultNode = NewResult;
+	DstGraph->NotifyGraphChanged();
+	return true;
+}
+
+// ---------------------------------------------------------------------------
+// Action: copy_blend_stack_sample_graph
+// ---------------------------------------------------------------------------
+
+FAxonActionResult FAxonAbpWriteActions::HandleCopyBlendStackSampleGraph(const TSharedPtr<FJsonObject>& Params)
+{
+	const FString SourceAsset = Params->GetStringField(TEXT("source_asset"));
+	const FString SourceNodeName = Params->GetStringField(TEXT("source_node"));
+	const FString TargetAsset = Params->GetStringField(TEXT("target_asset"));
+	const FString TargetNodeName = Params->GetStringField(TEXT("target_node"));
+
+	if (SourceNodeName.IsEmpty()) return FAxonActionResult::Error(TEXT("Missing required parameter: source_node"));
+	if (TargetNodeName.IsEmpty()) return FAxonActionResult::Error(TEXT("Missing required parameter: target_node"));
+
+	bool bCompile = true;
+	if (Params->HasField(TEXT("compile")))
+	{
+		bCompile = Params->GetBoolField(TEXT("compile"));
+	}
+
+	UAnimBlueprint* SourceABP = FAxonAssetUtils::LoadAssetByPath<UAnimBlueprint>(SourceAsset);
+	if (!SourceABP) return FAxonActionResult::Error(FString::Printf(TEXT("Source AnimBlueprint not found: %s"), *SourceAsset));
+
+	UAnimBlueprint* TargetABP = FAxonAssetUtils::LoadAssetByPath<UAnimBlueprint>(TargetAsset);
+	if (!TargetABP) return FAxonActionResult::Error(FString::Printf(TEXT("Target AnimBlueprint not found: %s"), *TargetAsset));
+
+	UEdGraphNode* SourceNode = FindNodeByName(SourceABP, SourceNodeName);
+	UEdGraphNode* TargetNode = FindNodeByName(TargetABP, TargetNodeName);
+	if (!SourceNode)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("Source node '%s' not found"), *SourceNodeName));
+	}
+	if (!TargetNode)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("Target node '%s' not found"), *TargetNodeName));
+	}
+
+	UAnimGraphNode_BlendStack_Base* SourceBlend = Cast<UAnimGraphNode_BlendStack_Base>(SourceNode);
+	UAnimGraphNode_BlendStack_Base* TargetBlend = Cast<UAnimGraphNode_BlendStack_Base>(TargetNode);
+	if (!SourceBlend)
+	{
+		return FAxonActionResult::Error(FString::Printf(
+			TEXT("Source node '%s' is not a BlendStack-family node (UAnimGraphNode_BlendStack_Base)"), *SourceNodeName));
+	}
+	if (!TargetBlend)
+	{
+		return FAxonActionResult::Error(FString::Printf(
+			TEXT("Target node '%s' is not a BlendStack-family node (UAnimGraphNode_BlendStack_Base)"), *TargetNodeName));
+	}
+
+	UEdGraph* SrcGraph = GetBlendStackBoundGraph(SourceBlend);
+	UEdGraph* DstGraph = GetBlendStackBoundGraph(TargetBlend);
+	if (!SrcGraph)
+	{
+		return FAxonActionResult::Error(TEXT("Source node has no BoundGraph / sample graph"));
+	}
+	if (!DstGraph)
+	{
+		return FAxonActionResult::Error(TEXT("Target node has no BoundGraph / sample graph"));
+	}
+
+	GEditor->BeginTransaction(FText::FromString(TEXT("Copy BlendStack Sample Graph")));
+	FString CopyError;
+	const bool bOk = CopyBlendStackBoundGraphContents(SrcGraph, DstGraph, CopyError);
+	GEditor->EndTransaction();
+	if (!bOk)
+	{
+		return FAxonActionResult::Error(CopyError);
+	}
+
+	if (bCompile)
+	{
+		FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(TargetABP);
+		FKismetEditorUtilities::CompileBlueprint(TargetABP);
+	}
+	else
+	{
+		TargetABP->MarkPackageDirty();
+	}
+
+	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("source_asset"), SourceAsset);
+	Root->SetStringField(TEXT("source_node"), SourceNodeName);
+	Root->SetStringField(TEXT("source_bound_graph"), SrcGraph->GetName());
+	Root->SetStringField(TEXT("target_asset"), TargetAsset);
+	Root->SetStringField(TEXT("target_node"), TargetNodeName);
+	Root->SetStringField(TEXT("target_bound_graph"), DstGraph->GetName());
+	Root->SetNumberField(TEXT("copied_node_count"), DstGraph->Nodes.Num());
+	return FAxonActionResult::Success(Root);
+}
+
+// ---------------------------------------------------------------------------
+// Action: replace_anim_graph_node
+// ---------------------------------------------------------------------------
+
+FAxonActionResult FAxonAbpWriteActions::HandleReplaceAnimGraphNode(const TSharedPtr<FJsonObject>& Params)
+{
+	FString AssetPath = Params->GetStringField(TEXT("asset_path"));
+	FString OldNodeName = Params->GetStringField(TEXT("old_node"));
+	if (OldNodeName.IsEmpty())
+	{
+		return FAxonActionResult::Error(TEXT("Missing required parameter: old_node"));
+	}
+
+	FString GraphName = Params->HasField(TEXT("graph_name")) ? Params->GetStringField(TEXT("graph_name")) : TEXT("AnimGraph");
+	FString StateName = Params->HasField(TEXT("state_name")) ? Params->GetStringField(TEXT("state_name")) : TEXT("");
+
+	bool bCompile = true;
+	if (Params->HasField(TEXT("compile")))
+	{
+		bCompile = Params->GetBoolField(TEXT("compile"));
+	}
+
+	UAnimBlueprint* ABP = FAxonAssetUtils::LoadAssetByPath<UAnimBlueprint>(AssetPath);
+	if (!ABP)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("AnimBlueprint not found: %s"), *AssetPath));
+	}
+
+	UEdGraph* ScopeGraph = nullptr;
+	if (!StateName.IsEmpty() || (!GraphName.IsEmpty() && !GraphName.Equals(TEXT("AnimGraph"), ESearchCase::IgnoreCase)))
+	{
+		FString GraphError;
+		ScopeGraph = ResolveTargetGraph(ABP, GraphName, StateName, GraphError);
+	}
+
+	UEdGraphNode* OldNode = FindNodeByName(ABP, OldNodeName, ScopeGraph);
+	if (!OldNode)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("Node '%s' not found in ABP"), *OldNodeName));
+	}
+
+	UEdGraph* TargetGraph = OldNode->GetGraph();
+	if (!TargetGraph)
+	{
+		return FAxonActionResult::Error(TEXT("Old node has no owning graph"));
+	}
+
+	const int32 SavedPosX = OldNode->NodePosX;
+	const int32 SavedPosY = OldNode->NodePosY;
+
+	struct FSavedAnimPinLink
+	{
+		FString ThisPin;
+		FString OtherNode;
+		FString OtherPin;
+		FString ThisDir;
+	};
+	TArray<FSavedAnimPinLink> SavedLinks;
+
+	for (UEdGraphPin* Pin : OldNode->Pins)
+	{
+		if (!Pin) continue;
+		const FString ThisDir = (Pin->Direction == EGPD_Input) ? TEXT("Input") : TEXT("Output");
+		for (UEdGraphPin* LinkedPin : Pin->LinkedTo)
+		{
+			if (!LinkedPin || !LinkedPin->GetOwningNode()) continue;
+			FSavedAnimPinLink Link;
+			Link.ThisPin = Pin->PinName.ToString();
+			Link.OtherNode = LinkedPin->GetOwningNode()->GetName();
+			Link.OtherPin = LinkedPin->PinName.ToString();
+			Link.ThisDir = ThisDir;
+			SavedLinks.Add(Link);
+		}
+	}
+
+	// Preserve BlendStack sample graph (BoundGraph) across replace — RemoveNode destroys it.
+	FString SavedBoundGraphText;
+	bool bSavedBoundGraph = false;
+	if (UAnimGraphNode_BlendStack_Base* OldBlend = Cast<UAnimGraphNode_BlendStack_Base>(OldNode))
+	{
+		if (UEdGraph* OldBound = GetBlendStackBoundGraph(OldBlend))
+		{
+			TSet<UObject*> NodesToExport;
+			for (UEdGraphNode* Node : OldBound->Nodes)
+			{
+				if (Node)
+				{
+					NodesToExport.Add(Node);
+				}
+			}
+			if (NodesToExport.Num() > 0)
+			{
+				FEdGraphUtilities::ExportNodesToText(NodesToExport, SavedBoundGraphText);
+				bSavedBoundGraph = !SavedBoundGraphText.IsEmpty();
+			}
+		}
+	}
+
+	GEditor->BeginTransaction(FText::FromString(TEXT("Replace Anim Graph Node")));
+	TargetGraph->Modify();
+	FBlueprintEditorUtils::RemoveNode(ABP, OldNode, /*bDontRecompile=*/true);
+
+	TSharedRef<FJsonObject> AddParams = MakeShared<FJsonObject>();
+	AddParams->SetStringField(TEXT("asset_path"), AssetPath);
+	AddParams->SetNumberField(TEXT("position_x"), SavedPosX);
+	AddParams->SetNumberField(TEXT("position_y"), SavedPosY);
+	if (!GraphName.IsEmpty())
+	{
+		AddParams->SetStringField(TEXT("graph_name"), GraphName);
+	}
+	if (!StateName.IsEmpty())
+	{
+		AddParams->SetStringField(TEXT("state_name"), StateName);
+	}
+
+	static const TSet<FString> SkipCopyKeys = {
+		TEXT("asset_path"), TEXT("old_node"), TEXT("compile"), TEXT("position_x"), TEXT("position_y")
+	};
+	for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : Params->Values)
+	{
+		if (SkipCopyKeys.Contains(Pair.Key)) continue;
+		AddParams->SetField(Pair.Key, Pair.Value);
+	}
+
+	FAxonActionResult AddResult = HandleAddAnimGraphNode(AddParams);
+	if (!AddResult.bSuccess)
+	{
+		GEditor->EndTransaction();
+		return AddResult;
+	}
+
+	const FString NewNodeName = AddResult.Result->GetStringField(TEXT("node_name"));
+	UEdGraphNode* NewNode = FindNodeByName(ABP, NewNodeName, TargetGraph);
+	if (!NewNode)
+	{
+		GEditor->EndTransaction();
+		return FAxonActionResult::Error(FString::Printf(
+			TEXT("Replacement node '%s' was spawned but could not be found for reconnect"), *NewNodeName));
+	}
+
+	bool bCopiedBoundGraph = false;
+	FString BoundGraphCopyError;
+	if (bSavedBoundGraph)
+	{
+		if (UAnimGraphNode_BlendStack_Base* NewBlend = Cast<UAnimGraphNode_BlendStack_Base>(NewNode))
+		{
+			if (UEdGraph* NewBound = GetBlendStackBoundGraph(NewBlend))
+			{
+				// Import saved T3D into the fresh default BoundGraph shell.
+				UAnimationBlendStackGraph* NewBlendGraph = Cast<UAnimationBlendStackGraph>(NewBound);
+				NewBound->Modify();
+				TArray<UEdGraphNode*> Existing = NewBound->Nodes;
+				for (UEdGraphNode* Node : Existing)
+				{
+					if (Node)
+					{
+						NewBound->RemoveNode(Node);
+					}
+				}
+				if (NewBlendGraph)
+				{
+					NewBlendGraph->ResultNode = nullptr;
+				}
+
+				TSet<UEdGraphNode*> ImportedNodes;
+				FEdGraphUtilities::ImportNodesFromText(NewBound, SavedBoundGraphText, ImportedNodes);
+				UAnimGraphNode_Root* NewResult = nullptr;
+				for (UEdGraphNode* Node : ImportedNodes)
+				{
+					if (!Node) continue;
+					Node->CreateNewGuid();
+					Node->PostPasteNode();
+					Node->ReconstructNode();
+					if (UAnimGraphNode_BlendStackResult* BlendResult = Cast<UAnimGraphNode_BlendStackResult>(Node))
+					{
+						NewResult = BlendResult;
+					}
+					else if (!NewResult)
+					{
+						if (UAnimGraphNode_Root* Root = Cast<UAnimGraphNode_Root>(Node))
+						{
+							NewResult = Root;
+						}
+					}
+				}
+				if (NewBlendGraph && NewResult)
+				{
+					NewBlendGraph->ResultNode = NewResult;
+					bCopiedBoundGraph = true;
+				}
+				else
+				{
+					BoundGraphCopyError = TEXT("Failed to restore BoundGraph ResultNode after replace");
+				}
+			}
+		}
+	}
+
+	const UEdGraphSchema* Schema = TargetGraph->GetSchema();
+	TArray<TSharedPtr<FJsonValue>> ReconnectedArr;
+	TArray<TSharedPtr<FJsonValue>> FailedArr;
+
+	for (const FSavedAnimPinLink& Link : SavedLinks)
+	{
+		const EEdGraphPinDirection ThisDir = Link.ThisDir.Equals(TEXT("Output"), ESearchCase::IgnoreCase)
+			? EGPD_Output : EGPD_Input;
+		const EEdGraphPinDirection OtherDir = (ThisDir == EGPD_Output) ? EGPD_Input : EGPD_Output;
+
+		UEdGraphPin* ThisPin = NewNode->FindPin(FName(*Link.ThisPin), ThisDir);
+		UEdGraphNode* OtherNode = FindNodeByName(ABP, Link.OtherNode, TargetGraph);
+		UEdGraphPin* OtherPin = OtherNode ? OtherNode->FindPin(FName(*Link.OtherPin), OtherDir) : nullptr;
+
+		TSharedPtr<FJsonObject> AttemptObj = MakeShared<FJsonObject>();
+		AttemptObj->SetStringField(TEXT("this_pin"), Link.ThisPin);
+		AttemptObj->SetStringField(TEXT("other_node"), Link.OtherNode);
+		AttemptObj->SetStringField(TEXT("other_pin"), Link.OtherPin);
+		AttemptObj->SetStringField(TEXT("this_dir"), Link.ThisDir);
+
+		if (!ThisPin || !OtherPin || !Schema)
+		{
+			AttemptObj->SetStringField(TEXT("error"), TEXT("Pin or schema not found on replacement node"));
+			FailedArr.Add(MakeShared<FJsonValueObject>(AttemptObj));
+			continue;
+		}
+
+		UEdGraphPin* OutPin = (ThisDir == EGPD_Output) ? ThisPin : OtherPin;
+		UEdGraphPin* InPin = (ThisDir == EGPD_Output) ? OtherPin : ThisPin;
+		const bool bConnected = Schema->TryCreateConnection(OutPin, InPin);
+		if (bConnected)
+		{
+			ReconnectedArr.Add(MakeShared<FJsonValueObject>(AttemptObj));
+		}
+		else
+		{
+			AttemptObj->SetStringField(TEXT("error"), TEXT("TryCreateConnection failed"));
+			FailedArr.Add(MakeShared<FJsonValueObject>(AttemptObj));
+		}
+	}
+
+	GEditor->EndTransaction();
+
+	if (bCompile)
+	{
+		FBlueprintEditorUtils::MarkBlueprintAsStructurallyModified(ABP);
+		FKismetEditorUtilities::CompileBlueprint(ABP);
+	}
+	else
+	{
+		ABP->MarkPackageDirty();
+	}
+
+	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("asset_path"), AssetPath);
+	Root->SetStringField(TEXT("old_node"), OldNodeName);
+	Root->SetStringField(TEXT("new_node"), NewNodeName);
+	Root->SetNumberField(TEXT("position_x"), SavedPosX);
+	Root->SetNumberField(TEXT("position_y"), SavedPosY);
+	Root->SetBoolField(TEXT("copied_bound_graph"), bCopiedBoundGraph);
+	if (!BoundGraphCopyError.IsEmpty())
+	{
+		Root->SetStringField(TEXT("bound_graph_error"), BoundGraphCopyError);
+	}
+	Root->SetArrayField(TEXT("reconnected"), ReconnectedArr);
+	if (FailedArr.Num() > 0)
+	{
+		Root->SetArrayField(TEXT("failed_reconnects"), FailedArr);
+	}
 	return FAxonActionResult::Success(Root);
 }
 

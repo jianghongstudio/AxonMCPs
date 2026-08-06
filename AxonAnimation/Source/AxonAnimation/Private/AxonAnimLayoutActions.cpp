@@ -9,6 +9,7 @@
 #include "AnimationStateMachineGraph.h"
 #include "AnimStateNode.h"
 #include "AnimationStateGraph.h"
+#include "EdGraphNode_Comment.h"
 #include "Dom/JsonObject.h"
 #include "Dom/JsonValue.h"
 
@@ -22,7 +23,9 @@ void FAxonAnimLayoutActions::RegisterActions(FAxonToolRegistry& Registry)
 		TEXT("Auto-layout nodes in an Animation Blueprint graph. With formatter='auto' (default) it uses "
 			 "Blueprint Assist if available and otherwise falls back to a built-in dependency-aware layered "
 			 "layout that needs no plugin (available in release builds). formatter='builtin' forces the "
-			 "built-in layout. Asset must be open in the editor."),
+			 "built-in layout. For partitioned/comment-heavy ABPs prefer layout_mode='selected' or "
+			 "'new_only' after local edits; avoid layout_mode='all' unless rebuilding the whole graph. "
+			 "Asset must be open in the editor."),
 		FAxonActionHandler::CreateStatic(&HandleAutoLayout),
 		FParamSchemaBuilder()
 			.RequiredAssetPath(TEXT("asset_path"), TEXT("Animation Blueprint asset path"))
@@ -33,10 +36,39 @@ void FAxonAnimLayoutActions::RegisterActions(FAxonToolRegistry& Registry)
 					 "'blueprint_assist' (BA or error), 'builtin' (built-in layered layout, no plugin needed), "
 					 "'monolith' (alias for 'builtin')"),
 				TEXT("auto"))
+			.Optional(TEXT("layout_mode"), TEXT("string"),
+				TEXT("Layout scope: 'all' (default, full graph), 'selected' (only node_ids), "
+					 "'new_only' (nodes at default spawn positions 0,0 or 200,0). selected/new_only use built-in partial layout."),
+				TEXT("all"))
+			.Optional(TEXT("node_ids"), TEXT("array"), TEXT("Node UObject names to layout when layout_mode='selected'"))
 			.Optional(TEXT("column_spacing"), TEXT("number"),
 				TEXT("Built-in layout: horizontal spacing between dependency columns (default 320)"), TEXT("320"))
 			.Optional(TEXT("row_spacing"), TEXT("number"),
 				TEXT("Built-in layout: vertical spacing between nodes within a column (default 180)"), TEXT("180"))
+			.Build());
+
+	Registry.RegisterAction(TEXT("animation"), TEXT("get_anim_node_positions"),
+		TEXT("Return compact {nodes:[{name,x,y,class}]} layout positions for AnimGraph nodes. "
+			 "Token-cheap alternative to full get_nodes dumps. Omits comment nodes."),
+		FAxonActionHandler::CreateStatic(&HandleGetAnimNodePositions),
+		FParamSchemaBuilder()
+			.RequiredAssetPath(TEXT("asset_path"), TEXT("Animation Blueprint asset path"))
+			.Optional(TEXT("graph_name"), TEXT("string"),
+				TEXT("Graph to query: 'AnimGraph' (default) or state machine name"), TEXT("AnimGraph"))
+			.Optional(TEXT("node_names"), TEXT("array"), TEXT("Optional filter — only return these node UObject names"))
+			.Build());
+
+	Registry.RegisterAction(TEXT("animation"), TEXT("set_anim_node_position"),
+		TEXT("Move one or more AnimGraph nodes by setting NodePosX/NodePosY. Marks the asset dirty."),
+		FAxonActionHandler::CreateStatic(&HandleSetAnimNodePosition),
+		FParamSchemaBuilder()
+			.RequiredAssetPath(TEXT("asset_path"), TEXT("Animation Blueprint asset path"))
+			.Optional(TEXT("graph_name"), TEXT("string"),
+				TEXT("Graph containing the node(s): 'AnimGraph' (default) or state machine name"), TEXT("AnimGraph"))
+			.Optional(TEXT("node_name"), TEXT("string"), TEXT("Single node UObject name (use with position_x/position_y)"))
+			.Optional(TEXT("position_x"), TEXT("number"), TEXT("Single-node X position"))
+			.Optional(TEXT("position_y"), TEXT("number"), TEXT("Single-node Y position"))
+			.Optional(TEXT("nodes"), TEXT("array"), TEXT("Bulk move: [{name,x,y}, ...]"))
 			.Build());
 }
 
@@ -356,6 +388,140 @@ TSharedPtr<FJsonObject> LayoutSingleGraphDispatch(
 	return BuiltinLayoutSingleGraph(GraphLabel, Graph, ColumnSpacing, RowSpacing, OutError);
 }
 
+/** True when a node is at Axon add_anim_graph_node default spawn coordinates. */
+bool IsDefaultSpawnPosition(const UEdGraphNode* Node)
+{
+	if (!Node) return false;
+	return (Node->NodePosX == 0 && Node->NodePosY == 0)
+		|| (Node->NodePosX == 200 && Node->NodePosY == 0);
+}
+
+/**
+ * Partial built-in layout: stack matching nodes vertically at min X/Y anchor,
+ * leaving all other nodes untouched.
+ */
+TSharedPtr<FJsonObject> BuiltinLayoutPartialNodes(
+	const FString& GraphLabel, UEdGraph* Graph,
+	const TArray<UEdGraphNode*>& NodesToLayout, float RowSpacing, FString& OutError)
+{
+	if (!Graph)
+	{
+		OutError = FString::Printf(TEXT("Graph '%s' is null"), *GraphLabel);
+		return nullptr;
+	}
+
+	TSharedPtr<FJsonObject> ResultObj = MakeShared<FJsonObject>();
+	ResultObj->SetStringField(TEXT("graph"), GraphLabel);
+	ResultObj->SetStringField(TEXT("formatter_used"), TEXT("builtin"));
+
+	if (NodesToLayout.Num() == 0)
+	{
+		ResultObj->SetNumberField(TEXT("nodes_formatted"), 0);
+		return ResultObj;
+	}
+
+	int32 MinX = INT32_MAX;
+	int32 MinY = INT32_MAX;
+	for (UEdGraphNode* Node : NodesToLayout)
+	{
+		if (!Node) continue;
+		MinX = FMath::Min(MinX, Node->NodePosX);
+		MinY = FMath::Min(MinY, Node->NodePosY);
+	}
+	if (MinX == INT32_MAX)
+	{
+		MinX = 0;
+		MinY = 0;
+	}
+
+	const int32 SafeRowSpacing = FMath::Max(1, FMath::RoundToInt(RowSpacing));
+	for (int32 Row = 0; Row < NodesToLayout.Num(); ++Row)
+	{
+		UEdGraphNode* Node = NodesToLayout[Row];
+		if (!Node) continue;
+		Node->NodePosX = MinX;
+		Node->NodePosY = MinY + Row * SafeRowSpacing;
+	}
+
+	ResultObj->SetNumberField(TEXT("nodes_formatted"), NodesToLayout.Num());
+	return ResultObj;
+}
+
+/** Resolve a single layout target graph (AnimGraph or state machine graph by title). */
+UEdGraph* ResolveLayoutGraph(UAnimBlueprint* ABP, const FString& GraphName, FString& OutLabel, FString& OutError)
+{
+	if (GraphName.Equals(TEXT("AnimGraph"), ESearchCase::IgnoreCase) || GraphName.IsEmpty())
+	{
+		UEdGraph* AG = FindAnimGraph(ABP);
+		OutLabel = TEXT("AnimGraph");
+		if (!AG)
+		{
+			OutError = TEXT("No AnimGraph found in this Animation Blueprint");
+		}
+		return AG;
+	}
+
+	UEdGraph* SMGraph = FindSMGraphByTitle(ABP, GraphName);
+	OutLabel = GraphName;
+	if (!SMGraph)
+	{
+		OutError = FString::Printf(
+			TEXT("Graph '%s' not found. Use 'AnimGraph' for the main graph, a state machine name, or 'all'."),
+			*GraphName);
+	}
+	return SMGraph;
+}
+
+/** Collect non-comment nodes to partially layout for selected/new_only modes. */
+void CollectPartialLayoutNodes(
+	UEdGraph* Graph, const FString& LayoutMode, const TSet<FString>& SelectedNodeIds,
+	TArray<UEdGraphNode*>& OutNodes)
+{
+	if (!Graph) return;
+
+	for (UEdGraphNode* Node : Graph->Nodes)
+	{
+		if (!Node || Cast<UEdGraphNode_Comment>(Node)) continue;
+
+		if (LayoutMode == TEXT("new_only"))
+		{
+			if (IsDefaultSpawnPosition(Node))
+			{
+				OutNodes.Add(Node);
+			}
+		}
+		else if (LayoutMode == TEXT("selected"))
+		{
+			if (SelectedNodeIds.Contains(Node->GetName()))
+			{
+				OutNodes.Add(Node);
+			}
+		}
+	}
+}
+
+TSharedPtr<FJsonObject> LayoutGraphWithMode(
+	UAnimBlueprint* ABP, const FString& GraphLabel, UEdGraph* Graph,
+	const FString& LayoutMode, const TSet<FString>& SelectedNodeIds,
+	bool bExplicitBA, bool bForceBuiltin,
+	float ColumnSpacing, float RowSpacing, FString& OutError)
+{
+	if (LayoutMode == TEXT("selected") || LayoutMode == TEXT("new_only"))
+	{
+		TArray<UEdGraphNode*> NodesToLayout;
+		CollectPartialLayoutNodes(Graph, LayoutMode, SelectedNodeIds, NodesToLayout);
+		TSharedPtr<FJsonObject> Result = BuiltinLayoutPartialNodes(GraphLabel, Graph, NodesToLayout, RowSpacing, OutError);
+		if (Result)
+		{
+			ABP->MarkPackageDirty();
+		}
+		return Result;
+	}
+
+	return LayoutSingleGraphDispatch(
+		GraphLabel, Graph, bExplicitBA, bForceBuiltin, ColumnSpacing, RowSpacing, OutError);
+}
+
 } // anonymous namespace
 
 // ---------------------------------------------------------------------------
@@ -367,6 +533,37 @@ FAxonActionResult FAxonAnimLayoutActions::HandleAutoLayout(const TSharedPtr<FJso
 	FString AssetPath = Params->GetStringField(TEXT("asset_path"));
 	FString GraphName = Params->HasField(TEXT("graph_name")) ? Params->GetStringField(TEXT("graph_name")) : TEXT("AnimGraph");
 	FString Formatter = Params->HasField(TEXT("formatter")) ? Params->GetStringField(TEXT("formatter")) : TEXT("auto");
+	FString LayoutMode = Params->HasField(TEXT("layout_mode")) ? Params->GetStringField(TEXT("layout_mode")) : TEXT("all");
+
+	if (LayoutMode != TEXT("all") && LayoutMode != TEXT("selected") && LayoutMode != TEXT("new_only"))
+	{
+		return FAxonActionResult::Error(FString::Printf(
+			TEXT("Invalid layout_mode '%s'. Must be 'all', 'selected', or 'new_only'."), *LayoutMode));
+	}
+
+	TSet<FString> SelectedNodeIds;
+	if (LayoutMode == TEXT("selected"))
+	{
+		const TArray<TSharedPtr<FJsonValue>>* NodeIdsArr = nullptr;
+		if (Params->TryGetArrayField(TEXT("node_ids"), NodeIdsArr) && NodeIdsArr)
+		{
+			for (const TSharedPtr<FJsonValue>& V : *NodeIdsArr)
+			{
+				if (V.IsValid())
+				{
+					const FString Id = V->AsString();
+					if (!Id.IsEmpty())
+					{
+						SelectedNodeIds.Add(Id);
+					}
+				}
+			}
+		}
+		if (SelectedNodeIds.Num() == 0)
+		{
+			return FAxonActionResult::Error(TEXT("layout_mode='selected' requires a non-empty 'node_ids' array."));
+		}
+	}
 
 	// Validate formatter param. 'monolith' is accepted as an alias for 'builtin'
 	// (the built-in layered layout IS the Axon-native formatter now).
@@ -391,7 +588,11 @@ FAxonActionResult FAxonAnimLayoutActions::HandleAutoLayout(const TSharedPtr<FJso
 	}
 
 	const bool bExplicitBA = (Formatter == TEXT("blueprint_assist"));
-	const bool bForceBuiltin = (Formatter == TEXT("builtin") || Formatter == TEXT("monolith"));
+	bool bForceBuiltin = (Formatter == TEXT("builtin") || Formatter == TEXT("monolith"));
+	if (LayoutMode == TEXT("selected") || LayoutMode == TEXT("new_only"))
+	{
+		bForceBuiltin = true;
+	}
 
 	// --- "all" mode: format every graph ---
 	if (GraphName.Equals(TEXT("all"), ESearchCase::IgnoreCase))
@@ -407,6 +608,7 @@ FAxonActionResult FAxonAnimLayoutActions::HandleAutoLayout(const TSharedPtr<FJso
 		TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 		Root->SetStringField(TEXT("asset_path"), AssetPath);
 		Root->SetStringField(TEXT("mode"), TEXT("all"));
+		Root->SetStringField(TEXT("layout_mode"), LayoutMode);
 
 		TArray<TSharedPtr<FJsonValue>> ResultsArr;
 		TArray<TSharedPtr<FJsonValue>> ErrorsArr;
@@ -415,8 +617,9 @@ FAxonActionResult FAxonAnimLayoutActions::HandleAutoLayout(const TSharedPtr<FJso
 		for (const auto& Pair : AllGraphs)
 		{
 			FString Error;
-			TSharedPtr<FJsonObject> GraphResult = LayoutSingleGraphDispatch(
-				Pair.Key, Pair.Value, bExplicitBA, bForceBuiltin, ColumnSpacing, RowSpacing, Error);
+			TSharedPtr<FJsonObject> GraphResult = LayoutGraphWithMode(
+				ABP, Pair.Key, Pair.Value, LayoutMode, SelectedNodeIds,
+				bExplicitBA, bForceBuiltin, ColumnSpacing, RowSpacing, Error);
 			if (GraphResult)
 			{
 				TotalFormatted++;
@@ -456,32 +659,17 @@ FAxonActionResult FAxonAnimLayoutActions::HandleAutoLayout(const TSharedPtr<FJso
 	// --- Single graph mode ---
 	UEdGraph* TargetGraph = nullptr;
 	FString GraphLabel;
-
-	if (GraphName.Equals(TEXT("AnimGraph"), ESearchCase::IgnoreCase) || GraphName.IsEmpty())
+	FString GraphError;
+	TargetGraph = ResolveLayoutGraph(ABP, GraphName, GraphLabel, GraphError);
+	if (!TargetGraph)
 	{
-		TargetGraph = FindAnimGraph(ABP);
-		GraphLabel = TEXT("AnimGraph");
-		if (!TargetGraph)
-		{
-			return FAxonActionResult::Error(TEXT("No AnimGraph found in this Animation Blueprint"));
-		}
-	}
-	else
-	{
-		// Treat as state machine name
-		TargetGraph = FindSMGraphByTitle(ABP, GraphName);
-		GraphLabel = GraphName;
-		if (!TargetGraph)
-		{
-			return FAxonActionResult::Error(FString::Printf(
-				TEXT("Graph '%s' not found. Use 'AnimGraph' for the main graph, a state machine name, or 'all'."),
-				*GraphName));
-		}
+		return FAxonActionResult::Error(GraphError);
 	}
 
 	FString Error;
-	TSharedPtr<FJsonObject> GraphResult = LayoutSingleGraphDispatch(
-		GraphLabel, TargetGraph, bExplicitBA, bForceBuiltin, ColumnSpacing, RowSpacing, Error);
+	TSharedPtr<FJsonObject> GraphResult = LayoutGraphWithMode(
+		ABP, GraphLabel, TargetGraph, LayoutMode, SelectedNodeIds,
+		bExplicitBA, bForceBuiltin, ColumnSpacing, RowSpacing, Error);
 	if (!GraphResult)
 	{
 		return FAxonActionResult::Error(Error);
@@ -491,8 +679,182 @@ FAxonActionResult FAxonAnimLayoutActions::HandleAutoLayout(const TSharedPtr<FJso
 	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
 	Root->SetStringField(TEXT("asset_path"), AssetPath);
 	Root->SetStringField(TEXT("graph"), GraphLabel);
+	Root->SetStringField(TEXT("layout_mode"), LayoutMode);
 	Root->SetNumberField(TEXT("nodes_formatted"), GraphResult->GetNumberField(TEXT("nodes_formatted")));
 	Root->SetStringField(TEXT("formatter_used"), GraphResult->GetStringField(TEXT("formatter_used")));
 
+	return FAxonActionResult::Success(Root);
+}
+
+// ---------------------------------------------------------------------------
+// Action: get_anim_node_positions
+// ---------------------------------------------------------------------------
+
+FAxonActionResult FAxonAnimLayoutActions::HandleGetAnimNodePositions(const TSharedPtr<FJsonObject>& Params)
+{
+	FString AssetPath = Params->GetStringField(TEXT("asset_path"));
+	FString GraphName = Params->HasField(TEXT("graph_name")) ? Params->GetStringField(TEXT("graph_name")) : TEXT("AnimGraph");
+
+	UAnimBlueprint* ABP = FAxonAssetUtils::LoadAssetByPath<UAnimBlueprint>(AssetPath);
+	if (!ABP)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("AnimBlueprint not found: %s"), *AssetPath));
+	}
+
+	FString GraphLabel;
+	FString GraphError;
+	UEdGraph* Graph = ResolveLayoutGraph(ABP, GraphName, GraphLabel, GraphError);
+	if (!Graph)
+	{
+		return FAxonActionResult::Error(GraphError);
+	}
+
+	TSet<FString> NameFilter;
+	const TArray<TSharedPtr<FJsonValue>>* NodeNamesArr = nullptr;
+	if (Params->TryGetArrayField(TEXT("node_names"), NodeNamesArr) && NodeNamesArr)
+	{
+		for (const TSharedPtr<FJsonValue>& V : *NodeNamesArr)
+		{
+			if (V.IsValid())
+			{
+				const FString Name = V->AsString();
+				if (!Name.IsEmpty())
+				{
+					NameFilter.Add(Name);
+				}
+			}
+		}
+	}
+
+	TArray<TSharedPtr<FJsonValue>> NodesArr;
+	for (UEdGraphNode* Node : Graph->Nodes)
+	{
+		if (!Node || Cast<UEdGraphNode_Comment>(Node)) continue;
+		if (NameFilter.Num() > 0 && !NameFilter.Contains(Node->GetName())) continue;
+
+		TSharedPtr<FJsonObject> NodeObj = MakeShared<FJsonObject>();
+		NodeObj->SetStringField(TEXT("name"), Node->GetName());
+		NodeObj->SetNumberField(TEXT("x"), Node->NodePosX);
+		NodeObj->SetNumberField(TEXT("y"), Node->NodePosY);
+		NodeObj->SetStringField(TEXT("class"), Node->GetClass()->GetName());
+		NodesArr.Add(MakeShared<FJsonValueObject>(NodeObj));
+	}
+
+	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("asset_path"), AssetPath);
+	Root->SetStringField(TEXT("graph"), GraphLabel);
+	Root->SetArrayField(TEXT("nodes"), NodesArr);
+	return FAxonActionResult::Success(Root);
+}
+
+// ---------------------------------------------------------------------------
+// Action: set_anim_node_position
+// ---------------------------------------------------------------------------
+
+FAxonActionResult FAxonAnimLayoutActions::HandleSetAnimNodePosition(const TSharedPtr<FJsonObject>& Params)
+{
+	FString AssetPath = Params->GetStringField(TEXT("asset_path"));
+	FString GraphName = Params->HasField(TEXT("graph_name")) ? Params->GetStringField(TEXT("graph_name")) : TEXT("AnimGraph");
+
+	UAnimBlueprint* ABP = FAxonAssetUtils::LoadAssetByPath<UAnimBlueprint>(AssetPath);
+	if (!ABP)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("AnimBlueprint not found: %s"), *AssetPath));
+	}
+
+	FString GraphLabel;
+	FString GraphError;
+	UEdGraph* Graph = ResolveLayoutGraph(ABP, GraphName, GraphLabel, GraphError);
+	if (!Graph)
+	{
+		return FAxonActionResult::Error(GraphError);
+	}
+
+	struct FNodePositionSpec
+	{
+		FString Name;
+		int32 X = 0;
+		int32 Y = 0;
+	};
+	TArray<FNodePositionSpec> Specs;
+
+	const TArray<TSharedPtr<FJsonValue>>* BulkArr = nullptr;
+	if (Params->TryGetArrayField(TEXT("nodes"), BulkArr) && BulkArr)
+	{
+		for (const TSharedPtr<FJsonValue>& V : *BulkArr)
+		{
+			const TSharedPtr<FJsonObject> Entry = V.IsValid() ? V->AsObject() : nullptr;
+			if (!Entry.IsValid()) continue;
+
+			FNodePositionSpec Spec;
+			Spec.Name = Entry->GetStringField(TEXT("name"));
+			if (Spec.Name.IsEmpty()) continue;
+			Spec.X = Entry->HasField(TEXT("x")) ? static_cast<int32>(Entry->GetNumberField(TEXT("x"))) : 0;
+			Spec.Y = Entry->HasField(TEXT("y")) ? static_cast<int32>(Entry->GetNumberField(TEXT("y"))) : 0;
+			Specs.Add(Spec);
+		}
+	}
+	else
+	{
+		FString NodeName = Params->GetStringField(TEXT("node_name"));
+		if (NodeName.IsEmpty())
+		{
+			return FAxonActionResult::Error(
+				TEXT("Provide either 'nodes' [{name,x,y},...] or 'node_name' with position_x/position_y."));
+		}
+		FNodePositionSpec Spec;
+		Spec.Name = NodeName;
+		Spec.X = Params->HasField(TEXT("position_x")) ? static_cast<int32>(Params->GetNumberField(TEXT("position_x"))) : 0;
+		Spec.Y = Params->HasField(TEXT("position_y")) ? static_cast<int32>(Params->GetNumberField(TEXT("position_y"))) : 0;
+		Specs.Add(Spec);
+	}
+
+	if (Specs.Num() == 0)
+	{
+		return FAxonActionResult::Error(TEXT("No node position updates specified."));
+	}
+
+	TMap<FString, UEdGraphNode*> NodeByName;
+	for (UEdGraphNode* Node : Graph->Nodes)
+	{
+		if (Node)
+		{
+			NodeByName.Add(Node->GetName(), Node);
+		}
+	}
+
+	TArray<TSharedPtr<FJsonValue>> UpdatedArr;
+	TArray<TSharedPtr<FJsonValue>> MissingArr;
+
+	Graph->Modify();
+	for (const FNodePositionSpec& Spec : Specs)
+	{
+		if (UEdGraphNode* const* Found = NodeByName.Find(Spec.Name))
+		{
+			(*Found)->NodePosX = Spec.X;
+			(*Found)->NodePosY = Spec.Y;
+
+			TSharedPtr<FJsonObject> UpdatedObj = MakeShared<FJsonObject>();
+			UpdatedObj->SetStringField(TEXT("name"), Spec.Name);
+			UpdatedObj->SetNumberField(TEXT("x"), Spec.X);
+			UpdatedObj->SetNumberField(TEXT("y"), Spec.Y);
+			UpdatedArr.Add(MakeShared<FJsonValueObject>(UpdatedObj));
+		}
+		else
+		{
+			MissingArr.Add(MakeShared<FJsonValueString>(Spec.Name));
+		}
+	}
+
+	ABP->MarkPackageDirty();
+
+	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("asset_path"), AssetPath);
+	Root->SetStringField(TEXT("graph"), GraphLabel);
+	Root->SetArrayField(TEXT("updated"), UpdatedArr);
+	if (MissingArr.Num() > 0)
+	{
+		Root->SetArrayField(TEXT("missing"), MissingArr);
+	}
 	return FAxonActionResult::Success(Root);
 }

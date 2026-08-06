@@ -279,13 +279,15 @@ bool AxonBlueprintInternal::HasCustomEventNamed(UBlueprint* BP, FName EventName)
 void FAxonBlueprintNodeActions::RegisterActions(FAxonToolRegistry& Registry)
 {
 	Registry.RegisterAction(TEXT("blueprint"), TEXT("add_node"),
-		TEXT("Add a new node to a Blueprint graph. Supports CallFunction, VariableGet, VariableSet, CustomEvent, Branch, Sequence, MacroInstance, SpawnActorFromClass, DynamicCast, Self, Return, MakeStruct, BreakStruct, SwitchOnEnum, SwitchOnInt, SwitchOnString, FormatText, MakeArray, Select node types. Also supports shorthand aliases: ForEachLoop, ForLoop, ForLoopWithBreak, DoOnce, FlipFlop, Gate (macro shortcuts), IsValid, Delay, RetriggerableDelay (function shortcuts), make_struct, break_struct, switch_enum, switch_int, switch_string, format_text, make_array, select. ComponentBoundEvent (binds an event entry node to a component's BlueprintAssignable multicast delegate; requires component_name + delegate_property_name), AddDelegate (binds an event to a BlueprintAssignable multicast delegate; \"Bind Event to ...\" node), RemoveDelegate (\"Unbind Event from ...\" — removes one previously bound event), ClearDelegate (\"Unbind all Events from ...\" — clears every bound listener), CallDelegate (\"Call ...\" — broadcasts a BP-resident multicast delegate to all listeners)"),
+		TEXT("Add a new node to a Blueprint graph. Supports CallFunction, VariableGet, VariableSet, CustomEvent, Branch, Sequence, MacroInstance, SpawnActorFromClass, DynamicCast, Self, Return, MakeStruct, BreakStruct, SwitchOnEnum, SwitchOnInt, SwitchOnString, FormatText, MakeArray, Select node types. Also supports shorthand aliases: ForEachLoop, ForLoop, ForLoopWithBreak, DoOnce, FlipFlop, Gate (macro shortcuts), IsValid, Delay, RetriggerableDelay (function shortcuts), make_struct, break_struct, switch_enum, switch_int, switch_string, format_text, make_array, select. ComponentBoundEvent (binds an event entry node to a component's BlueprintAssignable multicast delegate; requires component_name + delegate_property_name), AddDelegate (binds an event to a BlueprintAssignable multicast delegate; \"Bind Event to ...\" node), RemoveDelegate (\"Unbind Event from ...\" — removes one previously bound event), ClearDelegate (\"Unbind all Events from ...\" — clears every bound listener), CallDelegate (\"Call ...\" — broadcasts a BP-resident multicast delegate to all listeners). For replacements use replace_blueprint_node; for new nodes prefer anchor_node + anchor_mode when position is omitted."),
 		FAxonActionHandler::CreateStatic(&HandleAddNode),
 		FParamSchemaBuilder()
 			.RequiredAssetPath(TEXT("asset_path"),       TEXT("Blueprint asset path"))
 			.Required(TEXT("node_type"),         TEXT("string"),  TEXT("Node type: CallFunction (or 'function'/'call'), VariableGet (or 'get'), VariableSet (or 'set'), CustomEvent (or 'event'), Branch (or 'if'), Sequence, MacroInstance (or 'macro'), SpawnActorFromClass (or 'spawn'), DynamicCast (or 'cast'), Self, Return, MakeStruct (or 'make_struct'), BreakStruct (or 'break_struct'), SwitchOnEnum (or 'switch_enum'), SwitchOnInt (or 'switch_int'), SwitchOnString (or 'switch_string'), FormatText (or 'format_text'), MakeArray (or 'make_array'), Select. Shortcuts: ForEachLoop, ForLoop, DoOnce, FlipFlop, Gate, IsValid, Delay, RetriggerableDelay, ComponentBoundEvent, AddDelegate, RemoveDelegate, ClearDelegate, CallDelegate"))
 			.Optional(TEXT("graph_name"),        TEXT("string"),  TEXT("Graph name (defaults to EventGraph)"))
-			.Optional(TEXT("position"),          TEXT("array"),   TEXT("Node position as [x, y] (default: [0, 0])"), {TEXT("pos")})
+			.Optional(TEXT("position"),          TEXT("array"),   TEXT("Node position as [x, y] (default: [0, 0]). Ignored when anchor_node is set without position."), {TEXT("pos")})
+			.Optional(TEXT("anchor_node"),       TEXT("string"),  TEXT("Existing node ID — when set and position omitted, spawn relative to this node"))
+			.Optional(TEXT("anchor_mode"),       TEXT("string"),  TEXT("Placement relative to anchor_node: 'at' | 'right' (default) | 'below'"), TEXT("right"))
 			.Optional(TEXT("function_name"),     TEXT("string"),  TEXT("Function name for CallFunction nodes (e.g. PrintString)"))
 			.Optional(TEXT("target_class"),      TEXT("string"),  TEXT("Name of the class to search for the function being called (CallFunction) or the multicast delegate being bound (AddDelegate / RemoveDelegate / ClearDelegate / CallDelegate). Accepts a bare class name (e.g. 'KismetSystemLibrary', 'MyPawn'). For delegate nodes, defaults to the BP's generated class (self-context) if omitted. For CallFunction, all loaded classes are searched if omitted."), {TEXT("function_class"), TEXT("member_class")})
 			.Optional(TEXT("variable_name"),     TEXT("string"),  TEXT("Variable name for VariableGet/VariableSet nodes"))
@@ -302,6 +304,30 @@ void FAxonBlueprintNodeActions::RegisterActions(FAxonToolRegistry& Registry)
 			.Optional(TEXT("reliable"),           TEXT("bool"),    TEXT("Use reliable replication for CustomEvent nodes (default: false)"))
 			.Optional(TEXT("component_name"),         TEXT("string"),  TEXT("Component variable name (SCS/native subobject) for ComponentBoundEvent nodes"))
 			.Optional(TEXT("delegate_property_name"), TEXT("string"),  TEXT("Multicast delegate property name. Required for ComponentBoundEvent (resolved on component class) and AddDelegate / RemoveDelegate / ClearDelegate / CallDelegate (resolved on target_class or BP's generated class)."))
+			.Build());
+
+	Registry.RegisterAction(TEXT("blueprint"), TEXT("replace_blueprint_node"),
+		TEXT("Replace an existing Blueprint graph node with a new node type at the same coordinates, reconnecting pins by name. Does not run auto_layout."),
+		FAxonActionHandler::CreateStatic(&HandleReplaceBlueprintNode),
+		FParamSchemaBuilder()
+			.RequiredAssetPath(TEXT("asset_path"), TEXT("Blueprint asset path"))
+			.Required(TEXT("old_node_id"), TEXT("string"), TEXT("Node ID to replace (from get_nodes or add_node response)"))
+			.Required(TEXT("node_type"), TEXT("string"), TEXT("Replacement node type (same aliases as add_node)"))
+			.Optional(TEXT("graph_name"), TEXT("string"), TEXT("Graph scope for finding old_node_id"))
+			.Optional(TEXT("function_name"), TEXT("string"), TEXT("CallFunction: function name"))
+			.Optional(TEXT("target_class"), TEXT("string"), TEXT("CallFunction/delegate nodes: target class"))
+			.Optional(TEXT("variable_name"), TEXT("string"), TEXT("VariableGet/VariableSet: variable name"))
+			.Optional(TEXT("event_name"), TEXT("string"), TEXT("CustomEvent: event name"))
+			.Optional(TEXT("macro_name"), TEXT("string"), TEXT("MacroInstance: macro graph name"))
+			.OptionalAssetPath(TEXT("macro_blueprint"), TEXT("Blueprint asset path containing the macro"))
+			.Optional(TEXT("cast_class"), TEXT("string"), TEXT("DynamicCast: class name"))
+			.Optional(TEXT("actor_class"), TEXT("string"), TEXT("SpawnActorFromClass: actor class"))
+			.Optional(TEXT("struct_type"), TEXT("string"), TEXT("MakeStruct/BreakStruct: struct type"))
+			.Optional(TEXT("enum_type"), TEXT("string"), TEXT("SwitchOnEnum: enum type"))
+			.Optional(TEXT("format"), TEXT("string"), TEXT("FormatText: format string"))
+			.Optional(TEXT("num_entries"), TEXT("integer"), TEXT("MakeArray: number of entries"))
+			.Optional(TEXT("component_name"), TEXT("string"), TEXT("ComponentBoundEvent: component variable name"))
+			.Optional(TEXT("delegate_property_name"), TEXT("string"), TEXT("ComponentBoundEvent/delegate nodes: delegate property name"))
 			.Build());
 
 	Registry.RegisterAction(TEXT("blueprint"), TEXT("remove_node"),
@@ -390,7 +416,7 @@ void FAxonBlueprintNodeActions::RegisterActions(FAxonToolRegistry& Registry)
 	// ---- Wave 4 ----
 
 	Registry.RegisterAction(TEXT("blueprint"), TEXT("add_nodes_bulk"),
-		TEXT("Place multiple nodes in one transaction. Returns a temp_id -> node_id mapping so callers can immediately reference created nodes in connect_pins_bulk. Each entry: { temp_id, node_type, function_name?, target_class?, variable_name?, position? }."),
+		TEXT("Place multiple nodes in one transaction. Returns a temp_id -> node_id mapping so callers can immediately reference created nodes in connect_pins_bulk. Each entry: { temp_id, node_type, function_name?, target_class?, variable_name?, position?, anchor_node?, anchor_mode? }."),
 		FAxonActionHandler::CreateStatic(&HandleAddNodesBulk),
 		FParamSchemaBuilder()
 			.RequiredAssetPath(TEXT("asset_path"),  TEXT("Blueprint asset path"))
@@ -550,6 +576,54 @@ void FAxonBlueprintNodeActions::RegisterActions(FAxonToolRegistry& Registry)
 }
 
 // ============================================================
+//  Anchor placement helper
+// ============================================================
+
+static bool ApplyBlueprintAnchorPosition(
+	UBlueprint* BP, const FString& GraphName,
+	const TSharedPtr<FJsonObject>& Params, int32& OutX, int32& OutY, FString& OutError)
+{
+	if (Params->HasField(TEXT("position")))
+	{
+		return true;
+	}
+
+	FString AnchorNodeId;
+	if (!Params->TryGetStringField(TEXT("anchor_node"), AnchorNodeId) || AnchorNodeId.IsEmpty())
+	{
+		return true;
+	}
+
+	UEdGraphNode* AnchorNode = AxonBlueprintInternal::FindNodeById(BP, GraphName, AnchorNodeId);
+	if (!AnchorNode)
+	{
+		OutError = FString::Printf(TEXT("anchor_node '%s' not found"), *AnchorNodeId);
+		return false;
+	}
+
+	FString AnchorMode = TEXT("right");
+	Params->TryGetStringField(TEXT("anchor_mode"), AnchorMode);
+	AnchorMode = AnchorMode.ToLower();
+
+	if (AnchorMode == TEXT("at"))
+	{
+		OutX = AnchorNode->NodePosX;
+		OutY = AnchorNode->NodePosY;
+	}
+	else if (AnchorMode == TEXT("below"))
+	{
+		OutX = AnchorNode->NodePosX;
+		OutY = AnchorNode->NodePosY + 180;
+	}
+	else
+	{
+		OutX = AnchorNode->NodePosX + 280;
+		OutY = AnchorNode->NodePosY;
+	}
+	return true;
+}
+
+// ============================================================
 //  add_node
 // ============================================================
 
@@ -594,7 +668,7 @@ FAxonActionResult FAxonBlueprintNodeActions::HandleAddNode(const TSharedPtr<FJso
 			TEXT("Graph not found: %s"), GraphName.IsEmpty() ? TEXT("EventGraph") : *GraphName));
 	}
 
-	// Parse position
+	// Parse position (or derive from anchor_node when position omitted)
 	int32 PosX = 0;
 	int32 PosY = 0;
 	const TArray<TSharedPtr<FJsonValue>>* PosArray = nullptr;
@@ -602,6 +676,14 @@ FAxonActionResult FAxonBlueprintNodeActions::HandleAddNode(const TSharedPtr<FJso
 	{
 		PosX = (int32)(*PosArray)[0]->AsNumber();
 		PosY = (int32)(*PosArray)[1]->AsNumber();
+	}
+	else
+	{
+		FString AnchorError;
+		if (!ApplyBlueprintAnchorPosition(BP, GraphName, Params, PosX, PosY, AnchorError))
+		{
+			return FAxonActionResult::Error(AnchorError);
+		}
 	}
 
 	UEdGraphNode* NewNode = nullptr;
@@ -1667,6 +1749,161 @@ FAxonActionResult FAxonBlueprintNodeActions::HandleRemoveNode(const TSharedPtr<F
 	Root->SetStringField(TEXT("asset_path"), AssetPath);
 	Root->SetStringField(TEXT("removed_node"), NodeId);
 	Root->SetBoolField(TEXT("success"), true);
+	return FAxonActionResult::Success(Root);
+}
+
+// ============================================================
+//  replace_blueprint_node
+// ============================================================
+
+FAxonActionResult FAxonBlueprintNodeActions::HandleReplaceBlueprintNode(const TSharedPtr<FJsonObject>& Params)
+{
+	FString AssetPath;
+	UBlueprint* BP = AxonBlueprintInternal::LoadBlueprintFromParams(Params, AssetPath);
+	if (!BP)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("Blueprint not found: %s"), *AssetPath));
+	}
+
+	FString OldNodeId = Params->GetStringField(TEXT("old_node_id"));
+	if (OldNodeId.IsEmpty())
+	{
+		return FAxonActionResult::Error(TEXT("Missing required parameter: old_node_id"));
+	}
+
+	FString NodeType = Params->GetStringField(TEXT("node_type"));
+	if (NodeType.IsEmpty())
+	{
+		return FAxonActionResult::Error(TEXT("Missing required parameter: node_type"));
+	}
+
+	FString GraphName = Params->GetStringField(TEXT("graph_name"));
+	UEdGraphNode* OldNode = AxonBlueprintInternal::FindNodeById(BP, GraphName, OldNodeId);
+	if (!OldNode)
+	{
+		return FAxonActionResult::Error(FString::Printf(TEXT("Node not found: %s"), *OldNodeId));
+	}
+
+	const int32 SavedPosX = OldNode->NodePosX;
+	const int32 SavedPosY = OldNode->NodePosY;
+
+	struct FSavedBpPinLink
+	{
+		FString ThisPin;
+		FString OtherNode;
+		FString OtherPin;
+		bool bThisIsOutput = false;
+	};
+	TArray<FSavedBpPinLink> SavedLinks;
+
+	for (UEdGraphPin* Pin : OldNode->Pins)
+	{
+		if (!Pin) continue;
+		const bool bThisIsOutput = (Pin->Direction == EGPD_Output);
+		for (UEdGraphPin* LinkedPin : Pin->LinkedTo)
+		{
+			if (!LinkedPin || !LinkedPin->GetOwningNode()) continue;
+			FSavedBpPinLink Link;
+			Link.ThisPin = Pin->PinName.ToString();
+			Link.OtherNode = LinkedPin->GetOwningNode()->GetName();
+			Link.OtherPin = LinkedPin->PinName.ToString();
+			Link.bThisIsOutput = bThisIsOutput;
+			SavedLinks.Add(Link);
+		}
+	}
+
+	GEditor->BeginTransaction(NSLOCTEXT("Axon", "BPReplaceNode", "BP Replace Node"));
+	FBlueprintEditorUtils::RemoveNode(BP, OldNode, /*bDontRecompile=*/false);
+
+	TSharedRef<FJsonObject> AddParams = MakeShared<FJsonObject>();
+	AddParams->SetStringField(TEXT("asset_path"), AssetPath);
+	AddParams->SetStringField(TEXT("node_type"), NodeType);
+	if (!GraphName.IsEmpty())
+	{
+		AddParams->SetStringField(TEXT("graph_name"), GraphName);
+	}
+	TArray<TSharedPtr<FJsonValue>> PosArr;
+	PosArr.Add(MakeShared<FJsonValueNumber>(SavedPosX));
+	PosArr.Add(MakeShared<FJsonValueNumber>(SavedPosY));
+	AddParams->SetArrayField(TEXT("position"), PosArr);
+
+	static const TSet<FString> SkipCopyKeys = { TEXT("asset_path"), TEXT("old_node_id"), TEXT("position") };
+	for (const TPair<FString, TSharedPtr<FJsonValue>>& Pair : Params->Values)
+	{
+		if (SkipCopyKeys.Contains(Pair.Key) || Pair.Key == TEXT("node_type")) continue;
+		AddParams->SetField(Pair.Key, Pair.Value);
+	}
+
+	FAxonActionResult AddResult = HandleAddNode(AddParams);
+	if (!AddResult.bSuccess)
+	{
+		GEditor->EndTransaction();
+		return AddResult;
+	}
+
+	const FString NewNodeId = AddResult.Result->GetStringField(TEXT("id"));
+	UEdGraphNode* NewNode = AxonBlueprintInternal::FindNodeById(BP, GraphName, NewNodeId);
+	if (!NewNode)
+	{
+		GEditor->EndTransaction();
+		return FAxonActionResult::Error(FString::Printf(
+			TEXT("Replacement node '%s' was spawned but could not be found for reconnect"), *NewNodeId));
+	}
+
+	const UEdGraphSchema_K2* Schema = GetDefault<UEdGraphSchema_K2>();
+	TArray<TSharedPtr<FJsonValue>> ReconnectedArr;
+	TArray<TSharedPtr<FJsonValue>> FailedArr;
+
+	for (const FSavedBpPinLink& Link : SavedLinks)
+	{
+		UEdGraphPin* ThisPin = NewNode->FindPin(
+			FName(*Link.ThisPin), Link.bThisIsOutput ? EGPD_Output : EGPD_Input);
+		UEdGraphNode* OtherNode = AxonBlueprintInternal::FindNodeById(BP, GraphName, Link.OtherNode);
+		UEdGraphPin* OtherPin = OtherNode
+			? OtherNode->FindPin(FName(*Link.OtherPin), Link.bThisIsOutput ? EGPD_Input : EGPD_Output)
+			: nullptr;
+
+		TSharedPtr<FJsonObject> AttemptObj = MakeShared<FJsonObject>();
+		AttemptObj->SetStringField(TEXT("this_pin"), Link.ThisPin);
+		AttemptObj->SetStringField(TEXT("other_node"), Link.OtherNode);
+		AttemptObj->SetStringField(TEXT("other_pin"), Link.OtherPin);
+		AttemptObj->SetStringField(TEXT("this_dir"), Link.bThisIsOutput ? TEXT("Output") : TEXT("Input"));
+
+		if (!ThisPin || !OtherPin)
+		{
+			AttemptObj->SetStringField(TEXT("error"), TEXT("Pin not found on replacement node"));
+			FailedArr.Add(MakeShared<FJsonValueObject>(AttemptObj));
+			continue;
+		}
+
+		UEdGraphPin* OutPin = Link.bThisIsOutput ? ThisPin : OtherPin;
+		UEdGraphPin* InPin = Link.bThisIsOutput ? OtherPin : ThisPin;
+		const bool bConnected = Schema->TryCreateConnection(OutPin, InPin);
+		if (bConnected)
+		{
+			ReconnectedArr.Add(MakeShared<FJsonValueObject>(AttemptObj));
+		}
+		else
+		{
+			AttemptObj->SetStringField(TEXT("error"), TEXT("TryCreateConnection failed"));
+			FailedArr.Add(MakeShared<FJsonValueObject>(AttemptObj));
+		}
+	}
+
+	GEditor->EndTransaction();
+	FBlueprintEditorUtils::MarkBlueprintAsModified(BP);
+
+	TSharedPtr<FJsonObject> Root = MakeShared<FJsonObject>();
+	Root->SetStringField(TEXT("asset_path"), AssetPath);
+	Root->SetStringField(TEXT("old_node_id"), OldNodeId);
+	Root->SetStringField(TEXT("new_node_id"), NewNodeId);
+	Root->SetNumberField(TEXT("position_x"), SavedPosX);
+	Root->SetNumberField(TEXT("position_y"), SavedPosY);
+	Root->SetArrayField(TEXT("reconnected"), ReconnectedArr);
+	if (FailedArr.Num() > 0)
+	{
+		Root->SetArrayField(TEXT("failed_reconnects"), FailedArr);
+	}
 	return FAxonActionResult::Success(Root);
 }
 
