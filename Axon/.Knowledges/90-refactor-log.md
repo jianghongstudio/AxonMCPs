@@ -10,17 +10,9 @@
 
 | 字段 | 值 |
 |------|----|
-| 阶段 | MCP tools/list 与 Cursor 缓存竞态缓解 |
+| 阶段 | 项目蒸馏与离线 KB |
 | 基线日期 | 2026-08-05 |
 | 技术债索引 | [60-known-debt.md](60-known-debt.md) |
-
-### 2026-08-05 — 延迟 MCP HTTP 启动，修复 Cursor 缺 `worker_query`
-
-- **动机**：服务端 `tools/list` 已含 `worker_query`，Cursor 会话工具表没有；根因是 Core 在 sibling 注册前开端口，客户端缓存残缺列表。
-- **方案**：`StartHttpServerIfEnabled` 挂到 `OnAllModuleLoadingPhasesComplete`（ticker 0 兜底）；`listChanged=true`。
-- **影响面**：`AxonCoreModule`、`AxonHttpServer::HandleInitialize`
-- **文档同步**：`60` D8、本条目
-- **关联债务**：D8 已缓解；运行中热启 sibling 仍需重连（残余）
 
 ### 2026-08-04 — 按项目独立 KB 蒸馏
 

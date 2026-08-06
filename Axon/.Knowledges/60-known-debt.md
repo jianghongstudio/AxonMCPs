@@ -39,13 +39,6 @@
 - **问题**：用户以为连了 Axon，实际打到 9316。
 - **状态**：根 `.mcp.json` 已可同时配置 monolith + axon；仍需用户侧确认 URL。
 
-### D8 — Cursor 缓存残缺 `tools/list`（worker_query 等缺失）（已缓解）
-
-- **位置**：`FAxonCoreModule::StartupModule` 过早 `HttpServer->Start`；`initialize.capabilities.tools.listChanged=false`
-- **问题**：端口一开 Cursor 立即 `tools/list` 并缓存；此时 `AxonLLM`（`worker`）等 sibling 尚未 `RegisterAction`，导致客户端永久看不到 `worker_query` 等（服务端稍后 `tools/list` 其实是全的）。
-- **状态**：**已缓解**（2026-08-05）：HTTP 延后到 `OnAllModuleLoadingPhasesComplete`（+ ticker 兜底）；`listChanged=true`。已连接会话仍需重载 MCP 一次。
-- **残余**：UE HTTP 无长连接 SSE push，运行中途新启用的 sibling 仍需客户端重连。
-
 ### D5 — 无独立 Camera sibling
 
 - **问题**：Camera 制作能力分散在 CameraBlueprint（非 Axon）+ RewindDebugger 采样 + Editor 捕获。
@@ -68,4 +61,3 @@
 | ID | 摘要 | 解决时间 |
 |----|------|----------|
 | D3 | PIE Unity 匿名命名空间冲突 | 2026-08-01 |
-| D8 | Cursor 缓存残缺 tools/list（worker_query） | 2026-08-05 |

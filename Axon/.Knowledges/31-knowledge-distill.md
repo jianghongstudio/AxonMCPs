@@ -18,7 +18,7 @@
 | 示例包 | **AxonGaspKB** | `gasp_kb` | Epic Game Animation Sample 已蒸馏语料（历史命名保留） |
 | 项目包 | **Axon{Project}KB** | `{snake}_kb` | 每个被蒸馏工程一个独立插件；可单独拷贝/启停 |
 
-知识包在 `StartupModule` 调用 `FAxonKnowledgeRegistration::RegisterAll` 时**主动注册**到 `FAxonKnowledgeRegistry`（不是靠文件夹名猜测）。查询已加载包：`knowledge_query` → `list_kb_packs`。AxonLLM「默认知识库插件」下拉也读此注册表。
+知识包在 `StartupModule` 调用 `FAxonKnowledgeRegistration::RegisterAll` 时**主动注册**到 `FAxonKnowledgeRegistry`（不是靠文件夹名猜测）。查询已加载包：`knowledge_query` → `list_kb_packs`。
 
 **一项目 = 一插件 = 一 namespace。** 禁止把多工程语料塞进同一个宿主 Pack。
 
@@ -35,9 +35,7 @@
 2. `scaffold_kb_plugin`（先 `dry_run=true`）写入 `Plugins/AxonMCPs/Axon{Project}KB/`  
 3. 关编辑器 → UBT → 重启（新 `.uplugin` 必需）  
 4. `{ns}_query` → `extract_*` / `extract_bundle` → `Knowledge/_raw/`  
-5. 撰写 `Knowledge/*.md`（C++ **不**自动生成全书；深度标杆对齐 AxonGaspKB）  
-   - **可选（AxonLLM）**：`worker_query` → `run` / `run_async`：`knowledge.summarize_raw` 压缩证据；`knowledge.draft_topic` 写入 `Knowledge/_draft/*.md`；审阅后 `knowledge.promote_draft` 升格为正式 topic。长任务用 `run_async` + `job_status`。  
-   - 未启用 AxonLLM 时，仍由 Agent 直接撰写正式 md。  
+5. Agent 撰写 `Knowledge/*.md`（C++ **不**自动生成全书；深度标杆对齐 AxonGaspKB）  
 6. `{ns}_query` → `search` / `read` / `list_topics` 验收  
 
 特例：GASP 已存在 → **不要**再 scaffold `AxonGameAnimationSampleKB`；继续用 `AxonGaspKB` / `gasp_kb`。
@@ -65,9 +63,8 @@
 ## 诚实边界
 
 - 新插件必须 **编译 + 重启** 后 namespace 才出现；不是零编译黑盒。  
-- Markdown 蒸馏由 **Agent** 完成（可委派 AxonLLM 出 `_draft`），不是一键全书生成。  
-- 本地工人：启用 **AxonLLM** 后用 `worker_query`；配置见 [`../AxonLLM/README.md`](../AxonLLM/README.md)。  
-- KB 包索引：`RegisterAll` 会写入 `FAxonKnowledgeRegistry`；可 `knowledge_query` → `list_kb_packs` 查看（AxonLLM 默认插件下拉同源）。  
+- Markdown 蒸馏由 **Agent** 完成，不是一键全书生成。  
+- KB 包索引：`RegisterAll` 会写入 `FAxonKnowledgeRegistry`；可 `knowledge_query` → `list_kb_packs` 查看。  
 
 - 是否把 `AxonXxxKB` 拷到其他工程由**人**决定（启停/拷贝粒度 = 插件）。  
 - KB 脚手架请用 `knowledge.scaffold_kb_plugin`，**不要**用 `axon_create_extension`（后者不会正确接线 KnowledgeLib / Knowledge 模板）。
@@ -80,10 +77,6 @@ knowledge_query({ "action": "scaffold_kb_plugin", "dry_run": true })
 knowledge_query({ "action": "scaffold_kb_plugin" })
 # close editor → UBT → relaunch
 {ns}_query({ "action": "extract_bundle", "jobs": [ ... ] })
-# optional local draft (AxonLLM):
-worker_query({ "action": "status" })
-worker_query({ "action": "run", "scope": "knowledge.draft_topic", "kb_plugin": "AxonFooBarKB", "topic": "10-overview", "paths": ["_manifest.json"] })
-worker_query({ "action": "run", "scope": "knowledge.promote_draft", "kb_plugin": "AxonFooBarKB", "topic": "10-overview" })
 {ns}_query({ "action": "search", "query": "..." })
 gasp_kb_query({ "action": "list_topics" })   # 示例包回归
 ```

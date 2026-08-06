@@ -26,7 +26,6 @@
 | 改 `editor.*` Action 面（非 PIE 会话内核） | [40-editor-actions.md](40-editor-actions.md) | [13-pie-sessions.md](13-pie-sessions.md) |
 | 脚手架新 sibling / recipe | [50-extension-cookbook.md](50-extension-cookbook.md) | [Docs/axon_guide.md](../Docs/axon_guide.md) |
 | 蒸馏本项目 / 离线 KB 包 / gasp_kb | [31-knowledge-distill.md](31-knowledge-distill.md) | [30-sibling-plugins.md](30-sibling-plugins.md)、[Docs/USER_GUIDE.md](../Docs/USER_GUIDE.md)、[Docs/axon_guide.md](../Docs/axon_guide.md) |
-| 本地 LLM 工人 / worker_query / Ollama 草稿 | [31-knowledge-distill.md](31-knowledge-distill.md)、[`../AxonLLM/README.md`](../AxonLLM/README.md) | [30-sibling-plugins.md](30-sibling-plugins.md) |
 | 搜项目资产 / 引用图 / GameplayTag | [32-index-and-source.md](32-index-and-source.md) | [30-sibling-plugins.md](30-sibling-plugins.md) |
 | 查引擎/工程 C++、调用方、include | [32-index-and-source.md](32-index-and-source.md) | [30-sibling-plugins.md](30-sibling-plugins.md) |
 | 编排 3C 验证（角色移动 / 输入 / 相机回放） | [51-3c-workflows.md](51-3c-workflows.md) | [Docs/3C_WORKFLOWS.md](../Docs/3C_WORKFLOWS.md) |
