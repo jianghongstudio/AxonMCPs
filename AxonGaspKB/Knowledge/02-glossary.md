@@ -57,7 +57,7 @@
 
 | 函数 | 路径 | 说明 |
 |------|------|------|
-| `IsMoving()` | CMC ABP | 当前/未来速度或加速度非零（见 `_raw/abp/cmc/IsMoving.json` 注释） |
+| `IsMoving()` | CMC ABP | **实现为 AND**：`NotEqual(Velocity,0)` ∧ `NotEqual(TrjFutureVelocity,0)` ∧ `NotEqual(Acceleration,0)`（图注释若写「或」以蓝图为准） |
 | `IsPivoting()` | CMC ABP | 未来轨迹与当前方向偏差大；MM 与 Experimental SM 两套条件 |
 | `ShouldTurnInPlace()` | CMC ABP | 根骨与胶囊朝向差 >50° 且 aiming；或刚停止（Stick Flick） |
 
